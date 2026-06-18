@@ -1,0 +1,234 @@
+<style id="pm-overlay">
+#pm-root{position:fixed;top:0;left:0;width:100vw;height:100vh;height:100dvh;overflow-x:hidden;overflow-y:auto;-webkit-overflow-scrolling:touch;z-index:2147483600;background:#FEF4E7;}
+html,body{margin:0!important;padding:0!important;}
+</style>
+<style>
+:root{
+  --sunburst:#F2B632;--coral:#FF6B57;--magenta:#FF4FA3;--teal:#00A7B3;--cobalt:#0765B0;
+  --navy:#0D2340;--leaf:#2EBA7F;--cream:#FEF4E7;--panel:#FDF8EF;--line:#EBDCC6;--ink:#3A4358;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--ink);line-height:1.65;overflow-x:hidden}
+h1,h2,h3,h4{font-family:'Tinos',Georgia,'Times New Roman',serif;font-weight:700;color:var(--navy);line-height:1.15}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+.wrap{max-width:1280px;margin:0 auto;padding:0 30px}
+
+/* image buttons */
+.imgbtn{display:inline-block;border:none;background:none;padding:0;cursor:pointer;line-height:0;transition:transform .16s ease}
+.imgbtn:hover{transform:translateY(-2px)}
+.imgbtn img{height:52px;width:auto;display:block}
+
+/* nav */
+header{position:relative;z-index:50}
+.nav-inner{max-width:1280px;margin:0 auto;padding:22px 30px 6px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.nav-logo img{width:230px;height:auto}
+.nav-links{display:flex;align-items:center;gap:34px;list-style:none}
+.nav-links a{font-family:'Poppins',sans-serif;font-weight:600;font-size:1rem;color:var(--navy);padding-bottom:5px;border-bottom:3px solid transparent;transition:border-color .15s,color .15s}
+.nav-links li:nth-child(1) a:hover{border-color:var(--teal);color:var(--teal)}
+.nav-links li:nth-child(2) a:hover{border-color:var(--magenta);color:var(--magenta)}
+.nav-links li:nth-child(3) a:hover{border-color:var(--sunburst);color:var(--sunburst)}
+.nav-links li:nth-child(4) a:hover{border-color:var(--cobalt);color:var(--cobalt)}
+.nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:6px}
+.nav-toggle svg{width:30px;height:30px;stroke:var(--navy)}
+.nav-mobile{display:none}
+
+/* legal content */
+.legal-hero{padding:46px 0 8px;text-align:center}
+.legal-hero .eyebrow{font-family:'Tinos',serif;font-style:italic;font-weight:700;font-size:1.2rem;color:var(--magenta);margin-bottom:8px}
+.legal-hero h1{font-size:clamp(2.1rem,4vw,3rem)}
+.legal-hero .updated{font-family:'Poppins',sans-serif;font-weight:500;font-size:.85rem;color:var(--ink);opacity:.7;margin-top:12px}
+.legal-wrap{max-width:840px;margin:0 auto;padding:24px 30px 70px}
+.legal-card{background:var(--panel);border:1.5px solid var(--line);border-radius:18px;padding:40px 46px;box-shadow:0 2px 0 rgba(150,110,60,.06),0 12px 26px rgba(150,110,60,.08);position:relative}
+.legal-card::before{content:"";position:absolute;top:-1.5px;left:24px;right:24px;height:6px;border-radius:0 0 6px 6px;background:var(--teal)}
+.legal-card h2{font-size:1.45rem;margin:34px 0 10px}
+.legal-card h2:first-of-type{margin-top:6px}
+.legal-card h3{font-family:'Poppins',sans-serif;font-weight:700;font-size:1rem;color:var(--cobalt);margin:18px 0 6px}
+.legal-card p,.legal-card li{font-size:1rem;line-height:1.72;margin-bottom:12px}
+.legal-card ul{padding-left:22px;margin-bottom:14px}
+.legal-card li{margin-bottom:7px}
+.legal-card a{color:var(--teal);text-decoration:underline;font-weight:600}
+.legal-card strong{color:var(--navy)}
+.legal-note{background:#FFF6E2;border-left:4px solid var(--sunburst);padding:14px 18px;border-radius:8px;font-size:.93rem;margin:8px 0 22px}
+.legal-toc{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:20px}
+.legal-toc a{font-family:'Poppins',sans-serif;font-weight:600;font-size:.9rem;color:var(--cobalt);text-decoration:underline}
+
+/* footer */
+.scallop-edge{display:block;width:100%;height:30px;margin-bottom:-1px}
+footer{background:var(--navy);color:#EDF1F8;position:relative;margin-top:30px}
+.footer-inner{max-width:1280px;margin:0 auto;padding:26px 30px 38px;display:flex;align-items:center;justify-content:space-between;gap:26px;flex-wrap:wrap}
+.footer-links{display:flex;gap:28px;list-style:none;flex-wrap:wrap}
+.footer-links a{font-family:'Poppins',sans-serif;font-weight:600;font-size:.9rem;color:#EDF1F8;transition:color .15s}
+.footer-links a:hover{color:var(--sunburst)}
+.footer-social{display:flex;align-items:center;gap:12px}
+.footer-social span{font-family:'Poppins',sans-serif;font-weight:600;font-size:.9rem}
+.social-btn{width:38px;height:38px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;transition:transform .15s,background .15s}
+.social-btn:hover{transform:translateY(-3px)}
+.social-btn:nth-of-type(1):hover{background:var(--magenta)}
+.social-btn:nth-of-type(2):hover{background:var(--teal)}
+.social-btn:nth-of-type(3):hover{background:var(--cobalt)}
+.social-btn:hover svg{fill:#fff}
+.social-btn svg{width:18px;height:18px;fill:var(--navy)}
+.footer-copy{font-size:.88rem;display:flex;align-items:center;gap:10px}
+.footer-copy .nice{font-family:'Tinos',serif;font-style:italic;color:var(--sunburst)}
+.footer-heart{width:30px;height:30px;flex:none}
+
+@media(max-width:900px){
+  .nav-links{display:none}
+  .nav-inner>.imgbtn{display:none}
+  .nav-toggle{display:block}
+  .nav-mobile{display:none;position:absolute;top:100%;left:0;right:0;z-index:60;background:var(--cream);border-bottom:1.5px solid var(--line);box-shadow:0 16px 28px rgba(150,110,60,.15);flex-direction:column;list-style:none;padding:14px 26px 22px;gap:2px}
+  .nav-mobile.open{display:flex}
+  .nav-mobile a{display:block;text-align:center;font-family:'Poppins',sans-serif;font-weight:600;color:var(--navy);padding:12px;border-radius:12px}
+  .nav-mobile a:hover{background:var(--panel)}
+}
+@media(max-width:680px){
+  .nav-logo img{width:175px}
+  .legal-card{padding:28px 24px}
+}
+</style>
+<div id="pm-root">
+
+
+<!-- NAV -->
+<header>
+  <div class="nav-inner">
+    <a href="/playmarge" class="nav-logo" aria-label="Marge Games home"><img src="https://jaceti.github.io/playmarge/logo_repaired.png" alt="Marge Games"></a>
+    <ul class="nav-links">
+      <li><a href="/playmarge#home">Home</a></li>
+      <li><a href="/playmarge#games">Our Games</a></li>
+      <li><a href="/playmarge#party-favors">Party Favors</a></li>
+      <li><a href="/playmarge#contact">Contact</a></li>
+    </ul>
+    <a href="/playmarge#contact" class="imgbtn" style="flex:none" aria-label="Play With Us"><img src="https://jaceti.github.io/playmarge/PlayWithUsBTN.png" alt="Play With Us" style="height:48px"></a>
+    <button class="nav-toggle" aria-label="Menu" onclick="document.getElementById('navMobile').classList.toggle('open')">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </div>
+  <ul class="nav-mobile" id="navMobile">
+    <li><a href="/playmarge#home">Home</a></li>
+    <li><a href="/playmarge#games">Our Games</a></li>
+    <li><a href="/playmarge#party-favors">Party Favors</a></li>
+    <li><a href="/playmarge#contact">Contact</a></li>
+  </ul>
+</header>
+
+<!-- HERO -->
+<section class="legal-hero">
+  <p class="eyebrow">The fine print, made friendly.</p>
+  <h1>Privacy Policy</h1>
+  <p class="updated">Last updated: June 17, 2026</p>
+  <div class="legal-toc">
+    <a href="/playmarge-terms">Read our Terms of Service →</a>
+  </div>
+</section>
+
+<div class="legal-wrap">
+  <div class="legal-card">
+
+    <p>At <strong>Marge Games</strong> ("Marge Games," "we," "us," or "our"), we make lighthearted games for the way you actually hang out — from cozy mobile apps like Snack Society to tabletop games for game night. We care about your privacy as much as we care about a good time. This Privacy Policy explains what information we collect, how we use it, and the choices you have.</p>
+
+    <p>This policy applies to our <strong>mobile and digital applications</strong>, our <strong>tabletop games</strong> and related materials, and our <strong>website</strong> (collectively, the "Services"). By using the Services, you agree to this Privacy Policy.</p>
+
+    <div class="legal-note">A quick, human summary: We don't sell your personal information. We collect the minimum we need to run our games and website, answer your messages, and improve our products. You can contact us anytime to access or delete your information.</div>
+
+    <h2>1. Information We Collect</h2>
+
+    <h3>Information you give us</h3>
+    <ul>
+      <li><strong>Contact &amp; messages.</strong> If you fill out our contact form or email us, we collect your name, email address, and whatever you choose to write.</li>
+      <li><strong>Mailing list.</strong> If you sign up to hear about new games (like our Bookish waitlist), we collect your email address.</li>
+      <li><strong>Purchases &amp; shop.</strong> If you buy physical games or merchandise from us, we (or our payment and fulfillment providers) collect the information needed to process and ship your order, such as your name, shipping address, and contact details. Payment card details are handled by our payment processor — we do not store full card numbers.</li>
+    </ul>
+
+    <h3>Information collected automatically (digital apps &amp; website)</h3>
+    <ul>
+      <li><strong>Usage &amp; device data.</strong> When you use our apps or website, we and our service providers may collect technical information such as device type, operating system, app version, general location (e.g., country), and how you interact with the Services.</li>
+      <li><strong>Analytics &amp; performance.</strong> We may use analytics and crash-reporting tools (for example, those provided by Apple or trusted third parties) to understand how our games are used and to fix bugs.</li>
+      <li><strong>In-app purchases.</strong> Purchases made inside our apps are processed by the relevant app store (such as the Apple App Store). The app store — not Marge Games — handles your payment information; we receive limited transaction details such as confirmation that a purchase occurred.</li>
+      <li><strong>Cookies &amp; similar technologies.</strong> Our website may use cookies or similar technologies to remember preferences and measure traffic. You can control cookies through your browser settings.</li>
+    </ul>
+
+    <h3>Tabletop games</h3>
+    <p>Our physical tabletop games generally do not collect any personal information on their own. We only receive information about you in connection with tabletop games if you contact us, sign up for updates, register a product, or buy from our shop.</p>
+
+    <h2>2. How We Use Your Information</h2>
+    <ul>
+      <li>To provide, operate, and improve our games, apps, and website;</li>
+      <li>To respond to your questions, feedback, and support requests;</li>
+      <li>To send you updates you've asked for (like new-game announcements), which you can opt out of at any time;</li>
+      <li>To process and deliver orders from our shop;</li>
+      <li>To understand how our Services are used so we can make them better;</li>
+      <li>To keep our Services safe, prevent abuse, and comply with our legal obligations.</li>
+    </ul>
+
+    <h2>3. How We Share Information</h2>
+    <p>We do <strong>not</strong> sell your personal information. We share information only in these limited situations:</p>
+    <ul>
+      <li><strong>Service providers.</strong> With trusted companies that help us run the Services — for example, analytics providers, email and hosting services, app stores, and payment/shipping providers — and only as needed to perform their work for us.</li>
+      <li><strong>Legal reasons.</strong> When we believe disclosure is required to comply with the law, enforce our terms, or protect the rights, safety, and property of Marge Games, our players, or others.</li>
+      <li><strong>Business transfers.</strong> If Marge Games is involved in a merger, acquisition, or sale of assets, your information may be transferred as part of that transaction.</li>
+    </ul>
+
+    <h2>4. Children's Privacy</h2>
+    <p>Our Services are intended for a general audience and are not directed to children under 13 (or the age defined by your local law). We do not knowingly collect personal information from children under 13. If you are a parent or guardian and believe your child has provided us with personal information, please contact us at <a href="mailto:liam@hedyverse.com">liam@hedyverse.com</a> and we will take reasonable steps to delete it.</p>
+    <p>If any of our games are ever specifically directed to children, we will provide additional protections and parental-consent mechanisms as required by applicable laws such as the U.S. Children's Online Privacy Protection Act (COPPA).</p>
+
+    <h2>5. Your Choices &amp; Rights</h2>
+    <ul>
+      <li><strong>Email updates.</strong> You can unsubscribe from our mailing list at any time using the link in our emails or by contacting us.</li>
+      <li><strong>Access &amp; deletion.</strong> You may ask us to access, correct, or delete the personal information we hold about you.</li>
+      <li><strong>Device controls.</strong> You can manage app permissions, advertising identifiers, and analytics options through your device or browser settings.</li>
+    </ul>
+    <p>Depending on where you live, you may have additional rights under laws such as the California Consumer Privacy Act (CCPA) or the EU/UK General Data Protection Regulation (GDPR), including the right to know what personal information we collect and to request its deletion. To exercise any of these rights, contact us at <a href="mailto:liam@hedyverse.com">liam@hedyverse.com</a>.</p>
+
+    <h2>6. Data Retention</h2>
+    <p>We keep personal information only for as long as needed to provide the Services and for legitimate business or legal purposes. When we no longer need it, we take reasonable steps to delete or anonymize it.</p>
+
+    <h2>7. Security</h2>
+    <p>We use reasonable administrative, technical, and physical safeguards to protect your information. However, no method of transmission or storage is completely secure, and we cannot guarantee absolute security.</p>
+
+    <h2>8. Third-Party Services</h2>
+    <p>Our Services may link to or rely on third-party services (such as the Apple App Store, analytics tools, and payment processors). Their handling of your information is governed by their own privacy policies, and we encourage you to review them.</p>
+
+    <h2>9. Changes to This Policy</h2>
+    <p>We may update this Privacy Policy from time to time. When we do, we'll revise the "Last updated" date above, and significant changes may be highlighted on our website. Your continued use of the Services after changes take effect means you accept the updated policy.</p>
+
+    <h2>10. Contact Us</h2>
+    <p>Questions about this Privacy Policy or your information? Reach us at <a href="mailto:liam@hedyverse.com">liam@hedyverse.com</a>.</p>
+
+  </div>
+</div>
+
+<!-- FOOTER -->
+<svg class="scallop-edge" viewBox="0 0 1200 30" preserveAspectRatio="none"><path d="M0 30 V14 C0 14 7.5 0 15 0 C22.5 0 30 14 30 14 C30 14 37.5 0 45 0 C52.5 0 60 14 60 14 C60 14 67.5 0 75 0 C82.5 0 90 14 90 14 C90 14 97.5 0 105 0 C112.5 0 120 14 120 14 C120 14 127.5 0 135 0 C142.5 0 150 14 150 14 C150 14 157.5 0 165 0 C172.5 0 180 14 180 14 C180 14 187.5 0 195 0 C202.5 0 210 14 210 14 C210 14 217.5 0 225 0 C232.5 0 240 14 240 14 C240 14 247.5 0 255 0 C262.5 0 270 14 270 14 C270 14 277.5 0 285 0 C292.5 0 300 14 300 14 C300 14 307.5 0 315 0 C322.5 0 330 14 330 14 C330 14 337.5 0 345 0 C352.5 0 360 14 360 14 C360 14 367.5 0 375 0 C382.5 0 390 14 390 14 C390 14 397.5 0 405 0 C412.5 0 420 14 420 14 C420 14 427.5 0 435 0 C442.5 0 450 14 450 14 C450 14 457.5 0 465 0 C472.5 0 480 14 480 14 C480 14 487.5 0 495 0 C502.5 0 510 14 510 14 C510 14 517.5 0 525 0 C532.5 0 540 14 540 14 C540 14 547.5 0 555 0 C562.5 0 570 14 570 14 C570 14 577.5 0 585 0 C592.5 0 600 14 600 14 C600 14 607.5 0 615 0 C622.5 0 630 14 630 14 C630 14 637.5 0 645 0 C652.5 0 660 14 660 14 C660 14 667.5 0 675 0 C682.5 0 690 14 690 14 C690 14 697.5 0 705 0 C712.5 0 720 14 720 14 C720 14 727.5 0 735 0 C742.5 0 750 14 750 14 C750 14 757.5 0 765 0 C772.5 0 780 14 780 14 C780 14 787.5 0 795 0 C802.5 0 810 14 810 14 C810 14 817.5 0 825 0 C832.5 0 840 14 840 14 C840 14 847.5 0 855 0 C862.5 0 870 14 870 14 C870 14 877.5 0 885 0 C892.5 0 900 14 900 14 C900 14 907.5 0 915 0 C922.5 0 930 14 930 14 C930 14 937.5 0 945 0 C952.5 0 960 14 960 14 C960 14 967.5 0 975 0 C982.5 0 990 14 990 14 C990 14 997.5 0 1005 0 C1012.5 0 1020 14 1020 14 C1020 14 1027.5 0 1035 0 C1042.5 0 1050 14 1050 14 C1050 14 1057.5 0 1065 0 C1072.5 0 1080 14 1080 14 C1080 14 1087.5 0 1095 0 C1102.5 0 1110 14 1110 14 C1110 14 1117.5 0 1125 0 C1132.5 0 1140 14 1140 14 C1140 14 1147.5 0 1155 0 C1162.5 0 1170 14 1170 14 C1170 14 1177.5 0 1185 0 C1192.5 0 1200 14 1200 14 V30 Z" fill="#0D2340"/></svg>
+<footer>
+  <div class="footer-inner">
+    <ul class="footer-links">
+      <li><a href="/playmarge#home">Home</a></li>
+      <li><a href="/playmarge#games">Our Games</a></li>
+      <li><a href="/playmarge#party-favors">Party Favors</a></li>
+      <li><a href="/playmarge#contact">Contact</a></li>
+      <li><a href="/playmarge-privacy">Privacy Policy</a></li>
+      <li><a href="/playmarge-terms">Terms of Service</a></li>
+    </ul>
+    <div class="footer-social">
+      <span>Join the Party Online:</span>
+      <a class="social-btn" href="https://www.instagram.com/play.marge" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 8.75A3.25 3.25 0 1 0 15.25 12 3.25 3.25 0 0 0 12 8.75zm0 5.36A2.11 2.11 0 1 1 14.11 12 2.11 2.11 0 0 1 12 14.11zm3.4-5.49a.76.76 0 1 0-.76-.76.76.76 0 0 0 .76.76zM12 5.5c-1.77 0-1.99.01-2.68.04a4.77 4.77 0 0 0-1.58.3 3.18 3.18 0 0 0-1.15.75 3.18 3.18 0 0 0-.75 1.15 4.77 4.77 0 0 0-.3 1.58C5.51 10 5.5 10.23 5.5 12s.01 1.99.04 2.68a4.77 4.77 0 0 0 .3 1.58 3.18 3.18 0 0 0 .75 1.15 3.18 3.18 0 0 0 1.15.75 4.77 4.77 0 0 0 1.58.3c.69.03.91.04 2.68.04s1.99-.01 2.68-.04a4.77 4.77 0 0 0 1.58-.3 3.32 3.32 0 0 0 1.9-1.9 4.77 4.77 0 0 0 .3-1.58c.03-.69.04-.91.04-2.68s-.01-1.99-.04-2.68a4.77 4.77 0 0 0-.3-1.58 3.18 3.18 0 0 0-.75-1.15 3.18 3.18 0 0 0-1.15-.75 4.77 4.77 0 0 0-1.58-.3C13.99 5.51 13.77 5.5 12 5.5m0-1.17c1.8 0 2.03.01 2.74.04a5.94 5.94 0 0 1 2.06.4 4.35 4.35 0 0 1 2.49 2.49 5.94 5.94 0 0 1 .4 2.06c.03.71.04.94.04 2.74s-.01 2.03-.04 2.74a5.94 5.94 0 0 1-.4 2.06 4.35 4.35 0 0 1-2.49 2.49 5.94 5.94 0 0 1-2.06.4c-.71.03-.94.04-2.74.04s-2.03-.01-2.74-.04a5.94 5.94 0 0 1-2.06-.4 4.35 4.35 0 0 1-2.49-2.49 5.94 5.94 0 0 1-.4-2.06c-.03-.71-.04-.94-.04-2.74s.01-2.03.04-2.74a5.94 5.94 0 0 1 .4-2.06 4.35 4.35 0 0 1 2.49-2.49 5.94 5.94 0 0 1 2.06-.4c.71-.03.94-.04 2.74-.04z"/></svg></a>
+      <a class="social-btn" href="https://www.tiktok.com/@margegames" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M16.6 5.82A4.28 4.28 0 0 1 15.54 3h-3.09v12.4a2.59 2.59 0 1 1-2.59-2.59c.27 0 .53.04.77.12V9.77a5.76 5.76 0 0 0-.77-.05 5.66 5.66 0 1 0 5.66 5.66V9.01a7.35 7.35 0 0 0 4.3 1.38V7.3a4.28 4.28 0 0 1-3.22-1.48z"/></svg></a>
+      <a class="social-btn" href="https://www.facebook.com/profile.php?id=61590822532925" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M13.5 21v-7h2.4l.4-3h-2.8V9.1c0-.87.24-1.46 1.49-1.46h1.41V5.07c-.69-.07-1.38-.1-2.07-.1-2.05 0-3.46 1.25-3.46 3.55V11H8.5v3h2.37v7h2.63z"/></svg></a>
+    </div>
+    <p class="footer-copy">&copy; 2026 Marge Games. <span class="nice">Play nice.</span>
+      <svg class="footer-heart" viewBox="0 0 32 32"><path d="M16 28C8 22 3 17 3 11.5 3 7.4 6.2 4 10.2 4c2.3 0 4.5 1.1 5.8 2.9C17.3 5.1 19.5 4 21.8 4 25.8 4 29 7.4 29 11.5 29 17 24 22 16 28z" fill="#F2B632"/></svg>
+    </p>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('#navMobile a').forEach(function(a){
+  a.addEventListener('click',function(){document.getElementById('navMobile').classList.remove('open')});
+});
+</script>
+
+</div>
