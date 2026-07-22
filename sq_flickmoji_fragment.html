@@ -296,11 +296,9 @@ a:focus-visible,button:focus-visible,input:focus-visible{
   .nav-mobile a:hover{background:var(--panel)}
   .fm-steps{grid-template-columns:1fr}
 }
-@media(max-width:680px){
-  .nav-logo img{width:175px}
-  .panel{padding:26px 22px}
-  .divider img{height:34px}
-  /* swap hero art to the vertical composition; move forms out of the art */
+@media(max-width:1020px){
+  /* below this width the overlay signup boxes get too small for a usable form —
+     swap hero art to the vertical composition and move forms out of the art */
   .fm-hero-desktop{display:none}
   .fm-hero-mobile{display:block;max-width:430px;margin:0 auto}
   .fm-overlay-form{display:none}
@@ -308,6 +306,11 @@ a:focus-visible,button:focus-visible,input:focus-visible{
   .fm-signup .fm-figure{display:none}
   .fm-signup{padding-top:10px}
   .fm-signup-note{margin-bottom:60px}
+}
+@media(max-width:680px){
+  .nav-logo img{width:175px}
+  .panel{padding:26px 22px}
+  .divider img{height:34px}
 }
 
 /* fragment-only: iframe embeds + theme guards */
