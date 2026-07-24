@@ -43,7 +43,9 @@ html,body{margin:0!important;padding:0!important;overflow:hidden!important;}
 
 #fm-v18 .fm-header{position:relative;z-index:20;border-bottom:1px solid var(--line);background:rgba(255,248,238,.95);}
 #fm-v18 .fm-header__inner{display:flex;align-items:center;justify-content:space-between;gap:28px;min-height:88px;}
+#fm-v18 .fm-brand,#fm-v18 .fm-footer__brandmark{position:relative;display:inline-block;width:max-content;overflow:visible;text-decoration:none;}
 #fm-v18 .fm-brand img{width:190px;height:auto;}
+#fm-v18 .fm-logo-tm{position:absolute;right:-13px;top:6px;z-index:3;color:var(--ink);font:800 12px/1 "Manrope",Arial,sans-serif;letter-spacing:0;}
 #fm-v18 .fm-nav{display:flex;align-items:center;gap:28px;}
 #fm-v18 .fm-nav>a:not(.fm-button){font-weight:800;text-decoration:none;}
 #fm-v18 .fm-menu{display:none;border:2px solid var(--ink);border-radius:999px;background:transparent;padding:10px 16px;color:var(--ink);font-weight:800;}
@@ -116,7 +118,7 @@ html,body{margin:0!important;padding:0!important;overflow:hidden!important;}
 #fm-v18 .fm-footer{position:relative;padding:52px 0;overflow:hidden;border-top:2px solid var(--ink);background:var(--white);color:var(--ink);}
 #fm-v18 .fm-footer__confetti{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.14;}
 #fm-v18 .fm-footer__grid{position:relative;z-index:2;display:grid;grid-template-columns:190px 1fr 1fr;gap:56px;align-items:start;}
-#fm-v18 .fm-footer__grid>img{width:180px;}
+#fm-v18 .fm-footer__brandmark img{width:180px;}
 #fm-v18 .fm-footer nav{display:flex;flex-wrap:wrap;gap:14px 20px;}
 #fm-v18 .fm-footer a{font-weight:700;}
 #fm-v18 .fm-footer p{margin:0 0 10px;font-size:14px;}
@@ -139,6 +141,7 @@ html,body{margin:0!important;padding:0!important;overflow:hidden!important;}
 @media(max-width:660px){
   #fm-v18 .fm-wrap{width:min(100% - 30px,1240px);}
   #fm-v18 .fm-brand img{width:150px;}
+  #fm-v18 .fm-brand .fm-logo-tm{right:-11px;top:4px;font-size:10px;}
   #fm-v18 .fm-header__inner{min-height:78px;}
   #fm-v18 .fm-hero{min-height:auto;padding:62px 0 78px;}
   #fm-v18 .fm-hero__grid{gap:18px;}
@@ -174,6 +177,7 @@ html,body{margin:0!important;padding:0!important;overflow:hidden!important;}
     <div class="fm-wrap fm-header__inner">
       <a class="fm-brand" href="/playmarge" aria-label="Marge Games home">
         <img src="https://jaceti.github.io/playmarge/v17-assets/marge-logo-v17-bright.svg" alt="Marge">
+        <sup class="fm-logo-tm" aria-label="Trademark">™</sup>
       </a>
       <button class="fm-menu" type="button" aria-expanded="false" aria-controls="fm-nav-v18">Menu</button>
       <nav class="fm-nav" id="fm-nav-v18" aria-label="Primary">
@@ -322,7 +326,10 @@ html,body{margin:0!important;padding:0!important;overflow:hidden!important;}
   <footer class="fm-footer">
     <img class="fm-footer__confetti" src="https://jaceti.github.io/playmarge/v17-assets/footer-confetti.svg" alt="" aria-hidden="true">
     <div class="fm-wrap fm-footer__grid">
-      <img src="https://jaceti.github.io/playmarge/v17-assets/marge-logo-v17-bright.svg" alt="Marge">
+      <a class="fm-footer__brandmark" href="/playmarge" aria-label="Marge Games home">
+        <img src="https://jaceti.github.io/playmarge/v17-assets/marge-logo-v17-bright.svg" alt="Marge">
+        <sup class="fm-logo-tm" aria-label="Trademark">™</sup>
+      </a>
       <nav aria-label="Footer">
         <a href="/playmarge">Home</a>
         <a href="/playmarge#games">Our Games</a>
