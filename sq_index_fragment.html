@@ -258,6 +258,7 @@ p { font-size: 18px; line-height: 1.65; }
 .marge-quiz { position: relative; z-index: 2; margin-top: 82px; padding: 40px; border: 2px solid var(--marge-ink); border-radius: 34px; background: var(--marge-cream); }
 .marge-quiz h3 { max-width: 760px; }
 .marge-quiz__answers { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 30px; }
+.marge-quiz__answers[hidden] { display: none; }
 .marge-quiz__answers button { min-height: 64px; padding: 16px 20px; border: 2px solid var(--marge-ink); border-radius: 20px; background: var(--marge-white); color: var(--marge-ink); cursor: pointer; font-weight: 800; }
 .marge-quiz__answers button[aria-pressed="true"] { background: var(--marge-teal); color: var(--marge-white); box-shadow: 0 7px 0 var(--marge-midnight); }
 .marge-quiz__answers button:disabled { cursor: default; }
