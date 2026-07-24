@@ -1,0 +1,714 @@
+<style id="pm-overlay">
+#pm-root{position:fixed;top:0;left:0;width:100vw;height:100vh;height:100dvh;overflow-x:hidden;overflow-y:auto;-webkit-overflow-scrolling:touch;z-index:2147483600;background:#FEF4E7;}
+html,body{margin:0!important;padding:0!important;}
+</style>
+<style>
+:root{
+  /* exact kit palette */
+  --sunburst:#F2B632;
+  --coral:#FF6B57;
+  --magenta:#FF4FA3;
+  --teal:#00A7B3;
+  --cobalt:#0765B0;
+  --navy:#0D2340;
+  --leaf:#2EBA7F;
+  --cream:#FEF4E7;
+  --panel:#FDF8EF;
+  --line:#EBDCC6;
+  --ink:#3A4358;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',sans-serif;
+  background:var(--cream);
+  color:var(--ink);
+  line-height:1.65;
+  overflow-x:hidden;
+}
+h1,h2,h3,h4{font-family:'Tinos',Georgia,'Times New Roman',serif;font-weight:700;color:var(--navy);line-height:1.1}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+.wrap{max-width:1280px;margin:0 auto;padding:0 30px}
+
+/* ============ pills / buttons ============ */
+.pill{
+  display:inline-flex;align-items:center;gap:11px;
+  font-family:'Poppins',sans-serif;font-weight:600;font-size:1rem;color:#fff;
+  padding:12px 28px 12px 14px;border-radius:999px;border:none;cursor:pointer;
+  box-shadow:0 3px 0 rgba(13,35,64,.18),0 10px 22px rgba(13,35,64,.16);
+  transition:transform .16s ease;
+}
+.pill:hover{transform:translateY(-2px)}
+.pill .ic{
+  width:30px;height:30px;border-radius:50%;background:rgba(255,255,255,.95);
+  display:inline-flex;align-items:center;justify-content:center;flex:none;
+}
+.pill .ic svg{width:17px;height:17px}
+.pill-teal{background:var(--teal)}
+.pill-pink{background:var(--magenta)}
+.pill-gold{background:var(--sunburst);color:var(--navy)}
+.pill-plain{background:var(--panel);color:var(--navy);border:1.5px solid var(--line);box-shadow:0 2px 0 rgba(13,35,64,.08),0 6px 14px rgba(13,35,64,.08)}
+
+/* image buttons (kit button art) */
+.imgbtn{display:inline-block;border:none;background:none;padding:0;cursor:pointer;line-height:0;transition:transform .16s ease}
+.imgbtn:hover{transform:translateY(-2px)}
+.imgbtn img{height:52px;width:auto;display:block}
+
+.appstore-badge{
+  display:inline-flex;align-items:center;gap:10px;
+  background:#000;color:#fff;border-radius:12px;padding:8px 18px 8px 14px;
+  box-shadow:0 3px 0 rgba(13,35,64,.18),0 8px 18px rgba(13,35,64,.16);
+  transition:transform .16s ease;
+}
+.appstore-badge:hover{transform:translateY(-2px)}
+.appstore-badge svg{width:26px;height:26px;flex:none}
+.appstore-badge .ab-text{line-height:1.12;text-align:left}
+.appstore-badge .ab-text small{display:block;font-size:.6rem;font-weight:500;font-family:'Inter',sans-serif}
+.appstore-badge .ab-text strong{font-size:1.05rem;font-family:'Poppins',sans-serif;font-weight:600}
+
+/* ============ section label ============ */
+.sec-label{
+  display:flex;align-items:center;gap:9px;
+  font-family:'Poppins',sans-serif;font-weight:700;font-size:.78rem;
+  letter-spacing:.13em;text-transform:uppercase;color:var(--navy);
+  margin-bottom:16px;
+}
+.sec-label .dot{
+  width:26px;height:26px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;flex:none;
+}
+.sec-label .dot svg{width:14px;height:14px}
+
+/* ============ panels ============ */
+.panel{
+  background:var(--panel);
+  border:1.5px solid var(--line);
+  border-radius:18px;
+  box-shadow:0 2px 0 rgba(150,110,60,.06),0 12px 26px rgba(150,110,60,.08);
+  padding:32px;
+  position:relative;
+}
+/* colored top ribbons for panels */
+.panel::before{
+  content:"";position:absolute;top:-1.5px;left:24px;right:24px;height:6px;
+  border-radius:0 0 6px 6px;background:var(--accent,transparent);
+}
+
+/* kit chips & badges */
+.kit-chips{display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap}
+.kit-chips img{height:32px;width:auto}
+.sticker{
+  position:absolute;z-index:6;width:84px;height:auto;
+  filter:drop-shadow(0 8px 14px rgba(13,35,64,.28));
+  animation:stickerWiggle 3.4s ease-in-out infinite;
+}
+@keyframes stickerWiggle{0%,100%{transform:rotate(-7deg)}50%{transform:rotate(-1deg)}}
+
+/* dividers from kit */
+.divider{display:flex;justify-content:center;padding:8px 0 36px}
+.divider img{height:44px;width:auto}
+
+/* ============ nav ============ */
+header{position:relative;z-index:50}
+.nav-inner{
+  max-width:1280px;margin:0 auto;padding:22px 30px 6px;
+  display:flex;align-items:center;justify-content:space-between;gap:20px;
+}
+.nav-logo img{width:230px;height:auto}
+.nav-links{display:flex;align-items:center;gap:34px;list-style:none}
+.nav-links a{
+  font-family:'Poppins',sans-serif;font-weight:600;font-size:1rem;color:var(--navy);
+  padding-bottom:5px;border-bottom:3px solid transparent;transition:border-color .15s,color .15s;
+}
+.nav-links li:nth-child(1) a:hover{border-color:var(--teal);color:var(--teal)}
+.nav-links li:nth-child(2) a:hover{border-color:var(--magenta);color:var(--magenta)}
+.nav-links li:nth-child(3) a:hover{border-color:var(--sunburst);color:var(--sunburst)}
+.nav-links li:nth-child(4) a:hover{border-color:var(--cobalt);color:var(--cobalt)}
+.nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:6px}
+.nav-toggle svg{width:30px;height:30px;stroke:var(--navy)}
+.nav-mobile{display:none}
+
+/* ============ hero ============ */
+.hero{position:relative;padding:34px 0 30px}
+.hero-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:40px;align-items:center}
+.hero-copy{padding-left:50px;position:relative;z-index:5}
+.eyebrow{
+  font-family:'Tinos',serif;font-style:italic;font-weight:700;font-size:1.3rem;
+  color:var(--magenta);margin-bottom:10px;
+}
+.hero-copy h1{font-size:clamp(2.5rem,4.7vw,4rem);margin-bottom:20px}
+.hero-copy h1 .pop{color:var(--teal)}
+.hero-copy p{font-size:1.16rem;max-width:470px;margin-bottom:32px}
+.hero-meeples{display:flex;gap:14px;align-items:flex-end;margin-top:38px}
+.hero-meeples img{width:58px;height:auto}
+.hero-meeples img:nth-child(2){width:66px;margin-bottom:6px}
+.hero-meeples img:nth-child(3){width:58px}
+
+/* hero collage — complete sprites only, nothing cropped */
+.hero-art{position:relative;height:600px}
+.shot{
+  position:absolute;border-radius:24px;overflow:hidden;
+  border:7px solid #fff;background:#fff;
+  box-shadow:0 3px 0 rgba(150,110,60,.15),0 22px 44px rgba(150,110,60,.28);
+}
+.shot img{width:100%;height:auto;display:block}
+.shot-phone{width:39%;left:6%;top:0;transform:rotate(-5deg);z-index:4}
+.shot-phone2{width:36%;left:-2%;top:6%;transform:rotate(-16deg);z-index:3}
+.shot-book{width:55%;right:0;top:8%;transform:rotate(4deg);z-index:3}
+.sprite{position:absolute;pointer-events:none}
+.bob{animation:bob 5.5s ease-in-out infinite}
+.bob2{animation:bob 7s ease-in-out infinite reverse}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(var(--r,0deg))}50%{transform:translateY(-10px) rotate(var(--r,0deg))}}
+.confetti{position:absolute;border-radius:50%;pointer-events:none}
+
+/* ============ cards row ============ */
+.cards-row{
+  display:grid;grid-template-columns:280px 1fr 302px;gap:22px;
+  align-items:stretch;margin-bottom:22px;
+}
+.mission-cluster{width:132px;margin-top:20px}
+
+.games-panel .tiles{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+.tile{display:flex;flex-direction:column}
+.tile-stage{
+  position:relative;height:372px;border-radius:14px;margin-bottom:16px;
+  display:flex;align-items:center;justify-content:center;
+}
+.stage-snack{background:linear-gradient(165deg,#FFF1CE,#FFDE9A)}
+.stage-bookish{background:linear-gradient(160deg,#F6E7D1,#EAC9A6)}
+.game-card-img{
+  width:auto;border-radius:16px;border:6px solid #fff;background:#fff;
+  box-shadow:0 3px 0 rgba(13,35,64,.12),0 16px 30px rgba(13,35,64,.22);
+}
+.stage-snack .game-card-img{height:90%;transform:rotate(-3deg)}
+.stage-bookish .game-card-img{height:90%;transform:rotate(2deg)}
+.stage-sprite{position:absolute;pointer-events:none;z-index:5}
+.tile h3{font-size:1.75rem;margin-bottom:4px}
+.tile .tagline{font-family:'Poppins',sans-serif;font-weight:500;font-style:italic;font-size:.92rem;color:var(--teal);margin-bottom:10px}
+.tile p{font-size:.93rem;margin-bottom:20px}
+.tile .cta{margin-top:auto}
+.notify-mini{display:flex;gap:10px;flex-wrap:wrap}
+.notify-mini input{
+  flex:1;min-width:150px;font-family:'Inter',sans-serif;font-size:.92rem;color:var(--navy);
+  background:#fff;border:1.5px solid var(--line);border-radius:999px;
+  padding:11px 18px;outline:none;transition:border-color .15s;
+}
+.notify-mini input:focus{border-color:var(--magenta)}
+
+/* ---- Flickmoji teaser (full-width row beneath the game tiles) ---- */
+.flickmoji-teaser{
+  display:grid;grid-template-columns:40% 1fr;gap:26px;align-items:center;
+  margin-top:26px;padding:18px 24px 18px 18px;
+  background:#fff;border:1.5px solid var(--line);border-radius:16px;
+  box-shadow:0 2px 0 rgba(13,35,64,.08),0 12px 24px rgba(13,35,64,.10);
+  transition:transform .16s ease,box-shadow .16s ease;
+}
+.flickmoji-teaser:hover{transform:translateY(-4px);box-shadow:0 4px 0 rgba(13,35,64,.10),0 18px 34px rgba(13,35,64,.18)}
+.flickmoji-teaser:focus-visible{outline:3px solid var(--teal);outline-offset:4px}
+.flickmoji-teaser .ft-art{width:100%;height:auto;border-radius:12px}
+.ft-eyebrow{
+  display:inline-block;font-family:'Poppins',sans-serif;font-weight:700;font-size:.72rem;
+  letter-spacing:.14em;text-transform:uppercase;color:#fff;background:#E0524A;
+  padding:4px 14px;border-radius:999px;margin-bottom:10px;
+}
+.flickmoji-teaser h3{font-size:1.75rem;margin-bottom:4px}
+.ft-promise{font-family:'Poppins',sans-serif;font-weight:500;font-style:italic;font-size:.92rem;color:#1E73B5;margin-bottom:10px}
+.ft-support{font-size:.93rem;margin-bottom:18px}
+.ft-cta{
+  display:inline-flex;align-items:center;gap:9px;
+  font-family:'Poppins',sans-serif;font-weight:600;font-size:.92rem;color:#fff;
+  background:#E0524A;border-radius:999px;padding:11px 24px;
+  box-shadow:0 3px 0 rgba(13,35,64,.16),0 8px 16px rgba(224,82,74,.35);
+  transition:transform .16s ease;
+}
+.flickmoji-teaser:hover .ft-cta{transform:translateY(-2px)}
+.ft-cta svg{width:15px;height:15px;flex:none}
+.bookish-embed{height:120px}
+.bookish-embed iframe{border:0;width:100%;height:100%;display:block;background:transparent}
+@media(max-width:680px){
+  .flickmoji-teaser{grid-template-columns:1fr;padding:18px;gap:16px}
+}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+}
+
+/* party favors */
+.pf-panel h3.pf-title{font-size:1.7rem;color:var(--sunburst);margin-bottom:10px}
+.pf-panel>p{font-size:.93rem;margin-bottom:16px}
+.pf-printables{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0 14px}
+.pf-dl{display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center}
+.pf-thumb{
+  display:block;width:100%;background:#fff;border:1.5px solid var(--line);
+  border-radius:12px;padding:9px;
+  box-shadow:0 2px 0 rgba(150,110,60,.06),0 10px 20px rgba(150,110,60,.14);
+  transition:transform .18s ease,box-shadow .18s ease;
+}
+.pf-thumb img{width:100%;height:158px;object-fit:contain;border-radius:6px}
+.pf-dl:hover .pf-thumb{transform:translateY(-5px);box-shadow:0 4px 0 rgba(150,110,60,.08),0 16px 28px rgba(150,110,60,.2)}
+.pf-name{font-family:'Poppins',sans-serif;font-weight:700;font-size:.82rem;color:var(--navy)}
+.pf-btn{
+  display:inline-flex;align-items:center;gap:7px;
+  font-family:'Poppins',sans-serif;font-weight:600;font-size:.8rem;color:#fff;
+  background:var(--magenta);border-radius:999px;padding:8px 18px;
+  box-shadow:0 2px 0 rgba(13,35,64,.16),0 6px 14px rgba(255,79,163,.3);transition:transform .16s ease;
+}
+.pf-dl:hover .pf-btn{transform:translateY(-2px)}
+.pf-btn svg{width:14px;height:14px}
+.pf-btn-img{width:100%;max-width:170px;height:auto;display:block;margin:2px auto 0;transition:transform .16s ease}
+.pf-dl:hover .pf-btn-img{transform:translateY(-2px)}
+.pf-quiz-label{font-family:'Poppins',sans-serif;font-weight:700;font-size:.85rem;color:var(--magenta);margin:14px 0 8px}
+
+/* quiz */
+.quiz-box{background:#fff;border:1.5px solid var(--line);border-radius:14px;padding:20px 18px}
+.quiz-box .qq{font-family:'Poppins',sans-serif;font-weight:600;font-size:.9rem;color:var(--navy);margin-bottom:12px}
+.quiz-opts{display:flex;flex-direction:column;gap:8px}
+.quiz-opt{
+  text-align:left;font-family:'Inter',sans-serif;font-size:.86rem;font-weight:500;color:var(--ink);
+  background:var(--panel);border:1.5px solid var(--line);border-radius:10px;
+  padding:10px 14px;cursor:pointer;transition:border-color .13s,transform .13s,background .13s;
+}
+.quiz-opt:hover{border-color:var(--teal);transform:translateX(4px);background:#F0FBFB}
+.quiz-dots{display:flex;gap:6px;margin-bottom:12px}
+.quiz-dots span{width:26px;height:6px;border-radius:99px;background:var(--line)}
+.quiz-dots span.on:nth-child(1){background:var(--teal)}
+.quiz-dots span.on:nth-child(2){background:var(--sunburst)}
+.quiz-dots span.on:nth-child(3){background:var(--magenta)}
+.quiz-result{text-align:center}
+.quiz-result img{width:78%;margin:6px auto 14px;filter:drop-shadow(0 10px 18px rgba(13,35,64,.22))}
+.quiz-result .actions{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.quiz-result .actions .pill{font-size:.8rem;padding:9px 18px 9px 11px}
+.quiz-result .actions .pill .ic{width:24px;height:24px}
+
+/* ============ contact ============ */
+.contact-panel{
+  display:grid;grid-template-columns:.95fr .7fr 1.1fr;gap:28px;align-items:start;
+  padding:42px 44px;margin-bottom:88px;
+}
+.contact-panel h2{font-size:2.3rem;margin-bottom:12px}
+.contact-panel h2 .pop{color:var(--magenta)}
+.contact-panel .blurb{font-size:.97rem}
+.cfield{width:100%;font-family:'Inter',sans-serif;font-size:.95rem;color:var(--navy);
+  background:#fff;border:1.5px solid var(--line);border-radius:12px;
+  padding:13px 16px;outline:none;transition:border-color .15s;resize:vertical;
+}
+.cfield:focus{border-color:var(--teal)}
+.cstack{display:flex;flex-direction:column;gap:14px}
+.cmsg{display:flex;flex-direction:column;gap:14px;align-items:flex-end}
+.cmsg textarea{min-height:128px}
+.contact-cluster{position:absolute;width:170px;pointer-events:none;z-index:2}
+
+/* ============ social / tiktok ============ */
+.social-panel{text-align:center;padding:36px 32px 34px;position:relative;overflow:visible}
+.social-panel h2{font-size:2.1rem;margin:2px 0 10px}
+.social-panel h2 .pop{color:var(--magenta)}
+.social-panel .blurb{font-size:.97rem;max-width:600px;margin:0 auto}
+.social-panel .sec-label{justify-content:center}
+.social-panel .tiktok-embed{margin:20px auto 4px!important}
+.social-sprite{position:absolute;pointer-events:none;z-index:3}
+.social-follow-note{font-family:'Poppins',sans-serif;font-weight:600;font-size:.85rem;color:var(--ink);opacity:.75;margin-top:14px}
+
+/* ============ footer ============ */
+footer{background:var(--navy);color:#EDF1F8;position:relative;margin-top:-2px}
+.scallop-edge{display:block;width:100%;height:30px;margin-bottom:-1px}
+.footer-inner{
+  max-width:1280px;margin:0 auto;padding:26px 30px 38px;
+  display:flex;align-items:center;justify-content:space-between;gap:26px;flex-wrap:wrap;
+}
+.footer-links{display:flex;gap:28px;list-style:none;flex-wrap:wrap}
+.footer-links a{font-family:'Poppins',sans-serif;font-weight:600;font-size:.9rem;color:#EDF1F8;transition:color .15s}
+.footer-links a:hover{color:var(--sunburst)}
+.footer-social{display:flex;align-items:center;gap:12px}
+.footer-social span{font-family:'Poppins',sans-serif;font-weight:600;font-size:.9rem}
+.social-btn{
+  width:38px;height:38px;border-radius:50%;background:#fff;
+  display:flex;align-items:center;justify-content:center;transition:transform .15s,background .15s;
+}
+.social-btn:hover{transform:translateY(-3px)}
+.social-btn:nth-of-type(1):hover{background:var(--magenta)}
+.social-btn:nth-of-type(2):hover{background:var(--teal)}
+.social-btn:nth-of-type(3):hover{background:var(--cobalt)}
+.social-btn:nth-of-type(4):hover{background:var(--coral)}
+.social-btn:nth-of-type(5):hover{background:var(--sunburst)}
+.social-btn:hover svg{fill:#fff}
+.social-btn svg{width:18px;height:18px;fill:var(--navy)}
+.footer-copy{font-size:.88rem;display:flex;align-items:center;gap:10px}
+.footer-copy .nice{font-family:'Tinos',serif;font-style:italic;color:var(--sunburst)}
+.footer-heart{width:30px;height:30px;flex:none}
+
+/* ============ toast ============ */
+.toast{
+  position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(120px);
+  background:var(--navy);color:#fff;font-family:'Poppins',sans-serif;font-weight:600;font-size:.92rem;
+  padding:14px 26px;border-radius:999px;box-shadow:0 14px 34px rgba(0,0,0,.3);
+  transition:transform .35s cubic-bezier(.34,1.56,.64,1);z-index:200;text-align:center;max-width:92vw;
+}
+.toast.show{transform:translateX(-50%) translateY(0)}
+
+/* ============ responsive ============ */
+@media(max-width:1120px){
+  .cards-row{grid-template-columns:1fr 1fr}
+  .mission-panel{grid-column:1/-1;display:flex;gap:30px;align-items:center}
+  .games-panel{grid-column:1/-1}
+  .pf-panel{grid-column:1/-1}
+}
+@media(max-width:900px){
+  .hero-grid{grid-template-columns:1fr}
+  .hero-copy{padding-left:0}
+  .hero-art{height:64vw;max-height:520px}
+  .contact-panel{grid-template-columns:1fr}
+  .nav-links{display:none}
+  .nav-inner>.imgbtn{display:none}
+  .nav-toggle{display:block}
+  .nav-mobile{display:none;position:absolute;top:100%;left:0;right:0;z-index:60;
+    background:var(--cream);border-bottom:1.5px solid var(--line);
+    box-shadow:0 16px 28px rgba(150,110,60,.15);
+    flex-direction:column;list-style:none;padding:14px 26px 22px;gap:2px}
+  .nav-mobile.open{display:flex}
+  .nav-mobile a{display:block;text-align:center;font-family:'Poppins',sans-serif;font-weight:600;color:var(--navy);padding:12px;border-radius:12px}
+  .nav-mobile a:hover{background:var(--panel)}
+}
+@media(max-width:680px){
+  .games-panel .tiles{grid-template-columns:1fr}
+  .mission-panel{flex-direction:column}
+  .nav-logo img{width:175px}
+  .contact-cluster{display:none}
+  .panel{padding:26px 22px}
+  .sticker{width:74px}
+  .divider img{height:34px}
+  .social-panel h2{font-size:1.5rem}
+  .social-panel .blurb{font-size:.9rem}
+  .social-sprite{width:44px!important}
+}
+</style>
+<div id="pm-root">
+
+
+<!-- ================= NAV ================= -->
+<header>
+  <div class="nav-inner">
+    <a href="#home" class="nav-logo" aria-label="Marge Games home">
+      <img src="https://jaceti.github.io/playmarge/logo_repaired.png" alt="Marge Games">
+    </a>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#games">Our Games</a></li>
+      <li><a href="#party-favors">Party Favors</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#games" class="imgbtn" style="flex:none" aria-label="Play With Us">
+      <img src="https://jaceti.github.io/playmarge/PlayWithUsBTN.png" alt="Play With Us" style="height:48px">
+    </a>
+    <button class="nav-toggle" aria-label="Menu" onclick="document.getElementById('navMobile').classList.toggle('open')">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </div>
+  <ul class="nav-mobile" id="navMobile">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#games">Our Games</a></li>
+    <li><a href="#party-favors">Party Favors</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="home">
+  <span class="confetti" style="width:11px;height:11px;background:var(--magenta);top:12%;left:44%"></span>
+  <span class="confetti" style="width:9px;height:9px;background:var(--sunburst);top:70%;left:40%"></span>
+  <span class="confetti" style="width:10px;height:10px;background:var(--teal);top:84%;left:6%"></span>
+  <span class="confetti" style="width:8px;height:8px;background:var(--coral);top:6%;left:26%"></span>
+  <span class="confetti" style="width:8px;height:8px;background:var(--cobalt);top:30%;left:3%"></span>
+  <span class="confetti" style="width:9px;height:9px;background:var(--leaf);top:55%;left:47%"></span>
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow">Your everyday invitation to play.</p>
+      <h1>We Bring the Games.<br><span class="pop">You Bring the Party.</span></h1>
+      <p>From cozy digital puzzles to tabletop triumphs, Marge Games creates lighthearted ways to celebrate life's little moments.</p>
+      <div class="hero-meeples">
+        <img src="https://jaceti.github.io/playmarge/Meeple3.png" alt="" class="bob" style="--r:-6deg">
+        <img src="https://jaceti.github.io/playmarge/Meeple1.png" alt="" class="bob2" style="--r:4deg">
+        <img src="https://jaceti.github.io/playmarge/Meeple2.png" alt="" class="bob" style="--r:-3deg;animation-delay:.8s">
+        <img src="https://jaceti.github.io/playmarge/Dice3.png" alt="" class="bob2" style="width:52px;--r:10deg;animation-delay:.4s">
+      </div>
+    </div>
+    <div class="hero-art">
+      <div class="shot shot-phone2"><img src="https://jaceti.github.io/playmarge/02_Design_Your_Snack_Society.jpg" alt="Snack Society — design your snack society"></div>
+      <div class="shot shot-phone"><img src="https://jaceti.github.io/playmarge/01_The_Coziest_Match_3.jpg" alt="Snack Society — the coziest match-3"></div>
+      <div class="shot shot-book"><img src="https://jaceti.github.io/playmarge/BookishModkUp.jpg" alt="Bookish — Book club. But make it interesting."></div>
+      <img class="sprite bob" src="https://jaceti.github.io/playmarge/Dice1.png" alt="" style="--r:12deg;width:15%;right:5%;bottom:20%;z-index:5;animation-delay:.6s">
+      <img class="sprite bob2" src="https://jaceti.github.io/playmarge/D20Dice.png" alt="" style="--r:-7deg;width:20%;right:7%;bottom:-3%;z-index:6;animation-delay:.3s">
+      <img class="sprite bob2" src="https://jaceti.github.io/playmarge/Dice2.png" alt="" style="--r:-10deg;width:13%;left:22%;bottom:1%;z-index:5">
+      <span class="confetti" style="width:10px;height:10px;background:var(--coral);top:46%;left:51%;z-index:6"></span>
+      <span class="confetti" style="width:8px;height:8px;background:var(--cobalt);bottom:16%;right:1%;z-index:6"></span>
+    </div>
+  </div>
+</section>
+
+<div class="divider"><img src="https://jaceti.github.io/playmarge/divider_wave_gold.png" alt=""></div>
+
+<!-- ================= CARDS ROW ================= -->
+<div class="wrap">
+  <div class="cards-row">
+
+    <!-- Mission -->
+    <div class="panel mission-panel" style="--accent:var(--teal)">
+      <div>
+        <div class="sec-label">
+          <span class="dot" style="background:var(--teal)"><svg viewBox="0 0 24 24" fill="#fff"><path d="M12 3c1.8 0 3 1.4 3 3 0 1.1-.5 1.9-1.2 2.5 2.8.7 4.7 2.6 5.6 5.6.5 1.6-.5 3.2-2.1 3.2H6.7c-1.6 0-2.6-1.6-2.1-3.2.9-3 2.8-4.9 5.6-5.6C9.5 7.9 9 7.1 9 6c0-1.6 1.2-3 3-3z"/></svg></span>
+          Mission
+        </div>
+        <p style="font-size:.97rem">At Marge Games, we believe every get-together (even if it's just you and your couch) deserves a little spark. We design mobile and tabletop games that are easy to learn, impossible to put down, and packed with a healthy dose of humor.</p>
+      </div>
+      <img class="mission-cluster" src="https://jaceti.github.io/playmarge/cluster_b2.png" alt="">
+    </div>
+
+    <!-- Our Games -->
+    <div class="panel games-panel" id="games" style="--accent:var(--cobalt)">
+      <div class="sec-label">
+        <span class="dot" style="background:var(--cobalt)"><svg viewBox="0 0 24 24" fill="#fff"><path d="M12 2l2.4 6.1L21 9l-5 4.1 1.6 6.4L12 16l-5.6 3.5L8 13.1 3 9l6.6-.9z"/></svg></span>
+        Our Games
+      </div>
+      <div class="tiles">
+        <!-- Snack Society -->
+        <div class="tile">
+          <div class="tile-stage stage-snack">
+            <img class="sticker" src="https://jaceti.github.io/playmarge/Free.png" alt="Free" style="top:-16px;left:-16px">
+            <img class="game-card-img" src="https://jaceti.github.io/playmarge/05_Unwind_with_Snack_Society.jpg" alt="Snack Society — your feel-good puzzle break, anytime">
+          </div>
+          <div class="kit-chips">
+            <img src="https://jaceti.github.io/playmarge/CozyBTN.png" alt="Cozy">
+            <img src="https://jaceti.github.io/playmarge/FamilyBTN.png" alt="Family">
+          </div>
+          <h3>Snack Society</h3>
+          <p class="tagline">Satisfy your craving for a cozy match-3.</p>
+          <p>Ready for a bite-sized mental break? Snack Society is the coziest match-3 game on the menu. Match your favorite treats, clear the board, and treat yourself to a little digital deliciousness.</p>
+          <div class="cta">
+            <a class="appstore-badge" href="https://apps.apple.com/us/app/snack-society-cozy-match-3/id6761139644" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="#fff"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+              <span class="ab-text"><small>Download on the</small><strong>App Store</strong></span>
+            </a>
+          </div>
+        </div>
+        <!-- Bookish -->
+        <div class="tile">
+          <div class="tile-stage stage-bookish">
+            <img class="sticker" src="https://jaceti.github.io/playmarge/ComingSoonBTN.png" alt="Coming Soon" style="top:10px;right:8px;width:150px;animation-delay:.7s">
+            <img class="game-card-img" src="https://jaceti.github.io/playmarge/bookish_cover.jpg" alt="Bookish — Book club. But make it interesting.">
+          </div>
+          <div class="kit-chips">
+            <img src="https://jaceti.github.io/playmarge/PartyBTN.png" alt="Party">
+          </div>
+          <h3>Bookish</h3>
+          <p class="tagline" style="color:var(--cobalt)">For the literary and the literal.</p>
+          <p>We're currently dreaming up our next tabletop adventure. Dust off your vocabulary and get ready to read your friends like a book. Join our mailing list to be the first to know when it hits the shelves.</p>
+          <div class="cta bookish-embed"><iframe src="/bookish-signup" title="Get notified when Bookish launches" loading="lazy" scrolling="no"></iframe></div>
+        </div>
+      </div>
+
+      <!-- Flickmoji teaser -->
+      <a class="flickmoji-teaser" href="/flickmoji"
+         aria-label="Explore Flickmoji — coming soon"
+         onclick="track('flickmoji_teaser_click',{source:'playmarge_games'})">
+        <picture>
+          <source srcset="https://jaceti.github.io/playmarge/02-flickmoji-coming-soon-play-marge-card-1600x2000.webp" type="image/webp">
+          <img class="ft-art" src="https://jaceti.github.io/playmarge/02-flickmoji-coming-soon-play-marge-card-1600x2000.png"
+               width="1600" height="2000" loading="lazy"
+               alt="Flickmoji, a coming-soon movie emoji game">
+        </picture>
+        <span>
+          <span class="ft-eyebrow">Coming Soon</span>
+          <h3>Flickmoji</h3>
+          <span class="ft-promise">Guess the movie one emoji at a time.</span>
+          <span class="ft-support" style="display:block">Decode emoji clues, build streaks and take on a fresh Daily Flick — a brand-new movie puzzle every day.</span>
+          <span class="ft-cta">Explore Flickmoji
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </span>
+        </span>
+      </a>
+    </div>
+
+    <!-- Party Favors -->
+    <div class="panel pf-panel" id="party-favors" style="--accent:var(--magenta)">
+      <div class="sec-label">
+        <span class="dot" style="background:var(--magenta)"><svg viewBox="0 0 24 24" fill="#fff"><path d="M20 7h-3.2c.4-.5.7-1.2.7-2a3 3 0 0 0-3-3c-1.1 0-2 .6-2.5 1.4C11.5 2.6 10.6 2 9.5 2a3 3 0 0 0-3 3c0 .8.3 1.5.7 2H4a1 1 0 0 0-1 1v3h18V8a1 1 0 0 0-1-1zM4 13v7a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7H4z"/></svg></span>
+        Party Favors
+      </div>
+      <h3 class="pf-title">The Marge Party Pack.</h3>
+      <p>Take the Marge Games spirit offline. Download our free party essentials to level up your next game night.</p>
+      <div class="pf-printables">
+        <a class="pf-dl" href="https://jaceti.github.io/playmarge/MargeGames_ScoreCard.pdf" download="MargeGames_ScoreCard.pdf">
+          <span class="pf-thumb"><img src="https://jaceti.github.io/playmarge/scorecard.png" alt="The Official Score Card — free printable PDF"></span>
+          <span class="pf-name">Score Card</span>
+          <img class="pf-btn-img" src="https://jaceti.github.io/playmarge/DownloadBTN.png" alt="Download">
+        </a>
+        <a class="pf-dl" href="https://jaceti.github.io/playmarge/MargeGames_DoorHanger.pdf" download="MargeGames_DoorHanger.pdf">
+          <span class="pf-thumb"><img src="https://jaceti.github.io/playmarge/doorhanger.png" alt="Do Not Disturb door hanger — free printable PDF"></span>
+          <span class="pf-name">Door Hanger</span>
+          <img class="pf-btn-img" src="https://jaceti.github.io/playmarge/DownloadBTN.png" alt="Download">
+        </a>
+      </div>
+      <p style="font-size:.8rem;font-family:'Poppins',sans-serif;font-weight:600;color:var(--ink);opacity:.75;margin-bottom:4px">Free to print at home — more party favors on the way!</p>
+      <p class="pf-quiz-label">Try the Mini Quiz!</p>
+      <div class="quiz-box">
+        <div class="quiz-dots" id="quizDots"><span class="on"></span><span></span><span></span></div>
+        <div id="quizBody"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider" style="padding:4px 0 30px"><img src="https://jaceti.github.io/playmarge/divider_dots_dice.png" alt=""></div>
+
+  <!-- ================= FOLLOW / TIKTOK ================= -->
+  <div style="position:relative" id="follow">
+    <img class="social-sprite bob" src="https://jaceti.github.io/playmarge/Meeple1.png" alt="" style="width:64px;left:-8px;top:-34px;--r:-8deg">
+    <img class="social-sprite bob2" src="https://jaceti.github.io/playmarge/Dice2.png" alt="" style="width:56px;right:-6px;bottom:-26px;--r:12deg">
+    <div class="panel social-panel" style="--accent:var(--coral)">
+      <div class="sec-label">
+        <span class="dot" style="background:var(--coral)"><svg viewBox="0 0 24 24" fill="#fff"><path d="M16.6 5.82A4.28 4.28 0 0 1 15.54 3h-3.09v12.4a2.59 2.59 0 1 1-2.59-2.59c.27 0 .53.04.77.12V9.77a5.76 5.76 0 0 0-.77-.05 5.66 5.66 0 1 0 5.66 5.66V9.01a7.35 7.35 0 0 0 4.3 1.38V7.3a4.28 4.28 0 0 1-3.22-1.48z"/></svg></span>
+        Follow Along
+      </div>
+      <h2>Fresh From Our <span class="pop">TikTok.</span></h2>
+      <p class="blurb">Sneak peeks, cozy snack breaks, and behind-the-scenes shenanigans — straight from our feed to your game night.</p>
+      <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@play.marge" data-unique-id="play.marge" data-embed-type="creator" style="max-width:780px;min-width:288px">
+        <section><a target="_blank" rel="noopener" href="https://www.tiktok.com/@play.marge?refer=creator_embed">@play.marge on TikTok</a></section>
+      </blockquote>
+      <script async src="https://www.tiktok.com/embed.js"></script>
+      <p class="social-follow-note">New videos land here automatically — give us a follow so you never miss one!</p>
+    </div>
+  </div>
+
+  <div class="divider" style="padding:34px 0 30px"><img src="https://jaceti.github.io/playmarge/divider_wave_pink.png" alt=""></div>
+
+  <!-- ================= CONTACT ================= -->
+  <div style="position:relative" id="contact">
+    <img class="contact-cluster bob" src="https://jaceti.github.io/playmarge/cluster_b1.png" alt="" style="--r:0deg;left:-12px;bottom:-60px">
+    <img class="contact-cluster bob2" src="https://jaceti.github.io/playmarge/cluster_b5.png" alt="" style="--r:0deg;right:-14px;bottom:-84px;width:140px">
+    <form class="panel contact-panel" onsubmit="return contactSubmit(event)" style="--accent:var(--sunburst)">
+      <div>
+        <div class="sec-label">
+          <span class="dot" style="background:var(--coral)"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="3" y="5.5" width="18" height="13" rx="2.5"/><path d="M3.5 7l8.5 6 8.5-6"/></svg></span>
+          Contact
+        </div>
+        <h2>Let's Talk <span class="pop">Games.</span></h2>
+        <p class="blurb">Got a question? A brilliant game idea? Just want to brag about your high score in Snack Society? We're all ears (and thumbs). Drop us a line!</p>
+      </div>
+      <div class="cstack">
+        <input class="cfield" type="text" required placeholder="Name" aria-label="Name">
+        <input class="cfield" type="email" required placeholder="Email" aria-label="Email">
+      </div>
+      <div class="cmsg">
+        <textarea class="cfield" required placeholder="What's on your mind?" aria-label="What's on your mind?"></textarea>
+        <button type="submit" class="imgbtn" aria-label="Message Us">
+          <img src="https://jaceti.github.io/playmarge/MessageUsBTN.png" alt="Message Us" style="height:56px">
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- ================= FOOTER ================= -->
+<svg class="scallop-edge" viewBox="0 0 1200 30" preserveAspectRatio="none"><path d="M0 30 V14 C0 14 7.5 0 15 0 C22.5 0 30 14 30 14 C30 14 37.5 0 45 0 C52.5 0 60 14 60 14 C60 14 67.5 0 75 0 C82.5 0 90 14 90 14 C90 14 97.5 0 105 0 C112.5 0 120 14 120 14 C120 14 127.5 0 135 0 C142.5 0 150 14 150 14 C150 14 157.5 0 165 0 C172.5 0 180 14 180 14 C180 14 187.5 0 195 0 C202.5 0 210 14 210 14 C210 14 217.5 0 225 0 C232.5 0 240 14 240 14 C240 14 247.5 0 255 0 C262.5 0 270 14 270 14 C270 14 277.5 0 285 0 C292.5 0 300 14 300 14 C300 14 307.5 0 315 0 C322.5 0 330 14 330 14 C330 14 337.5 0 345 0 C352.5 0 360 14 360 14 C360 14 367.5 0 375 0 C382.5 0 390 14 390 14 C390 14 397.5 0 405 0 C412.5 0 420 14 420 14 C420 14 427.5 0 435 0 C442.5 0 450 14 450 14 C450 14 457.5 0 465 0 C472.5 0 480 14 480 14 C480 14 487.5 0 495 0 C502.5 0 510 14 510 14 C510 14 517.5 0 525 0 C532.5 0 540 14 540 14 C540 14 547.5 0 555 0 C562.5 0 570 14 570 14 C570 14 577.5 0 585 0 C592.5 0 600 14 600 14 C600 14 607.5 0 615 0 C622.5 0 630 14 630 14 C630 14 637.5 0 645 0 C652.5 0 660 14 660 14 C660 14 667.5 0 675 0 C682.5 0 690 14 690 14 C690 14 697.5 0 705 0 C712.5 0 720 14 720 14 C720 14 727.5 0 735 0 C742.5 0 750 14 750 14 C750 14 757.5 0 765 0 C772.5 0 780 14 780 14 C780 14 787.5 0 795 0 C802.5 0 810 14 810 14 C810 14 817.5 0 825 0 C832.5 0 840 14 840 14 C840 14 847.5 0 855 0 C862.5 0 870 14 870 14 C870 14 877.5 0 885 0 C892.5 0 900 14 900 14 C900 14 907.5 0 915 0 C922.5 0 930 14 930 14 C930 14 937.5 0 945 0 C952.5 0 960 14 960 14 C960 14 967.5 0 975 0 C982.5 0 990 14 990 14 C990 14 997.5 0 1005 0 C1012.5 0 1020 14 1020 14 C1020 14 1027.5 0 1035 0 C1042.5 0 1050 14 1050 14 C1050 14 1057.5 0 1065 0 C1072.5 0 1080 14 1080 14 C1080 14 1087.5 0 1095 0 C1102.5 0 1110 14 1110 14 C1110 14 1117.5 0 1125 0 C1132.5 0 1140 14 1140 14 C1140 14 1147.5 0 1155 0 C1162.5 0 1170 14 1170 14 C1170 14 1177.5 0 1185 0 C1192.5 0 1200 14 1200 14 V30 Z" fill="#0D2340"/></svg>
+<footer>
+  <div class="footer-inner">
+    <ul class="footer-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#games">Our Games</a></li>
+      <li><a href="#party-favors">Party Favors</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="/playmarge-privacy">Privacy Policy</a></li>
+      <li><a href="/playmarge-terms">Terms of Service</a></li>
+    </ul>
+    <div class="footer-social">
+      <span>Join the Party Online:</span>
+      <a class="social-btn" href="https://www.instagram.com/play.marge" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 8.75A3.25 3.25 0 1 0 15.25 12 3.25 3.25 0 0 0 12 8.75zm0 5.36A2.11 2.11 0 1 1 14.11 12 2.11 2.11 0 0 1 12 14.11zm3.4-5.49a.76.76 0 1 0-.76-.76.76.76 0 0 0 .76.76zM12 5.5c-1.77 0-1.99.01-2.68.04a4.77 4.77 0 0 0-1.58.3 3.18 3.18 0 0 0-1.15.75 3.18 3.18 0 0 0-.75 1.15 4.77 4.77 0 0 0-.3 1.58C5.51 10 5.5 10.23 5.5 12s.01 1.99.04 2.68a4.77 4.77 0 0 0 .3 1.58 3.18 3.18 0 0 0 .75 1.15 3.18 3.18 0 0 0 1.15.75 4.77 4.77 0 0 0 1.58.3c.69.03.91.04 2.68.04s1.99-.01 2.68-.04a4.77 4.77 0 0 0 1.58-.3 3.32 3.32 0 0 0 1.9-1.9 4.77 4.77 0 0 0 .3-1.58c.03-.69.04-.91.04-2.68s-.01-1.99-.04-2.68a4.77 4.77 0 0 0-.3-1.58 3.18 3.18 0 0 0-.75-1.15 3.18 3.18 0 0 0-1.15-.75 4.77 4.77 0 0 0-1.58-.3C13.99 5.51 13.77 5.5 12 5.5m0-1.17c1.8 0 2.03.01 2.74.04a5.94 5.94 0 0 1 2.06.4 4.35 4.35 0 0 1 2.49 2.49 5.94 5.94 0 0 1 .4 2.06c.03.71.04.94.04 2.74s-.01 2.03-.04 2.74a5.94 5.94 0 0 1-.4 2.06 4.35 4.35 0 0 1-2.49 2.49 5.94 5.94 0 0 1-2.06.4c-.71.03-.94.04-2.74.04s-2.03-.01-2.74-.04a5.94 5.94 0 0 1-2.06-.4 4.35 4.35 0 0 1-2.49-2.49 5.94 5.94 0 0 1-.4-2.06c-.03-.71-.04-.94-.04-2.74s.01-2.03.04-2.74a5.94 5.94 0 0 1 .4-2.06 4.35 4.35 0 0 1 2.49-2.49 5.94 5.94 0 0 1 2.06-.4c.71-.03.94-.04 2.74-.04z"/></svg></a>
+      <a class="social-btn" href="https://www.tiktok.com/@play.marge" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M16.6 5.82A4.28 4.28 0 0 1 15.54 3h-3.09v12.4a2.59 2.59 0 1 1-2.59-2.59c.27 0 .53.04.77.12V9.77a5.76 5.76 0 0 0-.77-.05 5.66 5.66 0 1 0 5.66 5.66V9.01a7.35 7.35 0 0 0 4.3 1.38V7.3a4.28 4.28 0 0 1-3.22-1.48z"/></svg></a>
+      <a class="social-btn" href="https://www.facebook.com/profile.php?id=61590822532925" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M13.5 21v-7h2.4l.4-3h-2.8V9.1c0-.87.24-1.46 1.49-1.46h1.41V5.07c-.69-.07-1.38-.1-2.07-.1-2.05 0-3.46 1.25-3.46 3.55V11H8.5v3h2.37v7h2.63z"/></svg></a>
+    </div>
+    <p class="footer-copy">&copy; 2026 Marge Games. <span class="nice">Play nice.</span>
+      <svg class="footer-heart" viewBox="0 0 32 32"><path d="M16 28C8 22 3 17 3 11.5 3 7.4 6.2 4 10.2 4c2.3 0 4.5 1.1 5.8 2.9C17.3 5.1 19.5 4 21.8 4 25.8 4 29 7.4 29 11.5 29 17 24 22 16 28z" fill="#F2B632"/></svg>
+    </p>
+  </div>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script>
+function track(evt,data){
+  try{
+    if(window.plausible){window.plausible(evt,{props:data||{}});}
+    else if(window.gtag){window.gtag('event',evt,data||{});}
+  }catch(e){}
+}
+function showToast(msg){
+  var t=document.getElementById('toast');
+  t.textContent=msg;
+  t.classList.add('show');
+  clearTimeout(t._h);
+  t._h=setTimeout(function(){t.classList.remove('show')},3400);
+}
+function notifySubmit(e){
+  e.preventDefault();
+  e.target.querySelector('input').value='';
+  showToast("🎉 You're on the list! We'll holler when Bookish hits the shelves.");
+  return false;
+}
+function contactSubmit(e){
+  e.preventDefault();
+  e.target.reset();
+  showToast("💌 Message sent! We'll get back to you faster than a speed round.");
+  return false;
+}
+document.querySelectorAll('#navMobile a').forEach(function(a){
+  a.addEventListener('click',function(){document.getElementById('navMobile').classList.remove('open')});
+});
+
+/* ---------- mini quiz (results = kit persona cards) ---------- */
+var quizData=[
+  {q:"Which game night vibe are you?",opts:[
+    ["Read the rulebook cover to cover. Twice.","rulebook"],
+    ["Skim the quick-start, learn as we go.","flow"]]},
+  {q:"You just lost by one point. You…",opts:[
+    ["Request a full audit of the final score.","rulebook"],
+    ["Shrug — winning is just a bonus.","flow"]]},
+  {q:"Your dream game night ends with…",opts:[
+    ["A flawless strategy finally paying off.","rulebook"],
+    ["Everyone laughing too hard to keep score.","flow"]]}
+];
+var personas={
+  rulebook:{img:"https://jaceti.github.io/playmarge/RulebookRoyaltyCard.png",alt:"Rulebook Royalty — Strategic, Focused, Legend",share:"I'm RULEBOOK ROYALTY (Strategic • Focused • Legend) — find your game night vibe with Marge Games! 🎲"},
+  flow:{img:"https://jaceti.github.io/playmarge/GoWithTheFlow.png",alt:"Go-With-The-Flow — Social, Easygoing, Fun",share:"I'm GO-WITH-THE-FLOW (Social • Easygoing • Fun) — find your game night vibe with Marge Games! 🎲"}
+};
+var quizStep=0,quizScore={rulebook:0,flow:0};
+function renderQuiz(){
+  var body=document.getElementById('quizBody');
+  var dots=document.querySelectorAll('#quizDots span');
+  dots.forEach(function(d,i){d.classList.toggle('on',i<=quizStep)});
+  if(quizStep<quizData.length){
+    var item=quizData[quizStep];
+    var html='<p class="qq">'+(quizStep+1)+'. '+item.q+'</p><div class="quiz-opts">';
+    item.opts.forEach(function(o){
+      html+='<button type="button" class="quiz-opt" onclick="answerQuiz(\''+o[1]+'\')">'+o[0]+'</button>';
+    });
+    body.innerHTML=html+'</div>';
+  }else{
+    var best=quizScore.flow>quizScore.rulebook?'flow':'rulebook';
+    var p=personas[best];
+    body.innerHTML='<div class="quiz-result">'+
+      '<img src="'+p.img+'" alt="'+p.alt+'">'+
+      '<div class="actions">'+
+      '<button type="button" class="pill pill-gold" onclick="shareQuiz(\''+best+'\')"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#F2B632" stroke-width="2.2" stroke-linecap="round"><path d="M12 15V4M7.5 8.5L12 4l4.5 4.5M5 14v5a1.5 1.5 0 0 0 1.5 1.5h11A1.5 1.5 0 0 0 19 19v-5"/></svg></span>Share</button>'+
+      '<button type="button" class="pill pill-plain" onclick="resetQuiz()"><span class="ic" style="background:var(--panel)"><svg viewBox="0 0 24 24" fill="none" stroke="#0D2340" stroke-width="2.2" stroke-linecap="round"><path d="M4 10a8 8 0 1 1 2 6.5M4 10V5m0 5h5"/></svg></span>Retake</button>'+
+      '</div></div>';
+  }
+}
+function answerQuiz(key){quizScore[key]++;quizStep++;renderQuiz();}
+function resetQuiz(){quizStep=0;quizScore={rulebook:0,flow:0};renderQuiz();}
+function shareQuiz(key){
+  var text=personas[key].share;
+  if(navigator.share){navigator.share({text:text}).catch(function(){});}
+  else if(navigator.clipboard){navigator.clipboard.writeText(text);showToast("📋 Copied! Go brag about it.");}
+}
+renderQuiz();
+</script>
+
+</div>

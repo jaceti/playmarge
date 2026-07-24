@@ -1,714 +1,589 @@
-<style id="pm-overlay">
-#pm-root{position:fixed;top:0;left:0;width:100vw;height:100vh;height:100dvh;overflow-x:hidden;overflow-y:auto;-webkit-overflow-scrolling:touch;z-index:2147483600;background:#FEF4E7;}
-html,body{margin:0!important;padding:0!important;}
+<style id="pm-overlay-v17">
+#pm-root{position:fixed;top:0;left:0;width:100vw;height:100vh;height:100dvh;overflow-x:hidden;overflow-y:auto;-webkit-overflow-scrolling:touch;z-index:2147483600;background:#FFF8EE;}
+html,body{margin:0!important;padding:0!important;overflow:hidden!important;}
+#pm-root .marge-signup__embed{display:block;min-height:150px;}
+#pm-root .marge-signup__embed iframe{display:block;width:100%;height:150px;border:0;background:transparent;}
 </style>
-<style>
-:root{
-  /* exact kit palette */
-  --sunburst:#F2B632;
-  --coral:#FF6B57;
-  --magenta:#FF4FA3;
-  --teal:#00A7B3;
-  --cobalt:#0765B0;
-  --navy:#0D2340;
-  --leaf:#2EBA7F;
-  --cream:#FEF4E7;
-  --panel:#FDF8EF;
-  --line:#EBDCC6;
-  --ink:#3A4358;
-}
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
-  font-family:'Inter',sans-serif;
-  background:var(--cream);
-  color:var(--ink);
-  line-height:1.65;
-  overflow-x:hidden;
-}
-h1,h2,h3,h4{font-family:'Tinos',Georgia,'Times New Roman',serif;font-weight:700;color:var(--navy);line-height:1.1}
-img{max-width:100%;display:block}
-a{text-decoration:none;color:inherit}
-.wrap{max-width:1280px;margin:0 auto;padding:0 30px}
+<style id="pm-styles-v17">
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Manrope:wght@400;600;700;800&display=swap");
 
-/* ============ pills / buttons ============ */
-.pill{
-  display:inline-flex;align-items:center;gap:11px;
-  font-family:'Poppins',sans-serif;font-weight:600;font-size:1rem;color:#fff;
-  padding:12px 28px 12px 14px;border-radius:999px;border:none;cursor:pointer;
-  box-shadow:0 3px 0 rgba(13,35,64,.18),0 10px 22px rgba(13,35,64,.16);
-  transition:transform .16s ease;
-}
-.pill:hover{transform:translateY(-2px)}
-.pill .ic{
-  width:30px;height:30px;border-radius:50%;background:rgba(255,255,255,.95);
-  display:inline-flex;align-items:center;justify-content:center;flex:none;
-}
-.pill .ic svg{width:17px;height:17px}
-.pill-teal{background:var(--teal)}
-.pill-pink{background:var(--magenta)}
-.pill-gold{background:var(--sunburst);color:var(--navy)}
-.pill-plain{background:var(--panel);color:var(--navy);border:1.5px solid var(--line);box-shadow:0 2px 0 rgba(13,35,64,.08),0 6px 14px rgba(13,35,64,.08)}
-
-/* image buttons (kit button art) */
-.imgbtn{display:inline-block;border:none;background:none;padding:0;cursor:pointer;line-height:0;transition:transform .16s ease}
-.imgbtn:hover{transform:translateY(-2px)}
-.imgbtn img{height:52px;width:auto;display:block}
-
-.appstore-badge{
-  display:inline-flex;align-items:center;gap:10px;
-  background:#000;color:#fff;border-radius:12px;padding:8px 18px 8px 14px;
-  box-shadow:0 3px 0 rgba(13,35,64,.18),0 8px 18px rgba(13,35,64,.16);
-  transition:transform .16s ease;
-}
-.appstore-badge:hover{transform:translateY(-2px)}
-.appstore-badge svg{width:26px;height:26px;flex:none}
-.appstore-badge .ab-text{line-height:1.12;text-align:left}
-.appstore-badge .ab-text small{display:block;font-size:.6rem;font-weight:500;font-family:'Inter',sans-serif}
-.appstore-badge .ab-text strong{font-size:1.05rem;font-family:'Poppins',sans-serif;font-weight:600}
-
-/* ============ section label ============ */
-.sec-label{
-  display:flex;align-items:center;gap:9px;
-  font-family:'Poppins',sans-serif;font-weight:700;font-size:.78rem;
-  letter-spacing:.13em;text-transform:uppercase;color:var(--navy);
-  margin-bottom:16px;
-}
-.sec-label .dot{
-  width:26px;height:26px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;flex:none;
-}
-.sec-label .dot svg{width:14px;height:14px}
-
-/* ============ panels ============ */
-.panel{
-  background:var(--panel);
-  border:1.5px solid var(--line);
-  border-radius:18px;
-  box-shadow:0 2px 0 rgba(150,110,60,.06),0 12px 26px rgba(150,110,60,.08);
-  padding:32px;
-  position:relative;
-}
-/* colored top ribbons for panels */
-.panel::before{
-  content:"";position:absolute;top:-1.5px;left:24px;right:24px;height:6px;
-  border-radius:0 0 6px 6px;background:var(--accent,transparent);
+:root {
+  --marge-pink: #FF3D94;
+  --marge-sun: #FFC61A;
+  --marge-teal: #00C8BE;
+  --marge-coral: #FF6F61;
+  --marge-purple: #18182B;
+  --marge-midnight: #18182B;
+  --marge-cream: #FFF8EE;
+  --marge-paper: #FFF8EE;
+  --marge-ink: #111827;
+  --marge-white: #FFFFFF;
+  --marge-line: rgba(17, 24, 39, .16);
+  --marge-shadow: 0 16px 0 rgba(21, 21, 36, .16);
 }
 
-/* kit chips & badges */
-.kit-chips{display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap}
-.kit-chips img{height:32px;width:auto}
-.sticker{
-  position:absolute;z-index:6;width:84px;height:auto;
-  filter:drop-shadow(0 8px 14px rgba(13,35,64,.28));
-  animation:stickerWiggle 3.4s ease-in-out infinite;
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  overflow-x: hidden;
+  background: var(--marge-cream);
+  color: var(--marge-ink);
+  font-family: "Manrope", Arial, sans-serif;
 }
-@keyframes stickerWiggle{0%,100%{transform:rotate(-7deg)}50%{transform:rotate(-1deg)}}
+img { max-width: 100%; }
+a { color: inherit; }
+button, input, textarea { font: inherit; }
+.marge-wrap { width: min(1240px, calc(100% - 48px)); margin: 0 auto; }
+.marge-grain {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  pointer-events: none;
+  background-image: radial-gradient(circle at 20% 30%, rgba(24, 24, 43, .16) 0 .7px, transparent .85px); background-size: 7px 7px;
+  opacity: .18;
+  mix-blend-mode: multiply;
+}
+h1, h2, h3 {
+  margin: 0;
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 700;
+  line-height: .96;
+  letter-spacing: -.045em;
+  text-wrap: balance;
+}
+h1 { font-size: clamp(62px, 7vw, 108px); }
+h2 { font-size: clamp(48px, 5.2vw, 78px); }
+h3 { font-size: clamp(34px, 3.4vw, 52px); }
+p { font-size: 18px; line-height: 1.65; }
+.marge-lede { max-width: 660px; font-size: clamp(18px, 1.55vw, 22px); }
+.marge-small { font-size: 15px; }
+.marge-nowrap { white-space: nowrap; }
+.marge-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  margin: 0 0 22px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: var(--marge-midnight);
+  color: var(--marge-white);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: .08em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+.marge-eyebrow--pink { background: var(--marge-pink); }
+.marge-eyebrow--sun { background: var(--marge-sun); color: var(--marge-ink); }
+.marge-eyebrow--teal { background: var(--marge-teal); color: var(--marge-white); }
+.marge-eyebrow--cream { background: var(--marge-cream); color: var(--marge-ink); }
+.marge-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 56px;
+  padding: 15px 26px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--marge-sun);
+  box-shadow: 0 8px 0 var(--marge-teal);
+  color: var(--marge-ink);
+  cursor: pointer;
+  font-weight: 800;
+  line-height: 1.15;
+  text-align: center;
+  text-decoration: none;
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+.marge-button:hover { transform: translateY(-4px); box-shadow: 0 12px 0 var(--marge-teal); }
+.marge-button--small { min-height: 48px; padding: 12px 22px; }
+.marge-button--light { background: var(--marge-white); box-shadow: 0 8px 0 var(--marge-coral); }
+.marge-button--pink { background: var(--marge-pink); color: var(--marge-white); box-shadow: 0 8px 0 var(--marge-sun); }
+.marge-text-link { font-weight: 800; }
+:focus-visible { outline: 4px solid var(--marge-pink); outline-offset: 4px; }
 
-/* dividers from kit */
-.divider{display:flex;justify-content:center;padding:8px 0 36px}
-.divider img{height:44px;width:auto}
+.marge-header {
+  position: relative;
+  z-index: 20;
+  border-bottom: 1px solid var(--marge-line);
+  background: rgba(255, 248, 238, .95);
+}
+.marge-header__inner { display: flex; align-items: center; justify-content: space-between; gap: 28px; min-height: 88px; }
+.marge-brand img { display: block; width: 190px; height: auto; }
+.marge-nav { display: flex; align-items: center; gap: 28px; }
+.marge-nav > a:not(.marge-button) { font-weight: 800; text-decoration: none; }
+.marge-menu { display: none; border: 2px solid var(--marge-ink); border-radius: 999px; background: transparent; padding: 10px 16px; font-weight: 800; }
 
-/* ============ nav ============ */
-header{position:relative;z-index:50}
-.nav-inner{
-  max-width:1280px;margin:0 auto;padding:22px 30px 6px;
-  display:flex;align-items:center;justify-content:space-between;gap:20px;
+.marge-hero { position: relative; isolation: isolate; display: flex; align-items: center; min-height: 800px; padding: 98px 0 90px; overflow: hidden; }
+.marge-hero__splat { position: absolute; z-index: 0; display: block; height: auto; pointer-events: none; user-select: none; }
+.marge-hero__splat--lower-left { left: -122px; bottom: -42px; width: 220px; transform: rotate(-10deg); }
+.marge-hero__splat--upper-right { right: -108px; top: 8px; width: 230px; transform: rotate(13deg); }
+.marge-hero__splat--lower-right { right: -142px; bottom: -86px; width: 280px; transform: rotate(19deg); }
+.marge-hero__grid { position: relative; z-index: 1; display: grid; grid-template-columns: .94fr 1.06fr; align-items: center; gap: 26px; }
+.marge-hero h1 span { color: var(--marge-teal); }
+.marge-actions { display: flex; align-items: center; gap: 24px; margin-top: 34px; }
+.marge-party-link-group { display: flex; align-items: center; gap: 10px; }
+.marge-cta-die {
+  width: 68px;
+  height: auto;
+  flex: 0 0 auto;
+  transform: rotate(-10deg);
+  filter: drop-shadow(0 10px 8px rgba(21, 21, 36, .18));
+  pointer-events: none;
 }
-.nav-logo img{width:230px;height:auto}
-.nav-links{display:flex;align-items:center;gap:34px;list-style:none}
-.nav-links a{
-  font-family:'Poppins',sans-serif;font-weight:600;font-size:1rem;color:var(--navy);
-  padding-bottom:5px;border-bottom:3px solid transparent;transition:border-color .15s,color .15s;
+.marge-hero__art { position: relative; height: 650px; }
+.marge-product { position: absolute; margin: 0; overflow: visible; background: transparent; }
+.marge-product::before {
+  content: "";
+  position: absolute;
+  inset: -4%;
+  z-index: 0;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  filter: drop-shadow(0 16px 0 rgba(21, 21, 36, .12));
 }
-.nav-links li:nth-child(1) a:hover{border-color:var(--teal);color:var(--teal)}
-.nav-links li:nth-child(2) a:hover{border-color:var(--magenta);color:var(--magenta)}
-.nav-links li:nth-child(3) a:hover{border-color:var(--sunburst);color:var(--sunburst)}
-.nav-links li:nth-child(4) a:hover{border-color:var(--cobalt);color:var(--cobalt)}
-.nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:6px}
-.nav-toggle svg{width:30px;height:30px;stroke:var(--navy)}
-.nav-mobile{display:none}
+.marge-product img {
+  position: absolute;
+  inset: 10% 12%;
+  z-index: 1;
+  display: block;
+  width: 76%;
+  height: 80%;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  filter: drop-shadow(0 14px 12px rgba(21, 21, 36, .24));
+  object-fit: contain;
+}
+.marge-product--snack { left: -22px; top: 48px; z-index: 4; width: 395px; height: 500px; transform: rotate(-3deg); }
+.marge-product--snack::before { background-image: url("https://jaceti.github.io/playmarge/v17-assets/organic-stage-sun.svg"); transform: rotate(-6deg) scale(1.12); }
+.marge-product--bookish { right: -22px; top: -68px; z-index: 3; width: 425px; height: 510px; transform: rotate(2deg); }
+.marge-product--bookish::before { background-image: url("https://jaceti.github.io/playmarge/v17-assets/organic-stage-coral.svg"); transform: rotate(7deg) scale(1.12); }
+.marge-product--bookish img { top: 7%; right: auto; bottom: auto; left: 8%; width: 76%; height: 80%; filter: brightness(1.1) saturate(1.07) contrast(1.08) drop-shadow(0 14px 12px rgba(21, 21, 36, .26)); }
+.marge-product--flickmoji { left: 158px; bottom: -66px; z-index: 5; width: 320px; height: 392px; transform: rotate(-3deg); }
+.marge-product--flickmoji::before { background-image: url("https://jaceti.github.io/playmarge/v17-assets/organic-stage-purple.svg"); transform: rotate(-8deg) scale(1.32); }
+.marge-product--flickmoji img { inset: 13% 16%; width: 68%; height: 74%; border: 2px solid var(--marge-ink); border-radius: 18px; background: var(--marge-white); }
 
-/* ============ hero ============ */
-.hero{position:relative;padding:34px 0 30px}
-.hero-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:40px;align-items:center}
-.hero-copy{padding-left:50px;position:relative;z-index:5}
-.eyebrow{
-  font-family:'Tinos',serif;font-style:italic;font-weight:700;font-size:1.3rem;
-  color:var(--magenta);margin-bottom:10px;
-}
-.hero-copy h1{font-size:clamp(2.5rem,4.7vw,4rem);margin-bottom:20px}
-.hero-copy h1 .pop{color:var(--teal)}
-.hero-copy p{font-size:1.16rem;max-width:470px;margin-bottom:32px}
-.hero-meeples{display:flex;gap:14px;align-items:flex-end;margin-top:38px}
-.hero-meeples img{width:58px;height:auto}
-.hero-meeples img:nth-child(2){width:66px;margin-bottom:6px}
-.hero-meeples img:nth-child(3){width:58px}
+.marge-pillars { background: var(--marge-midnight); color: var(--marge-white); padding: 34px 0; }
+.marge-pillars__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+.marge-pillars p { display: flex; align-items: center; gap: 18px; margin: 0; font-weight: 800; }
+.marge-pillars strong { color: var(--marge-sun); font: 700 42px/1 "Fraunces", Georgia, serif; }
 
-/* hero collage — complete sprites only, nothing cropped */
-.hero-art{position:relative;height:600px}
-.shot{
-  position:absolute;border-radius:24px;overflow:hidden;
-  border:7px solid #fff;background:#fff;
-  box-shadow:0 3px 0 rgba(150,110,60,.15),0 22px 44px rgba(150,110,60,.28);
-}
-.shot img{width:100%;height:auto;display:block}
-.shot-phone{width:39%;left:6%;top:0;transform:rotate(-5deg);z-index:4}
-.shot-phone2{width:36%;left:-2%;top:6%;transform:rotate(-16deg);z-index:3}
-.shot-book{width:55%;right:0;top:8%;transform:rotate(4deg);z-index:3}
-.sprite{position:absolute;pointer-events:none}
-.bob{animation:bob 5.5s ease-in-out infinite}
-.bob2{animation:bob 7s ease-in-out infinite reverse}
-@keyframes bob{0%,100%{transform:translateY(0) rotate(var(--r,0deg))}50%{transform:translateY(-10px) rotate(var(--r,0deg))}}
-.confetti{position:absolute;border-radius:50%;pointer-events:none}
+.marge-mission { position: relative; padding: 112px 0; background: var(--marge-teal); color: var(--marge-white); overflow: hidden; }
+.marge-mission__grid { position: relative; z-index: 2; display: grid; grid-template-columns: .9fr 1.1fr; gap: 90px; align-items: end; }
+.marge-mission h2 { max-width: 620px; }
+.marge-mission__grid > p { max-width: 620px; margin: 0; font-size: 20px; }
+.marge-mission__orbit { position: absolute; width: 720px; right: -240px; bottom: -325px; opacity: .45; }
 
-/* ============ cards row ============ */
-.cards-row{
-  display:grid;grid-template-columns:280px 1fr 302px;gap:22px;
-  align-items:stretch;margin-bottom:22px;
+.marge-games { padding: 120px 0 130px; overflow-x: clip; overflow-y: visible; }
+.marge-section-heading { display: flex; align-items: end; justify-content: space-between; gap: 44px; margin-bottom: 56px; }
+.marge-section-heading > p { max-width: 490px; margin: 0; }
+.marge-game-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
+.marge-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  height: auto;
+  overflow: visible;
+  border: 2px solid var(--marge-ink);
+  border-radius: 38px;
+  background: var(--marge-card-background);
+  box-shadow: var(--marge-shadow);
+  color: var(--marge-ink);
 }
-.mission-cluster{width:132px;margin-top:20px}
+.marge-card--snack { --marge-card-background: var(--marge-pink); }
+.marge-card--bookish { --marge-card-background: var(--marge-sun); }
+.marge-card--flickmoji { --marge-card-background: var(--marge-teal); }
+.marge-card--bookish img { filter: brightness(1.08) saturate(1.04) contrast(1.02) drop-shadow(0 14px 12px rgba(21, 21, 36, .2)); }
+.marge-card__art { position: relative; height: 380px; margin: 22px 22px 0; overflow: visible; }
+.marge-card__art img {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 84%;
+  height: 90%;
+  margin: 3% auto 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  filter: drop-shadow(0 14px 12px rgba(21, 21, 36, .2));
+  object-fit: contain;
+  object-position: center;
+}
+.marge-card--flickmoji .marge-card__art img { border: 2px solid var(--marge-ink); border-radius: 16px; background: var(--marge-white); }
+.marge-card__copy {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  min-height: 0;
+  padding: 30px;
+  overflow: visible;
+}
+.marge-card__copy > p { font-size: 15px; }
+.marge-card__copy .marge-card__tagline { margin: 16px 0 0; font-size: 18px; font-weight: 800; }
+.marge-card__copy .marge-button { margin-top: auto; }
+.marge-kicker { margin: 0 0 12px; color: var(--marge-midnight); font-size: 12px !important; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+.marge-signup { position: relative; isolation: isolate; display: grid; grid-template-columns: 1fr 1.2fr; gap: 40px; align-items: center; margin-top: 70px; padding: 44px; overflow: visible; border: 2px solid var(--marge-ink); border-radius: 38px; background: var(--marge-midnight); color: var(--marge-white); }
+.marge-signup > img { position: absolute; z-index: 3; width: 130px; right: -24px; top: -48px; opacity: 1; filter: drop-shadow(0 10px 0 rgba(21, 21, 36, .12)); pointer-events: none; }
+.marge-signup > div { position: relative; z-index: 2; }
+.marge-signup__form { position: relative; z-index: 2; display: grid; grid-template-columns: 1fr auto; gap: 12px; }
+.marge-signup__form label { grid-column: 1 / -1; font-weight: 800; }
+.marge-signup__form input { min-height: 56px; border: 2px solid var(--marge-ink); border-radius: 16px; padding: 12px 16px; background: var(--marge-white); color: var(--marge-ink); }
 
-.games-panel .tiles{display:grid;grid-template-columns:1fr 1fr;gap:26px}
-.tile{display:flex;flex-direction:column}
-.tile-stage{
-  position:relative;height:372px;border-radius:14px;margin-bottom:16px;
-  display:flex;align-items:center;justify-content:center;
-}
-.stage-snack{background:linear-gradient(165deg,#FFF1CE,#FFDE9A)}
-.stage-bookish{background:linear-gradient(160deg,#F6E7D1,#EAC9A6)}
-.game-card-img{
-  width:auto;border-radius:16px;border:6px solid #fff;background:#fff;
-  box-shadow:0 3px 0 rgba(13,35,64,.12),0 16px 30px rgba(13,35,64,.22);
-}
-.stage-snack .game-card-img{height:90%;transform:rotate(-3deg)}
-.stage-bookish .game-card-img{height:90%;transform:rotate(2deg)}
-.stage-sprite{position:absolute;pointer-events:none;z-index:5}
-.tile h3{font-size:1.75rem;margin-bottom:4px}
-.tile .tagline{font-family:'Poppins',sans-serif;font-weight:500;font-style:italic;font-size:.92rem;color:var(--teal);margin-bottom:10px}
-.tile p{font-size:.93rem;margin-bottom:20px}
-.tile .cta{margin-top:auto}
-.notify-mini{display:flex;gap:10px;flex-wrap:wrap}
-.notify-mini input{
-  flex:1;min-width:150px;font-family:'Inter',sans-serif;font-size:.92rem;color:var(--navy);
-  background:#fff;border:1.5px solid var(--line);border-radius:999px;
-  padding:11px 18px;outline:none;transition:border-color .15s;
-}
-.notify-mini input:focus{border-color:var(--magenta)}
+.marge-party { position: relative; padding: 120px 0; background: var(--marge-sun); overflow: hidden; }
+.marge-party__confetti { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .7; }
+.marge-party__grid { position: relative; z-index: 2; display: grid; grid-template-columns: .9fr 1.1fr; gap: 60px; align-items: center; }
+.marge-party__copy { max-width: 560px; }
+.marge-party__items { display: flex; align-items: center; justify-content: center; gap: 18px; overflow: visible; }
+.marge-party-card { position: relative; isolation: isolate; display: flex; flex-direction: column; width: 48%; padding: 22px 10px 12px; border: 0; background: transparent; box-shadow: none; text-decoration: none; transform: rotate(-3deg); }
+.marge-party-card::before { content: ""; position: absolute; inset: -9%; z-index: -1; background: url("https://jaceti.github.io/playmarge/v17-assets/organic-stage-coral.svg") center/contain no-repeat; filter: drop-shadow(0 14px 0 rgba(21, 21, 36, .13)); transform: rotate(-6deg); }
+.marge-party-card + .marge-party-card { transform: rotate(3deg); }
+.marge-party-card + .marge-party-card::before { background-image: url("https://jaceti.github.io/playmarge/v17-assets/organic-stage-teal.svg"); transform: rotate(7deg) scale(.96); }
+.marge-party-card img { position: relative; z-index: 1; width: 100%; height: 340px; object-fit: contain; filter: drop-shadow(0 14px 12px rgba(21, 21, 36, .22)); transition: transform .18s ease; }
+.marge-party-card:hover img { transform: translateY(-6px) rotate(1deg); }
+.marge-party-card span { position: relative; z-index: 2; display: flex; align-items: center; justify-content: space-between; gap: 10px; margin: -4px 8px 0; padding: 12px 14px; border: 2px solid var(--marge-ink); border-radius: 999px; background: var(--marge-white); box-shadow: 0 7px 0 var(--marge-midnight); font-weight: 800; }
+.marge-party-card b { color: var(--marge-midnight); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; }
+.marge-quiz { position: relative; z-index: 2; margin-top: 82px; padding: 40px; border: 2px solid var(--marge-ink); border-radius: 34px; background: var(--marge-cream); }
+.marge-quiz h3 { max-width: 760px; }
+.marge-quiz__answers { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 30px; }
+.marge-quiz__answers button { min-height: 64px; padding: 16px 20px; border: 2px solid var(--marge-ink); border-radius: 20px; background: var(--marge-white); color: var(--marge-ink); cursor: pointer; font-weight: 800; }
+.marge-quiz__answers button[aria-pressed="true"] { background: var(--marge-teal); color: var(--marge-white); box-shadow: 0 7px 0 var(--marge-midnight); }
 
-/* ---- Flickmoji teaser (full-width row beneath the game tiles) ---- */
-.flickmoji-teaser{
-  display:grid;grid-template-columns:40% 1fr;gap:26px;align-items:center;
-  margin-top:26px;padding:18px 24px 18px 18px;
-  background:#fff;border:1.5px solid var(--line);border-radius:16px;
-  box-shadow:0 2px 0 rgba(13,35,64,.08),0 12px 24px rgba(13,35,64,.10);
-  transition:transform .16s ease,box-shadow .16s ease;
-}
-.flickmoji-teaser:hover{transform:translateY(-4px);box-shadow:0 4px 0 rgba(13,35,64,.10),0 18px 34px rgba(13,35,64,.18)}
-.flickmoji-teaser:focus-visible{outline:3px solid var(--teal);outline-offset:4px}
-.flickmoji-teaser .ft-art{width:100%;height:auto;border-radius:12px}
-.ft-eyebrow{
-  display:inline-block;font-family:'Poppins',sans-serif;font-weight:700;font-size:.72rem;
-  letter-spacing:.14em;text-transform:uppercase;color:#fff;background:#E0524A;
-  padding:4px 14px;border-radius:999px;margin-bottom:10px;
-}
-.flickmoji-teaser h3{font-size:1.75rem;margin-bottom:4px}
-.ft-promise{font-family:'Poppins',sans-serif;font-weight:500;font-style:italic;font-size:.92rem;color:#1E73B5;margin-bottom:10px}
-.ft-support{font-size:.93rem;margin-bottom:18px}
-.ft-cta{
-  display:inline-flex;align-items:center;gap:9px;
-  font-family:'Poppins',sans-serif;font-weight:600;font-size:.92rem;color:#fff;
-  background:#E0524A;border-radius:999px;padding:11px 24px;
-  box-shadow:0 3px 0 rgba(13,35,64,.16),0 8px 16px rgba(224,82,74,.35);
-  transition:transform .16s ease;
-}
-.flickmoji-teaser:hover .ft-cta{transform:translateY(-2px)}
-.ft-cta svg{width:15px;height:15px;flex:none}
-.bookish-embed{height:120px}
-.bookish-embed iframe{border:0;width:100%;height:100%;display:block;background:transparent}
-@media(max-width:680px){
-  .flickmoji-teaser{grid-template-columns:1fr;padding:18px;gap:16px}
-}
-@media (prefers-reduced-motion: reduce){
-  *,*::before,*::after{animation:none!important;transition:none!important}
-  html{scroll-behavior:auto}
+.marge-social { padding: 120px 0; background: var(--marge-midnight); color: var(--marge-white); }
+.marge-social__grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 70px; align-items: center; }
+.marge-embed-placeholder { padding: 46px; border: 2px solid var(--marge-ink); border-radius: 38px; background: var(--marge-white); box-shadow: 0 16px 0 var(--marge-coral); color: var(--marge-ink); }
+
+.marge-contact { padding: 120px 0 145px; overflow-x: clip; overflow-y: visible; }
+.marge-contact__card { position: relative; isolation: isolate; display: grid; grid-template-columns: .9fr 1.1fr; gap: 68px; padding: 70px; overflow: visible; border: 2px solid var(--marge-ink); border-radius: 48px; background: var(--marge-white); box-shadow: 0 18px 0 var(--marge-pink); }
+.marge-contact__card > div { position: relative; z-index: 2; }
+.marge-contact__sparkle { position: absolute; z-index: 3; width: 104px; left: -28px; top: -42px; filter: drop-shadow(0 10px 0 rgba(21, 21, 36, .12)); pointer-events: none; }
+.marge-contact__dots { position: absolute; z-index: 3; width: 126px; right: -24px; bottom: -54px; filter: drop-shadow(0 8px 0 rgba(21, 21, 36, .1)); pointer-events: none; }
+.marge-contact__form { position: relative; z-index: 2; display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.marge-contact__form label { display: grid; gap: 8px; font-weight: 800; }
+.marge-contact__message { grid-column: 1 / -1; }
+.marge-contact__form input, .marge-contact__form textarea { width: 100%; border: 2px solid var(--marge-ink); border-radius: 16px; padding: 12px 14px; background: var(--marge-cream); color: var(--marge-ink); }
+.marge-contact__form input { min-height: 52px; }
+.marge-contact__form .marge-button { justify-self: start; }
+
+.marge-footer { position: relative; padding: 52px 0; overflow: hidden; border-top: 2px solid var(--marge-ink); background: var(--marge-white); color: var(--marge-ink); }
+.marge-footer__confetti { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .14; }
+.marge-footer__grid { position: relative; z-index: 2; display: grid; grid-template-columns: 190px 1fr 1fr; gap: 56px; align-items: start; }
+.marge-footer__grid > img { width: 180px; }
+.marge-footer nav { display: flex; flex-wrap: wrap; gap: 14px 20px; }
+.marge-footer p { margin: 0 0 10px; font-size: 14px; }
+
+@media (max-width: 980px) {
+  .marge-menu { display: inline-flex; }
+  .marge-nav { position: absolute; left: 24px; right: 24px; top: 78px; display: none; flex-direction: column; align-items: stretch; gap: 0; padding: 18px; border: 2px solid var(--marge-ink); border-radius: 24px; background: var(--marge-cream); box-shadow: 0 12px 0 var(--marge-midnight); }
+  .marge-nav.is-open { display: flex; }
+  .marge-nav a { padding: 12px; text-align: center; }
+  .marge-hero__grid, .marge-mission__grid, .marge-party__grid, .marge-social__grid, .marge-contact__card { grid-template-columns: 1fr; }
+  .marge-hero__art { max-width: 690px; width: 100%; margin: 30px auto 0; }
+  .marge-game-grid { grid-template-columns: 1fr; }
+  .marge-card { display: grid; grid-template-columns: .85fr 1.15fr; }
+  .marge-card__art { height: 420px; }
+  .marge-signup { grid-template-columns: 1fr; }
+  .marge-footer__grid { grid-template-columns: 180px 1fr; }
+  .marge-footer__grid > div { grid-column: 1 / -1; }
 }
 
-/* party favors */
-.pf-panel h3.pf-title{font-size:1.7rem;color:var(--sunburst);margin-bottom:10px}
-.pf-panel>p{font-size:.93rem;margin-bottom:16px}
-.pf-printables{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0 14px}
-.pf-dl{display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center}
-.pf-thumb{
-  display:block;width:100%;background:#fff;border:1.5px solid var(--line);
-  border-radius:12px;padding:9px;
-  box-shadow:0 2px 0 rgba(150,110,60,.06),0 10px 20px rgba(150,110,60,.14);
-  transition:transform .18s ease,box-shadow .18s ease;
+@media (max-width: 660px) {
+  .marge-wrap { width: min(100% - 30px, 1240px); }
+  .marge-brand img { width: 150px; }
+  .marge-header__inner { min-height: 78px; }
+  .marge-hero { min-height: auto; padding: 68px 0 76px; }
+  .marge-hero__splat--lower-left { left: -90px; bottom: -14px; width: 140px; }
+  .marge-hero__splat--upper-right { right: -88px; top: 38px; width: 145px; }
+  .marge-hero__splat--lower-right { right: -102px; bottom: -42px; width: 185px; }
+  .marge-actions { align-items: flex-start; flex-direction: column; }
+  .marge-cta-die { width: 58px; }
+  .marge-hero__art { height: 580px; }
+  .marge-product--snack { left: -28px; top: 96px; width: 270px; height: 352px; }
+  .marge-product--bookish { right: -16px; top: -50px; width: 296px; height: 367px; }
+  .marge-product--flickmoji { left: 58px; right: auto; bottom: -42px; width: 232px; height: 286px; }
+  .marge-pillars__grid { grid-template-columns: 1fr; gap: 18px; }
+  .marge-mission, .marge-games, .marge-party, .marge-social, .marge-contact { padding: 84px 0; }
+  .marge-section-heading { align-items: flex-start; flex-direction: column; }
+  .marge-card { display: flex; }
+  .marge-card__art { height: 360px; }
+  .marge-signup { padding: 28px; }
+  .marge-signup > img { width: 96px; right: -15px; top: -38px; }
+  .marge-signup__form { grid-template-columns: 1fr; }
+  .marge-party__items { gap: 12px; }
+  .marge-party-card { width: 50%; padding: 12px 3px 8px; }
+  .marge-party-card::before { inset: -6%; }
+  .marge-party-card img { height: 230px; }
+  .marge-party-card span { align-items: flex-start; flex-direction: column; margin: -2px 3px 0; padding: 10px 12px; border-radius: 20px; }
+  .marge-quiz { padding: 26px; }
+  .marge-quiz__answers { grid-template-columns: 1fr; }
+  .marge-embed-placeholder { padding: 28px; }
+  .marge-contact__card { gap: 36px; padding: 54px 24px; border-radius: 34px; }
+  .marge-contact__sparkle { width: 92px; left: -18px; top: -38px; }
+  .marge-contact__dots { width: 98px; right: -15px; bottom: -42px; }
+  .marge-contact__form { grid-template-columns: 1fr; }
+  .marge-contact__message { grid-column: auto; }
+  .marge-footer__grid { grid-template-columns: 1fr; gap: 28px; }
+  .marge-footer__grid > div { grid-column: auto; }
+  .marge-grain { opacity: .12; }
 }
-.pf-thumb img{width:100%;height:158px;object-fit:contain;border-radius:6px}
-.pf-dl:hover .pf-thumb{transform:translateY(-5px);box-shadow:0 4px 0 rgba(150,110,60,.08),0 16px 28px rgba(150,110,60,.2)}
-.pf-name{font-family:'Poppins',sans-serif;font-weight:700;font-size:.82rem;color:var(--navy)}
-.pf-btn{
-  display:inline-flex;align-items:center;gap:7px;
-  font-family:'Poppins',sans-serif;font-weight:600;font-size:.8rem;color:#fff;
-  background:var(--magenta);border-radius:999px;padding:8px 18px;
-  box-shadow:0 2px 0 rgba(13,35,64,.16),0 6px 14px rgba(255,79,163,.3);transition:transform .16s ease;
-}
-.pf-dl:hover .pf-btn{transform:translateY(-2px)}
-.pf-btn svg{width:14px;height:14px}
-.pf-btn-img{width:100%;max-width:170px;height:auto;display:block;margin:2px auto 0;transition:transform .16s ease}
-.pf-dl:hover .pf-btn-img{transform:translateY(-2px)}
-.pf-quiz-label{font-family:'Poppins',sans-serif;font-weight:700;font-size:.85rem;color:var(--magenta);margin:14px 0 8px}
 
-/* quiz */
-.quiz-box{background:#fff;border:1.5px solid var(--line);border-radius:14px;padding:20px 18px}
-.quiz-box .qq{font-family:'Poppins',sans-serif;font-weight:600;font-size:.9rem;color:var(--navy);margin-bottom:12px}
-.quiz-opts{display:flex;flex-direction:column;gap:8px}
-.quiz-opt{
-  text-align:left;font-family:'Inter',sans-serif;font-size:.86rem;font-weight:500;color:var(--ink);
-  background:var(--panel);border:1.5px solid var(--line);border-radius:10px;
-  padding:10px 14px;cursor:pointer;transition:border-color .13s,transform .13s,background .13s;
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
 }
-.quiz-opt:hover{border-color:var(--teal);transform:translateX(4px);background:#F0FBFB}
-.quiz-dots{display:flex;gap:6px;margin-bottom:12px}
-.quiz-dots span{width:26px;height:6px;border-radius:99px;background:var(--line)}
-.quiz-dots span.on:nth-child(1){background:var(--teal)}
-.quiz-dots span.on:nth-child(2){background:var(--sunburst)}
-.quiz-dots span.on:nth-child(3){background:var(--magenta)}
-.quiz-result{text-align:center}
-.quiz-result img{width:78%;margin:6px auto 14px;filter:drop-shadow(0 10px 18px rgba(13,35,64,.22))}
-.quiz-result .actions{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
-.quiz-result .actions .pill{font-size:.8rem;padding:9px 18px 9px 11px}
-.quiz-result .actions .pill .ic{width:24px;height:24px}
 
-/* ============ contact ============ */
-.contact-panel{
-  display:grid;grid-template-columns:.95fr .7fr 1.1fr;gap:28px;align-items:start;
-  padding:42px 44px;margin-bottom:88px;
-}
-.contact-panel h2{font-size:2.3rem;margin-bottom:12px}
-.contact-panel h2 .pop{color:var(--magenta)}
-.contact-panel .blurb{font-size:.97rem}
-.cfield{width:100%;font-family:'Inter',sans-serif;font-size:.95rem;color:var(--navy);
-  background:#fff;border:1.5px solid var(--line);border-radius:12px;
-  padding:13px 16px;outline:none;transition:border-color .15s;resize:vertical;
-}
-.cfield:focus{border-color:var(--teal)}
-.cstack{display:flex;flex-direction:column;gap:14px}
-.cmsg{display:flex;flex-direction:column;gap:14px;align-items:flex-end}
-.cmsg textarea{min-height:128px}
-.contact-cluster{position:absolute;width:170px;pointer-events:none;z-index:2}
-
-/* ============ social / tiktok ============ */
-.social-panel{text-align:center;padding:36px 32px 34px;position:relative;overflow:visible}
-.social-panel h2{font-size:2.1rem;margin:2px 0 10px}
-.social-panel h2 .pop{color:var(--magenta)}
-.social-panel .blurb{font-size:.97rem;max-width:600px;margin:0 auto}
-.social-panel .sec-label{justify-content:center}
-.social-panel .tiktok-embed{margin:20px auto 4px!important}
-.social-sprite{position:absolute;pointer-events:none;z-index:3}
-.social-follow-note{font-family:'Poppins',sans-serif;font-weight:600;font-size:.85rem;color:var(--ink);opacity:.75;margin-top:14px}
-
-/* ============ footer ============ */
-footer{background:var(--navy);color:#EDF1F8;position:relative;margin-top:-2px}
-.scallop-edge{display:block;width:100%;height:30px;margin-bottom:-1px}
-.footer-inner{
-  max-width:1280px;margin:0 auto;padding:26px 30px 38px;
-  display:flex;align-items:center;justify-content:space-between;gap:26px;flex-wrap:wrap;
-}
-.footer-links{display:flex;gap:28px;list-style:none;flex-wrap:wrap}
-.footer-links a{font-family:'Poppins',sans-serif;font-weight:600;font-size:.9rem;color:#EDF1F8;transition:color .15s}
-.footer-links a:hover{color:var(--sunburst)}
-.footer-social{display:flex;align-items:center;gap:12px}
-.footer-social span{font-family:'Poppins',sans-serif;font-weight:600;font-size:.9rem}
-.social-btn{
-  width:38px;height:38px;border-radius:50%;background:#fff;
-  display:flex;align-items:center;justify-content:center;transition:transform .15s,background .15s;
-}
-.social-btn:hover{transform:translateY(-3px)}
-.social-btn:nth-of-type(1):hover{background:var(--magenta)}
-.social-btn:nth-of-type(2):hover{background:var(--teal)}
-.social-btn:nth-of-type(3):hover{background:var(--cobalt)}
-.social-btn:nth-of-type(4):hover{background:var(--coral)}
-.social-btn:nth-of-type(5):hover{background:var(--sunburst)}
-.social-btn:hover svg{fill:#fff}
-.social-btn svg{width:18px;height:18px;fill:var(--navy)}
-.footer-copy{font-size:.88rem;display:flex;align-items:center;gap:10px}
-.footer-copy .nice{font-family:'Tinos',serif;font-style:italic;color:var(--sunburst)}
-.footer-heart{width:30px;height:30px;flex:none}
-
-/* ============ toast ============ */
-.toast{
-  position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(120px);
-  background:var(--navy);color:#fff;font-family:'Poppins',sans-serif;font-weight:600;font-size:.92rem;
-  padding:14px 26px;border-radius:999px;box-shadow:0 14px 34px rgba(0,0,0,.3);
-  transition:transform .35s cubic-bezier(.34,1.56,.64,1);z-index:200;text-align:center;max-width:92vw;
-}
-.toast.show{transform:translateX(-50%) translateY(0)}
-
-/* ============ responsive ============ */
-@media(max-width:1120px){
-  .cards-row{grid-template-columns:1fr 1fr}
-  .mission-panel{grid-column:1/-1;display:flex;gap:30px;align-items:center}
-  .games-panel{grid-column:1/-1}
-  .pf-panel{grid-column:1/-1}
-}
-@media(max-width:900px){
-  .hero-grid{grid-template-columns:1fr}
-  .hero-copy{padding-left:0}
-  .hero-art{height:64vw;max-height:520px}
-  .contact-panel{grid-template-columns:1fr}
-  .nav-links{display:none}
-  .nav-inner>.imgbtn{display:none}
-  .nav-toggle{display:block}
-  .nav-mobile{display:none;position:absolute;top:100%;left:0;right:0;z-index:60;
-    background:var(--cream);border-bottom:1.5px solid var(--line);
-    box-shadow:0 16px 28px rgba(150,110,60,.15);
-    flex-direction:column;list-style:none;padding:14px 26px 22px;gap:2px}
-  .nav-mobile.open{display:flex}
-  .nav-mobile a{display:block;text-align:center;font-family:'Poppins',sans-serif;font-weight:600;color:var(--navy);padding:12px;border-radius:12px}
-  .nav-mobile a:hover{background:var(--panel)}
-}
-@media(max-width:680px){
-  .games-panel .tiles{grid-template-columns:1fr}
-  .mission-panel{flex-direction:column}
-  .nav-logo img{width:175px}
-  .contact-cluster{display:none}
-  .panel{padding:26px 22px}
-  .sticker{width:74px}
-  .divider img{height:34px}
-  .social-panel h2{font-size:1.5rem}
-  .social-panel .blurb{font-size:.9rem}
-  .social-sprite{width:44px!important}
-}
 </style>
 <div id="pm-root">
-
-
-<!-- ================= NAV ================= -->
-<header>
-  <div class="nav-inner">
-    <a href="#home" class="nav-logo" aria-label="Marge Games home">
-      <img src="https://jaceti.github.io/playmarge/logo_repaired.png" alt="Marge Games">
-    </a>
-    <ul class="nav-links">
-      <li><a href="#home">Home</a></li>
-      <li><a href="#games">Our Games</a></li>
-      <li><a href="#party-favors">Party Favors</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-    <a href="#games" class="imgbtn" style="flex:none" aria-label="Play With Us">
-      <img src="https://jaceti.github.io/playmarge/PlayWithUsBTN.png" alt="Play With Us" style="height:48px">
-    </a>
-    <button class="nav-toggle" aria-label="Menu" onclick="document.getElementById('navMobile').classList.toggle('open')">
-      <svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
-    </button>
-  </div>
-  <ul class="nav-mobile" id="navMobile">
-    <li><a href="#home">Home</a></li>
-    <li><a href="#games">Our Games</a></li>
-    <li><a href="#party-favors">Party Favors</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-</header>
-
-<!-- ================= HERO ================= -->
-<section class="hero" id="home">
-  <span class="confetti" style="width:11px;height:11px;background:var(--magenta);top:12%;left:44%"></span>
-  <span class="confetti" style="width:9px;height:9px;background:var(--sunburst);top:70%;left:40%"></span>
-  <span class="confetti" style="width:10px;height:10px;background:var(--teal);top:84%;left:6%"></span>
-  <span class="confetti" style="width:8px;height:8px;background:var(--coral);top:6%;left:26%"></span>
-  <span class="confetti" style="width:8px;height:8px;background:var(--cobalt);top:30%;left:3%"></span>
-  <span class="confetti" style="width:9px;height:9px;background:var(--leaf);top:55%;left:47%"></span>
-  <div class="wrap hero-grid">
-    <div class="hero-copy">
-      <p class="eyebrow">Your everyday invitation to play.</p>
-      <h1>We Bring the Games.<br><span class="pop">You Bring the Party.</span></h1>
-      <p>From cozy digital puzzles to tabletop triumphs, Marge Games creates lighthearted ways to celebrate life's little moments.</p>
-      <div class="hero-meeples">
-        <img src="https://jaceti.github.io/playmarge/Meeple3.png" alt="" class="bob" style="--r:-6deg">
-        <img src="https://jaceti.github.io/playmarge/Meeple1.png" alt="" class="bob2" style="--r:4deg">
-        <img src="https://jaceti.github.io/playmarge/Meeple2.png" alt="" class="bob" style="--r:-3deg;animation-delay:.8s">
-        <img src="https://jaceti.github.io/playmarge/Dice3.png" alt="" class="bob2" style="width:52px;--r:10deg;animation-delay:.4s">
-      </div>
-    </div>
-    <div class="hero-art">
-      <div class="shot shot-phone2"><img src="https://jaceti.github.io/playmarge/02_Design_Your_Snack_Society.jpg" alt="Snack Society — design your snack society"></div>
-      <div class="shot shot-phone"><img src="https://jaceti.github.io/playmarge/01_The_Coziest_Match_3.jpg" alt="Snack Society — the coziest match-3"></div>
-      <div class="shot shot-book"><img src="https://jaceti.github.io/playmarge/BookishModkUp.jpg" alt="Bookish — Book club. But make it interesting."></div>
-      <img class="sprite bob" src="https://jaceti.github.io/playmarge/Dice1.png" alt="" style="--r:12deg;width:15%;right:5%;bottom:20%;z-index:5;animation-delay:.6s">
-      <img class="sprite bob2" src="https://jaceti.github.io/playmarge/D20Dice.png" alt="" style="--r:-7deg;width:20%;right:7%;bottom:-3%;z-index:6;animation-delay:.3s">
-      <img class="sprite bob2" src="https://jaceti.github.io/playmarge/Dice2.png" alt="" style="--r:-10deg;width:13%;left:22%;bottom:1%;z-index:5">
-      <span class="confetti" style="width:10px;height:10px;background:var(--coral);top:46%;left:51%;z-index:6"></span>
-      <span class="confetti" style="width:8px;height:8px;background:var(--cobalt);bottom:16%;right:1%;z-index:6"></span>
-    </div>
-  </div>
-</section>
-
-<div class="divider"><img src="https://jaceti.github.io/playmarge/divider_wave_gold.png" alt=""></div>
-
-<!-- ================= CARDS ROW ================= -->
-<div class="wrap">
-  <div class="cards-row">
-
-    <!-- Mission -->
-    <div class="panel mission-panel" style="--accent:var(--teal)">
-      <div>
-        <div class="sec-label">
-          <span class="dot" style="background:var(--teal)"><svg viewBox="0 0 24 24" fill="#fff"><path d="M12 3c1.8 0 3 1.4 3 3 0 1.1-.5 1.9-1.2 2.5 2.8.7 4.7 2.6 5.6 5.6.5 1.6-.5 3.2-2.1 3.2H6.7c-1.6 0-2.6-1.6-2.1-3.2.9-3 2.8-4.9 5.6-5.6C9.5 7.9 9 7.1 9 6c0-1.6 1.2-3 3-3z"/></svg></span>
-          Mission
-        </div>
-        <p style="font-size:.97rem">At Marge Games, we believe every get-together (even if it's just you and your couch) deserves a little spark. We design mobile and tabletop games that are easy to learn, impossible to put down, and packed with a healthy dose of humor.</p>
-      </div>
-      <img class="mission-cluster" src="https://jaceti.github.io/playmarge/cluster_b2.png" alt="">
-    </div>
-
-    <!-- Our Games -->
-    <div class="panel games-panel" id="games" style="--accent:var(--cobalt)">
-      <div class="sec-label">
-        <span class="dot" style="background:var(--cobalt)"><svg viewBox="0 0 24 24" fill="#fff"><path d="M12 2l2.4 6.1L21 9l-5 4.1 1.6 6.4L12 16l-5.6 3.5L8 13.1 3 9l6.6-.9z"/></svg></span>
-        Our Games
-      </div>
-      <div class="tiles">
-        <!-- Snack Society -->
-        <div class="tile">
-          <div class="tile-stage stage-snack">
-            <img class="sticker" src="https://jaceti.github.io/playmarge/Free.png" alt="Free" style="top:-16px;left:-16px">
-            <img class="game-card-img" src="https://jaceti.github.io/playmarge/05_Unwind_with_Snack_Society.jpg" alt="Snack Society — your feel-good puzzle break, anytime">
-          </div>
-          <div class="kit-chips">
-            <img src="https://jaceti.github.io/playmarge/CozyBTN.png" alt="Cozy">
-            <img src="https://jaceti.github.io/playmarge/FamilyBTN.png" alt="Family">
-          </div>
-          <h3>Snack Society</h3>
-          <p class="tagline">Satisfy your craving for a cozy match-3.</p>
-          <p>Ready for a bite-sized mental break? Snack Society is the coziest match-3 game on the menu. Match your favorite treats, clear the board, and treat yourself to a little digital deliciousness.</p>
-          <div class="cta">
-            <a class="appstore-badge" href="https://apps.apple.com/us/app/snack-society-cozy-match-3/id6761139644" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24" fill="#fff"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-              <span class="ab-text"><small>Download on the</small><strong>App Store</strong></span>
-            </a>
-          </div>
-        </div>
-        <!-- Bookish -->
-        <div class="tile">
-          <div class="tile-stage stage-bookish">
-            <img class="sticker" src="https://jaceti.github.io/playmarge/ComingSoonBTN.png" alt="Coming Soon" style="top:10px;right:8px;width:150px;animation-delay:.7s">
-            <img class="game-card-img" src="https://jaceti.github.io/playmarge/bookish_cover.jpg" alt="Bookish — Book club. But make it interesting.">
-          </div>
-          <div class="kit-chips">
-            <img src="https://jaceti.github.io/playmarge/PartyBTN.png" alt="Party">
-          </div>
-          <h3>Bookish</h3>
-          <p class="tagline" style="color:var(--cobalt)">For the literary and the literal.</p>
-          <p>We're currently dreaming up our next tabletop adventure. Dust off your vocabulary and get ready to read your friends like a book. Join our mailing list to be the first to know when it hits the shelves.</p>
-          <div class="cta bookish-embed"><iframe src="/bookish-signup" title="Get notified when Bookish launches" loading="lazy" scrolling="no"></iframe></div>
-        </div>
-      </div>
-
-      <!-- Flickmoji teaser -->
-      <a class="flickmoji-teaser" href="/flickmoji"
-         aria-label="Explore Flickmoji — coming soon"
-         onclick="track('flickmoji_teaser_click',{source:'playmarge_games'})">
-        <picture>
-          <source srcset="https://jaceti.github.io/playmarge/02-flickmoji-coming-soon-play-marge-card-1600x2000.webp" type="image/webp">
-          <img class="ft-art" src="https://jaceti.github.io/playmarge/02-flickmoji-coming-soon-play-marge-card-1600x2000.png"
-               width="1600" height="2000" loading="lazy"
-               alt="Flickmoji, a coming-soon movie emoji game">
-        </picture>
-        <span>
-          <span class="ft-eyebrow">Coming Soon</span>
-          <h3>Flickmoji</h3>
-          <span class="ft-promise">Guess the movie one emoji at a time.</span>
-          <span class="ft-support" style="display:block">Decode emoji clues, build streaks and take on a fresh Daily Flick — a brand-new movie puzzle every day.</span>
-          <span class="ft-cta">Explore Flickmoji
-            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </span>
-        </span>
+<div class="marge-grain" aria-hidden="true"></div>
+  <header class="marge-header">
+    <div class="marge-wrap marge-header__inner">
+      <a class="marge-brand" href="#home" aria-label="Marge Games home">
+        <img src="https://jaceti.github.io/playmarge/v17-assets/marge-logo-v17-bright.svg" alt="Marge">
       </a>
+      <button class="marge-menu" type="button" aria-expanded="false" aria-controls="marge-nav">Menu</button>
+      <nav class="marge-nav" id="marge-nav" aria-label="Primary">
+        <a href="#home">Home</a>
+        <a href="#games">Our Games</a>
+        <a href="#party-favors">Party Favors</a>
+        <a href="#contact">Contact</a>
+        <a class="marge-button marge-button--small" href="#games">Play With Us</a>
+      </nav>
     </div>
+  </header>
 
-    <!-- Party Favors -->
-    <div class="panel pf-panel" id="party-favors" style="--accent:var(--magenta)">
-      <div class="sec-label">
-        <span class="dot" style="background:var(--magenta)"><svg viewBox="0 0 24 24" fill="#fff"><path d="M20 7h-3.2c.4-.5.7-1.2.7-2a3 3 0 0 0-3-3c-1.1 0-2 .6-2.5 1.4C11.5 2.6 10.6 2 9.5 2a3 3 0 0 0-3 3c0 .8.3 1.5.7 2H4a1 1 0 0 0-1 1v3h18V8a1 1 0 0 0-1-1zM4 13v7a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7H4z"/></svg></span>
-        Party Favors
-      </div>
-      <h3 class="pf-title">The Marge Party Pack.</h3>
-      <p>Take the Marge Games spirit offline. Download our free party essentials to level up your next game night.</p>
-      <div class="pf-printables">
-        <a class="pf-dl" href="https://jaceti.github.io/playmarge/MargeGames_ScoreCard.pdf" download="MargeGames_ScoreCard.pdf">
-          <span class="pf-thumb"><img src="https://jaceti.github.io/playmarge/scorecard.png" alt="The Official Score Card — free printable PDF"></span>
-          <span class="pf-name">Score Card</span>
-          <img class="pf-btn-img" src="https://jaceti.github.io/playmarge/DownloadBTN.png" alt="Download">
-        </a>
-        <a class="pf-dl" href="https://jaceti.github.io/playmarge/MargeGames_DoorHanger.pdf" download="MargeGames_DoorHanger.pdf">
-          <span class="pf-thumb"><img src="https://jaceti.github.io/playmarge/doorhanger.png" alt="Do Not Disturb door hanger — free printable PDF"></span>
-          <span class="pf-name">Door Hanger</span>
-          <img class="pf-btn-img" src="https://jaceti.github.io/playmarge/DownloadBTN.png" alt="Download">
-        </a>
-      </div>
-      <p style="font-size:.8rem;font-family:'Poppins',sans-serif;font-weight:600;color:var(--ink);opacity:.75;margin-bottom:4px">Free to print at home — more party favors on the way!</p>
-      <p class="pf-quiz-label">Try the Mini Quiz!</p>
-      <div class="quiz-box">
-        <div class="quiz-dots" id="quizDots"><span class="on"></span><span></span><span></span></div>
-        <div id="quizBody"></div>
-      </div>
-    </div>
-  </div>
-
-  <div class="divider" style="padding:4px 0 30px"><img src="https://jaceti.github.io/playmarge/divider_dots_dice.png" alt=""></div>
-
-  <!-- ================= FOLLOW / TIKTOK ================= -->
-  <div style="position:relative" id="follow">
-    <img class="social-sprite bob" src="https://jaceti.github.io/playmarge/Meeple1.png" alt="" style="width:64px;left:-8px;top:-34px;--r:-8deg">
-    <img class="social-sprite bob2" src="https://jaceti.github.io/playmarge/Dice2.png" alt="" style="width:56px;right:-6px;bottom:-26px;--r:12deg">
-    <div class="panel social-panel" style="--accent:var(--coral)">
-      <div class="sec-label">
-        <span class="dot" style="background:var(--coral)"><svg viewBox="0 0 24 24" fill="#fff"><path d="M16.6 5.82A4.28 4.28 0 0 1 15.54 3h-3.09v12.4a2.59 2.59 0 1 1-2.59-2.59c.27 0 .53.04.77.12V9.77a5.76 5.76 0 0 0-.77-.05 5.66 5.66 0 1 0 5.66 5.66V9.01a7.35 7.35 0 0 0 4.3 1.38V7.3a4.28 4.28 0 0 1-3.22-1.48z"/></svg></span>
-        Follow Along
-      </div>
-      <h2>Fresh From Our <span class="pop">TikTok.</span></h2>
-      <p class="blurb">Sneak peeks, cozy snack breaks, and behind-the-scenes shenanigans — straight from our feed to your game night.</p>
-      <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@play.marge" data-unique-id="play.marge" data-embed-type="creator" style="max-width:780px;min-width:288px">
-        <section><a target="_blank" rel="noopener" href="https://www.tiktok.com/@play.marge?refer=creator_embed">@play.marge on TikTok</a></section>
-      </blockquote>
-      <script async src="https://www.tiktok.com/embed.js"></script>
-      <p class="social-follow-note">New videos land here automatically — give us a follow so you never miss one!</p>
-    </div>
-  </div>
-
-  <div class="divider" style="padding:34px 0 30px"><img src="https://jaceti.github.io/playmarge/divider_wave_pink.png" alt=""></div>
-
-  <!-- ================= CONTACT ================= -->
-  <div style="position:relative" id="contact">
-    <img class="contact-cluster bob" src="https://jaceti.github.io/playmarge/cluster_b1.png" alt="" style="--r:0deg;left:-12px;bottom:-60px">
-    <img class="contact-cluster bob2" src="https://jaceti.github.io/playmarge/cluster_b5.png" alt="" style="--r:0deg;right:-14px;bottom:-84px;width:140px">
-    <form class="panel contact-panel" onsubmit="return contactSubmit(event)" style="--accent:var(--sunburst)">
-      <div>
-        <div class="sec-label">
-          <span class="dot" style="background:var(--coral)"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="3" y="5.5" width="18" height="13" rx="2.5"/><path d="M3.5 7l8.5 6 8.5-6"/></svg></span>
-          Contact
+  <main>
+    <section class="marge-hero" id="home">
+      <img class="marge-hero__splat marge-hero__splat--lower-left" src="https://jaceti.github.io/playmarge/v17-assets/hero-accent-splat-lower-left.svg" alt="" aria-hidden="true">
+      <img class="marge-hero__splat marge-hero__splat--upper-right" src="https://jaceti.github.io/playmarge/v17-assets/hero-accent-splat-upper-right.svg" alt="" aria-hidden="true">
+      <img class="marge-hero__splat marge-hero__splat--lower-right" src="https://jaceti.github.io/playmarge/v17-assets/hero-accent-splat-lower-right.svg" alt="" aria-hidden="true">
+      <div class="marge-wrap marge-hero__grid">
+        <div class="marge-hero__copy">
+          <p class="marge-eyebrow marge-eyebrow--pink">Your everyday invitation to play.</p>
+          <h1>We Bring the Games.<br><span>You Bring the Party.</span></h1>
+          <p class="marge-lede">From cozy digital puzzles to tabletop triumphs, Marge Games creates lighthearted ways to celebrate life's little moments.</p>
+          <div class="marge-actions">
+            <a class="marge-button" href="#games">Our Games</a>
+            <div class="marge-party-link-group">
+              <a class="marge-text-link" href="#party-favors">Free Party Favors <span aria-hidden="true">→</span></a>
+              <img class="marge-cta-die" src="https://jaceti.github.io/playmarge/v17-assets/die-pink.webp" alt="" aria-hidden="true">
+            </div>
+          </div>
         </div>
-        <h2>Let's Talk <span class="pop">Games.</span></h2>
-        <p class="blurb">Got a question? A brilliant game idea? Just want to brag about your high score in Snack Society? We're all ears (and thumbs). Drop us a line!</p>
+        <div class="marge-hero__art" aria-label="Current Marge Games products">
+          <figure class="marge-product marge-product--snack">
+            <img src="https://jaceti.github.io/playmarge/v17-assets/snack-society-phones.webp" alt="Two phones showing Snack Society gameplay">
+          </figure>
+          <figure class="marge-product marge-product--bookish">
+            <img src="https://jaceti.github.io/playmarge/v17-assets/bookish-box.webp" alt="Bookish game box - Book club. But make it interesting.">
+          </figure>
+          <figure class="marge-product marge-product--flickmoji">
+            <img src="https://jaceti.github.io/playmarge/02-flickmoji-coming-soon-play-marge-card-1600x2000.webp" alt="Flickmoji, a coming-soon movie emoji game">
+          </figure>
+        </div>
       </div>
-      <div class="cstack">
-        <input class="cfield" type="text" required placeholder="Name" aria-label="Name">
-        <input class="cfield" type="email" required placeholder="Email" aria-label="Email">
-      </div>
-      <div class="cmsg">
-        <textarea class="cfield" required placeholder="What's on your mind?" aria-label="What's on your mind?"></textarea>
-        <button type="submit" class="imgbtn" aria-label="Message Us">
-          <img src="https://jaceti.github.io/playmarge/MessageUsBTN.png" alt="Message Us" style="height:56px">
-        </button>
-      </div>
-    </form>
-  </div>
-</div>
+    </section>
 
-<!-- ================= FOOTER ================= -->
-<svg class="scallop-edge" viewBox="0 0 1200 30" preserveAspectRatio="none"><path d="M0 30 V14 C0 14 7.5 0 15 0 C22.5 0 30 14 30 14 C30 14 37.5 0 45 0 C52.5 0 60 14 60 14 C60 14 67.5 0 75 0 C82.5 0 90 14 90 14 C90 14 97.5 0 105 0 C112.5 0 120 14 120 14 C120 14 127.5 0 135 0 C142.5 0 150 14 150 14 C150 14 157.5 0 165 0 C172.5 0 180 14 180 14 C180 14 187.5 0 195 0 C202.5 0 210 14 210 14 C210 14 217.5 0 225 0 C232.5 0 240 14 240 14 C240 14 247.5 0 255 0 C262.5 0 270 14 270 14 C270 14 277.5 0 285 0 C292.5 0 300 14 300 14 C300 14 307.5 0 315 0 C322.5 0 330 14 330 14 C330 14 337.5 0 345 0 C352.5 0 360 14 360 14 C360 14 367.5 0 375 0 C382.5 0 390 14 390 14 C390 14 397.5 0 405 0 C412.5 0 420 14 420 14 C420 14 427.5 0 435 0 C442.5 0 450 14 450 14 C450 14 457.5 0 465 0 C472.5 0 480 14 480 14 C480 14 487.5 0 495 0 C502.5 0 510 14 510 14 C510 14 517.5 0 525 0 C532.5 0 540 14 540 14 C540 14 547.5 0 555 0 C562.5 0 570 14 570 14 C570 14 577.5 0 585 0 C592.5 0 600 14 600 14 C600 14 607.5 0 615 0 C622.5 0 630 14 630 14 C630 14 637.5 0 645 0 C652.5 0 660 14 660 14 C660 14 667.5 0 675 0 C682.5 0 690 14 690 14 C690 14 697.5 0 705 0 C712.5 0 720 14 720 14 C720 14 727.5 0 735 0 C742.5 0 750 14 750 14 C750 14 757.5 0 765 0 C772.5 0 780 14 780 14 C780 14 787.5 0 795 0 C802.5 0 810 14 810 14 C810 14 817.5 0 825 0 C832.5 0 840 14 840 14 C840 14 847.5 0 855 0 C862.5 0 870 14 870 14 C870 14 877.5 0 885 0 C892.5 0 900 14 900 14 C900 14 907.5 0 915 0 C922.5 0 930 14 930 14 C930 14 937.5 0 945 0 C952.5 0 960 14 960 14 C960 14 967.5 0 975 0 C982.5 0 990 14 990 14 C990 14 997.5 0 1005 0 C1012.5 0 1020 14 1020 14 C1020 14 1027.5 0 1035 0 C1042.5 0 1050 14 1050 14 C1050 14 1057.5 0 1065 0 C1072.5 0 1080 14 1080 14 C1080 14 1087.5 0 1095 0 C1102.5 0 1110 14 1110 14 C1110 14 1117.5 0 1125 0 C1132.5 0 1140 14 1140 14 C1140 14 1147.5 0 1155 0 C1162.5 0 1170 14 1170 14 C1170 14 1177.5 0 1185 0 C1192.5 0 1200 14 1200 14 V30 Z" fill="#0D2340"/></svg>
-<footer>
-  <div class="footer-inner">
-    <ul class="footer-links">
-      <li><a href="#home">Home</a></li>
-      <li><a href="#games">Our Games</a></li>
-      <li><a href="#party-favors">Party Favors</a></li>
-      <li><a href="#contact">Contact</a></li>
-      <li><a href="/playmarge-privacy">Privacy Policy</a></li>
-      <li><a href="/playmarge-terms">Terms of Service</a></li>
-    </ul>
-    <div class="footer-social">
-      <span>Join the Party Online:</span>
-      <a class="social-btn" href="https://www.instagram.com/play.marge" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 8.75A3.25 3.25 0 1 0 15.25 12 3.25 3.25 0 0 0 12 8.75zm0 5.36A2.11 2.11 0 1 1 14.11 12 2.11 2.11 0 0 1 12 14.11zm3.4-5.49a.76.76 0 1 0-.76-.76.76.76 0 0 0 .76.76zM12 5.5c-1.77 0-1.99.01-2.68.04a4.77 4.77 0 0 0-1.58.3 3.18 3.18 0 0 0-1.15.75 3.18 3.18 0 0 0-.75 1.15 4.77 4.77 0 0 0-.3 1.58C5.51 10 5.5 10.23 5.5 12s.01 1.99.04 2.68a4.77 4.77 0 0 0 .3 1.58 3.18 3.18 0 0 0 .75 1.15 3.18 3.18 0 0 0 1.15.75 4.77 4.77 0 0 0 1.58.3c.69.03.91.04 2.68.04s1.99-.01 2.68-.04a4.77 4.77 0 0 0 1.58-.3 3.32 3.32 0 0 0 1.9-1.9 4.77 4.77 0 0 0 .3-1.58c.03-.69.04-.91.04-2.68s-.01-1.99-.04-2.68a4.77 4.77 0 0 0-.3-1.58 3.18 3.18 0 0 0-.75-1.15 3.18 3.18 0 0 0-1.15-.75 4.77 4.77 0 0 0-1.58-.3C13.99 5.51 13.77 5.5 12 5.5m0-1.17c1.8 0 2.03.01 2.74.04a5.94 5.94 0 0 1 2.06.4 4.35 4.35 0 0 1 2.49 2.49 5.94 5.94 0 0 1 .4 2.06c.03.71.04.94.04 2.74s-.01 2.03-.04 2.74a5.94 5.94 0 0 1-.4 2.06 4.35 4.35 0 0 1-2.49 2.49 5.94 5.94 0 0 1-2.06.4c-.71.03-.94.04-2.74.04s-2.03-.01-2.74-.04a5.94 5.94 0 0 1-2.06-.4 4.35 4.35 0 0 1-2.49-2.49 5.94 5.94 0 0 1-.4-2.06c-.03-.71-.04-.94-.04-2.74s.01-2.03.04-2.74a5.94 5.94 0 0 1 .4-2.06 4.35 4.35 0 0 1 2.49-2.49 5.94 5.94 0 0 1 2.06-.4c.71-.03.94-.04 2.74-.04z"/></svg></a>
-      <a class="social-btn" href="https://www.tiktok.com/@play.marge" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M16.6 5.82A4.28 4.28 0 0 1 15.54 3h-3.09v12.4a2.59 2.59 0 1 1-2.59-2.59c.27 0 .53.04.77.12V9.77a5.76 5.76 0 0 0-.77-.05 5.66 5.66 0 1 0 5.66 5.66V9.01a7.35 7.35 0 0 0 4.3 1.38V7.3a4.28 4.28 0 0 1-3.22-1.48z"/></svg></a>
-      <a class="social-btn" href="https://www.facebook.com/profile.php?id=61590822532925" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M13.5 21v-7h2.4l.4-3h-2.8V9.1c0-.87.24-1.46 1.49-1.46h1.41V5.07c-.69-.07-1.38-.1-2.07-.1-2.05 0-3.46 1.25-3.46 3.55V11H8.5v3h2.37v7h2.63z"/></svg></a>
+    <section class="marge-pillars" aria-label="Marge Games design principles">
+      <div class="marge-wrap marge-pillars__grid">
+        <p><strong>01</strong><span>Easy to learn</span></p>
+        <p><strong>02</strong><span>Impossible to put down</span></p>
+        <p><strong>03</strong><span>A healthy dose of humor</span></p>
+      </div>
+    </section>
+
+    <section class="marge-mission">
+      <div class="marge-wrap marge-mission__grid">
+        <div>
+          <h2>Mission</h2>
+        </div>
+        <p>At Marge Games, we believe every get-together (even if it's just you and your couch) deserves a little spark. We design mobile and tabletop games that are easy to learn, impossible to put down, and packed with a healthy dose of humor.</p>
+      </div>
+      <img class="marge-mission__orbit" src="https://jaceti.github.io/playmarge/v17-assets/mission-orbit.svg" alt="" aria-hidden="true">
+    </section>
+
+    <section class="marge-games" id="games">
+      <div class="marge-wrap">
+        <div class="marge-section-heading">
+          <div>
+            <h2>Our Games</h2>
+          </div>
+        </div>
+
+        <div class="marge-game-grid">
+          <article class="marge-card marge-card--snack">
+            <div class="marge-card__art">
+              <img src="https://jaceti.github.io/playmarge/v17-assets/snack-society-phones.webp" alt="Two phones showing Snack Society gameplay">
+            </div>
+            <div class="marge-card__copy">
+              <p class="marge-kicker">Free · Cozy · Family</p>
+              <h3>Snack Society</h3>
+              <p class="marge-card__tagline">Satisfy your craving for a cozy <span class="marge-nowrap">match-3.</span></p>
+              <p>Ready for a bite-sized mental break? Snack Society is the coziest match-3 game on the menu. Match your favorite treats, clear the board, and treat yourself to a little digital deliciousness.</p>
+              <a class="marge-button" href="https://apps.apple.com/us/app/snack-society-cozy-match-3/id6761139644">Download on the App Store</a>
+            </div>
+          </article>
+
+          <article class="marge-card marge-card--bookish">
+            <div class="marge-card__art">
+              <img src="https://jaceti.github.io/playmarge/v17-assets/bookish-box.webp" alt="Bookish game box - Book club. But make it interesting.">
+            </div>
+            <div class="marge-card__copy">
+              <p class="marge-kicker">Coming Soon · Party</p>
+              <h3>Bookish</h3>
+              <p class="marge-card__tagline">For the literary and the literal.</p>
+              <p>We're currently dreaming up our next tabletop adventure. Dust off your vocabulary and get ready to read your friends like a book. Join our mailing list to be the first to know when it hits the shelves.</p>
+              <a class="marge-button marge-button--light" href="#bookish-signup">Get Notified</a>
+            </div>
+          </article>
+
+          <article class="marge-card marge-card--flickmoji">
+            <div class="marge-card__art">
+              <img src="https://jaceti.github.io/playmarge/02-flickmoji-coming-soon-play-marge-card-1600x2000.webp" alt="Flickmoji, a coming-soon movie emoji game">
+            </div>
+            <div class="marge-card__copy">
+              <p class="marge-kicker">Coming Soon</p>
+              <h3>Flickmoji</h3>
+              <p class="marge-card__tagline">Guess the movie one emoji at a time.</p>
+              <p>Decode emoji clues, build streaks and take on a fresh Daily Flick - a brand-new movie puzzle every day.</p>
+              <a class="marge-button marge-button--pink" href="/flickmoji">Explore Flickmoji</a>
+            </div>
+          </article>
+        </div>
+
+        <aside class="marge-signup" id="bookish-signup" aria-label="Bookish updates">
+          <img src="https://jaceti.github.io/playmarge/v17-assets/sparkle-sun.svg" alt="" aria-hidden="true">
+          <div>
+            <p class="marge-eyebrow marge-eyebrow--pink">Bookish</p>
+            <h3>Join our mailing list to be the first to know when it hits the shelves.</h3>
+          </div>
+          <div class="marge-signup__form marge-signup__embed">
+            <iframe src="/bookish-signup" title="Get notified when Bookish launches" loading="lazy" scrolling="no"></iframe>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="marge-party" id="party-favors">
+      <img class="marge-party__confetti" src="https://jaceti.github.io/playmarge/v17-assets/party-confetti-corners.svg" alt="" aria-hidden="true">
+      <div class="marge-wrap marge-party__grid">
+        <div class="marge-party__copy">
+          <p class="marge-eyebrow marge-eyebrow--cream">Party Favors</p>
+          <h2>The Marge Party Pack.</h2>
+          <p>Take the Marge Games spirit offline. Download our free party essentials to level up your next game night.</p>
+          <p class="marge-small">Free to print at home - more party favors on the way!</p>
+        </div>
+        <div class="marge-party__items">
+          <a class="marge-party-card" href="https://jaceti.github.io/playmarge/MargeGames_ScoreCard.pdf">
+            <img src="https://jaceti.github.io/playmarge/scorecard.png" alt="The Official Score Card - free printable PDF">
+            <span>Score Card <b>Download</b></span>
+          </a>
+          <a class="marge-party-card" href="https://jaceti.github.io/playmarge/MargeGames_DoorHanger.pdf">
+            <img src="https://jaceti.github.io/playmarge/doorhanger.png" alt="Do Not Disturb door hanger - free printable PDF">
+            <span>Door Hanger <b>Download</b></span>
+          </a>
+        </div>
+      </div>
+
+      <div class="marge-wrap">
+        <div class="marge-quiz">
+          <p class="marge-eyebrow marge-eyebrow--teal">Try the Mini Quiz!</p>
+          <h3>1. Which game night vibe are you?</h3>
+          <div class="marge-quiz__answers" role="group" aria-label="Game night vibe">
+            <button type="button" aria-pressed="false">Read the rulebook cover to cover. Twice.</button>
+            <button type="button" aria-pressed="false">Skim the quick-start, learn as we go.</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="marge-social" id="social">
+      <div class="marge-wrap marge-social__grid">
+        <div>
+          <p class="marge-eyebrow marge-eyebrow--sun">Follow Along</p>
+          <h2>Fresh From Our TikTok.</h2>
+          <p>Sneak peeks, cozy snack breaks, and behind-the-scenes shenanigans - straight from our feed to your game night.</p>
+          <p class="marge-small">New videos land here automatically - give us a follow so you never miss one!</p>
+        </div>
+        <div class="marge-embed-placeholder">
+          <p><strong>@play.marge</strong></p>
+          <a class="marge-button marge-button--light" href="https://www.tiktok.com/@play.marge">Open TikTok</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="marge-contact" id="contact">
+      <div class="marge-wrap">
+        <div class="marge-contact__card">
+          <img class="marge-contact__sparkle" src="https://jaceti.github.io/playmarge/v17-assets/sparkle-sun.svg" alt="" aria-hidden="true">
+          <img class="marge-contact__dots" src="https://jaceti.github.io/playmarge/v17-assets/dot-cluster-pink.svg" alt="" aria-hidden="true">
+          <div>
+            <p class="marge-eyebrow marge-eyebrow--pink">Contact</p>
+            <h2>Let's Talk Games.</h2>
+            <p>Got a question? A brilliant game idea? Just want to brag about your high score in Snack Society? We're all ears (and thumbs). Drop us a line!</p>
+          </div>
+          <form class="marge-contact__form">
+            <label>Name<input type="text" autocomplete="name"></label>
+            <label>Email<input type="email" autocomplete="email"></label>
+            <label class="marge-contact__message">What's on your mind?<textarea rows="5"></textarea></label>
+            <button class="marge-button" type="button">Message Us</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="marge-footer">
+    <img class="marge-footer__confetti" src="https://jaceti.github.io/playmarge/v17-assets/footer-confetti.svg" alt="" aria-hidden="true">
+    <div class="marge-wrap marge-footer__grid">
+        <img src="https://jaceti.github.io/playmarge/v17-assets/marge-logo-v17-bright.svg" alt="Marge">
+      <nav aria-label="Footer">
+        <a href="#home">Home</a>
+        <a href="#games">Our Games</a>
+        <a href="#party-favors">Party Favors</a>
+        <a href="#contact">Contact</a>
+        <a href="https://www.hedyverse.com/playmarge-privacy">Privacy Policy</a>
+        <a href="https://www.hedyverse.com/playmarge-terms">Terms of Service</a>
+      </nav>
+      <div>
+        <p>Join the Party Online:</p>
+        <p><a href="https://www.instagram.com/play.marge">Instagram</a> · <a href="https://www.tiktok.com/@play.marge">TikTok</a> · <a href="https://www.facebook.com/profile.php?id=61590822532925">Facebook</a></p>
+        <p>© 2026 Marge Games. <span>Play nice.</span></p>
+      </div>
     </div>
-    <p class="footer-copy">&copy; 2026 Marge Games. <span class="nice">Play nice.</span>
-      <svg class="footer-heart" viewBox="0 0 32 32"><path d="M16 28C8 22 3 17 3 11.5 3 7.4 6.2 4 10.2 4c2.3 0 4.5 1.1 5.8 2.9C17.3 5.1 19.5 4 21.8 4 25.8 4 29 7.4 29 11.5 29 17 24 22 16 28z" fill="#F2B632"/></svg>
-    </p>
-  </div>
-</footer>
-
-<div class="toast" id="toast"></div>
-
-<script>
-function track(evt,data){
-  try{
-    if(window.plausible){window.plausible(evt,{props:data||{}});}
-    else if(window.gtag){window.gtag('event',evt,data||{});}
-  }catch(e){}
-}
-function showToast(msg){
-  var t=document.getElementById('toast');
-  t.textContent=msg;
-  t.classList.add('show');
-  clearTimeout(t._h);
-  t._h=setTimeout(function(){t.classList.remove('show')},3400);
-}
-function notifySubmit(e){
-  e.preventDefault();
-  e.target.querySelector('input').value='';
-  showToast("🎉 You're on the list! We'll holler when Bookish hits the shelves.");
-  return false;
-}
-function contactSubmit(e){
-  e.preventDefault();
-  e.target.reset();
-  showToast("💌 Message sent! We'll get back to you faster than a speed round.");
-  return false;
-}
-document.querySelectorAll('#navMobile a').forEach(function(a){
-  a.addEventListener('click',function(){document.getElementById('navMobile').classList.remove('open')});
-});
-
-/* ---------- mini quiz (results = kit persona cards) ---------- */
-var quizData=[
-  {q:"Which game night vibe are you?",opts:[
-    ["Read the rulebook cover to cover. Twice.","rulebook"],
-    ["Skim the quick-start, learn as we go.","flow"]]},
-  {q:"You just lost by one point. You…",opts:[
-    ["Request a full audit of the final score.","rulebook"],
-    ["Shrug — winning is just a bonus.","flow"]]},
-  {q:"Your dream game night ends with…",opts:[
-    ["A flawless strategy finally paying off.","rulebook"],
-    ["Everyone laughing too hard to keep score.","flow"]]}
-];
-var personas={
-  rulebook:{img:"https://jaceti.github.io/playmarge/RulebookRoyaltyCard.png",alt:"Rulebook Royalty — Strategic, Focused, Legend",share:"I'm RULEBOOK ROYALTY (Strategic • Focused • Legend) — find your game night vibe with Marge Games! 🎲"},
-  flow:{img:"https://jaceti.github.io/playmarge/GoWithTheFlow.png",alt:"Go-With-The-Flow — Social, Easygoing, Fun",share:"I'm GO-WITH-THE-FLOW (Social • Easygoing • Fun) — find your game night vibe with Marge Games! 🎲"}
-};
-var quizStep=0,quizScore={rulebook:0,flow:0};
-function renderQuiz(){
-  var body=document.getElementById('quizBody');
-  var dots=document.querySelectorAll('#quizDots span');
-  dots.forEach(function(d,i){d.classList.toggle('on',i<=quizStep)});
-  if(quizStep<quizData.length){
-    var item=quizData[quizStep];
-    var html='<p class="qq">'+(quizStep+1)+'. '+item.q+'</p><div class="quiz-opts">';
-    item.opts.forEach(function(o){
-      html+='<button type="button" class="quiz-opt" onclick="answerQuiz(\''+o[1]+'\')">'+o[0]+'</button>';
-    });
-    body.innerHTML=html+'</div>';
-  }else{
-    var best=quizScore.flow>quizScore.rulebook?'flow':'rulebook';
-    var p=personas[best];
-    body.innerHTML='<div class="quiz-result">'+
-      '<img src="'+p.img+'" alt="'+p.alt+'">'+
-      '<div class="actions">'+
-      '<button type="button" class="pill pill-gold" onclick="shareQuiz(\''+best+'\')"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#F2B632" stroke-width="2.2" stroke-linecap="round"><path d="M12 15V4M7.5 8.5L12 4l4.5 4.5M5 14v5a1.5 1.5 0 0 0 1.5 1.5h11A1.5 1.5 0 0 0 19 19v-5"/></svg></span>Share</button>'+
-      '<button type="button" class="pill pill-plain" onclick="resetQuiz()"><span class="ic" style="background:var(--panel)"><svg viewBox="0 0 24 24" fill="none" stroke="#0D2340" stroke-width="2.2" stroke-linecap="round"><path d="M4 10a8 8 0 1 1 2 6.5M4 10V5m0 5h5"/></svg></span>Retake</button>'+
-      '</div></div>';
-  }
-}
-function answerQuiz(key){quizScore[key]++;quizStep++;renderQuiz();}
-function resetQuiz(){quizStep=0;quizScore={rulebook:0,flow:0};renderQuiz();}
-function shareQuiz(key){
-  var text=personas[key].share;
-  if(navigator.share){navigator.share({text:text}).catch(function(){});}
-  else if(navigator.clipboard){navigator.clipboard.writeText(text);showToast("📋 Copied! Go brag about it.");}
-}
-renderQuiz();
-</script>
-
+  </footer>
 </div>
+<script id="pm-script-v17">
+(() => {
+  const menuButton = document.querySelector(".marge-menu");
+  const nav = document.querySelector(".marge-nav");
+
+  if (menuButton && nav) {
+    menuButton.addEventListener("click", () => {
+      const open = menuButton.getAttribute("aria-expanded") === "true";
+      menuButton.setAttribute("aria-expanded", String(!open));
+      nav.classList.toggle("is-open", !open);
+    });
+
+    nav.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        menuButton.setAttribute("aria-expanded", "false");
+        nav.classList.remove("is-open");
+      });
+    });
+  }
+
+  const quizButtons = Array.from(
+    document.querySelectorAll(".marge-quiz__answers button")
+  );
+  quizButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      quizButtons.forEach((item) => item.setAttribute("aria-pressed", "false"));
+      button.setAttribute("aria-pressed", "true");
+    });
+  });
+})();
+
+</script>
