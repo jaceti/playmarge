@@ -1,0 +1,363 @@
+<style id="fm-overlay-v18">
+#fm-v18{position:fixed;inset:0;width:100vw;height:100vh;height:100dvh;overflow-x:hidden;overflow-y:auto;-webkit-overflow-scrolling:touch;z-index:2147483646;background:#FFF8EE;color:#111827;font-family:"Manrope",Arial,sans-serif;}
+html,body{margin:0!important;padding:0!important;overflow:hidden!important;}
+#fm-v18 *{box-sizing:border-box;}
+#fm-v18 h1,#fm-v18 h2,#fm-v18 h3{margin:0;color:inherit!important;font-family:"Fraunces",Georgia,serif!important;font-weight:700!important;line-height:.96!important;letter-spacing:-.045em!important;text-wrap:balance;}
+#fm-v18 p,#fm-v18 a,#fm-v18 button,#fm-v18 input{font-family:inherit;}
+</style>
+<style id="fm-styles-v18">
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Manrope:wght@400;600;700;800&display=swap");
+
+#fm-v18{
+  --pink:#FF3D94;
+  --sun:#FFC61A;
+  --teal:#00C8BE;
+  --coral:#FF6F61;
+  --purple:#18182B;
+  --cream:#FFF8EE;
+  --white:#FFFFFF;
+  --ink:#111827;
+  --line:rgba(17,24,39,.16);
+  --shadow:0 16px 0 rgba(24,24,43,.15);
+}
+#fm-v18 img{display:block;max-width:100%;}
+#fm-v18 a{color:inherit;}
+#fm-v18 button{font:inherit;}
+#fm-v18 .fm-wrap{width:min(1240px,calc(100% - 48px));margin:0 auto;}
+#fm-v18 .fm-grain{position:fixed;inset:0;z-index:100;pointer-events:none;background-image:radial-gradient(circle at 20% 30%,rgba(24,24,43,.16) 0 .7px,transparent .85px);background-size:7px 7px;opacity:.17;mix-blend-mode:multiply;}
+#fm-v18 h1{font-size:clamp(58px,6.3vw,98px);}
+#fm-v18 h2{font-size:clamp(46px,5vw,76px);}
+#fm-v18 h3{font-size:clamp(30px,3.2vw,48px);}
+#fm-v18 p{font-size:18px;line-height:1.65;}
+#fm-v18 .fm-lede{max-width:640px;font-size:clamp(18px,1.5vw,22px);}
+#fm-v18 .fm-small{font-size:14px;}
+#fm-v18 .fm-eyebrow{display:inline-flex;align-items:center;min-height:40px;margin:0 0 22px;padding:8px 16px;border-radius:999px;background:var(--pink);color:var(--white);font-size:13px;font-weight:800;letter-spacing:.08em;line-height:1.2;text-transform:uppercase;}
+#fm-v18 .fm-eyebrow--sun{background:var(--sun);color:var(--ink);}
+#fm-v18 .fm-eyebrow--cream{background:var(--cream);color:var(--ink);}
+#fm-v18 .fm-button{display:inline-flex;align-items:center;justify-content:center;min-height:56px;padding:15px 26px;border:0;border-radius:999px;background:var(--sun);box-shadow:0 8px 0 var(--teal);color:var(--ink);cursor:pointer;font-weight:800;line-height:1.15;text-align:center;text-decoration:none;transition:transform .18s ease,box-shadow .18s ease;}
+#fm-v18 .fm-button:hover{transform:translateY(-4px);box-shadow:0 12px 0 var(--teal);}
+#fm-v18 .fm-button--small{min-height:48px;padding:12px 22px;}
+#fm-v18 .fm-button--pink{background:var(--pink);color:var(--white);box-shadow:0 8px 0 var(--sun);}
+#fm-v18 .fm-button--white{background:var(--white);box-shadow:0 8px 0 var(--coral);}
+#fm-v18 :focus-visible{outline:4px solid var(--pink);outline-offset:4px;}
+
+#fm-v18 .fm-header{position:relative;z-index:20;border-bottom:1px solid var(--line);background:rgba(255,248,238,.95);}
+#fm-v18 .fm-header__inner{display:flex;align-items:center;justify-content:space-between;gap:28px;min-height:88px;}
+#fm-v18 .fm-brand img{width:190px;height:auto;}
+#fm-v18 .fm-nav{display:flex;align-items:center;gap:28px;}
+#fm-v18 .fm-nav>a:not(.fm-button){font-weight:800;text-decoration:none;}
+#fm-v18 .fm-menu{display:none;border:2px solid var(--ink);border-radius:999px;background:transparent;padding:10px 16px;color:var(--ink);font-weight:800;}
+
+#fm-v18 .fm-hero{position:relative;isolation:isolate;min-height:780px;padding:88px 0 94px;overflow:hidden;}
+#fm-v18 .fm-edge{position:absolute;z-index:0;height:auto;pointer-events:none;user-select:none;}
+#fm-v18 .fm-edge--tl{left:-105px;top:32px;width:205px;transform:rotate(-10deg);}
+#fm-v18 .fm-edge--tr{right:-112px;top:68px;width:235px;transform:rotate(14deg);}
+#fm-v18 .fm-edge--br{right:-135px;bottom:-82px;width:275px;transform:rotate(18deg);}
+#fm-v18 .fm-hero__grid{position:relative;z-index:2;display:grid;grid-template-columns:.82fr 1.18fr;align-items:center;gap:54px;}
+#fm-v18 .fm-back{display:inline-flex;align-items:center;gap:8px;margin:0 0 26px;font-weight:800;text-decoration:none;}
+#fm-v18 .fm-hero h1 span{color:var(--teal);}
+#fm-v18 .fm-actions{display:flex;align-items:center;gap:24px;margin-top:34px;}
+#fm-v18 .fm-text-link{font-weight:800;text-decoration:none;}
+#fm-v18 .fm-hero__art{position:relative;min-height:600px;}
+#fm-v18 .fm-hero__art:before{content:"";position:absolute;inset:-9% -7% -10% -8%;z-index:0;background:url("https://jaceti.github.io/playmarge/v17-assets/organic-stage-purple.svg") center/contain no-repeat;filter:drop-shadow(0 16px 0 rgba(24,24,43,.14));transform:rotate(-5deg) scale(1.05);}
+#fm-v18 .fm-hero__art:after{content:"";position:absolute;left:-10%;bottom:-10%;z-index:0;width:42%;height:42%;background:url("https://jaceti.github.io/playmarge/v17-assets/organic-stage-teal.svg") center/contain no-repeat;transform:rotate(17deg);}
+#fm-v18 .fm-hero__frame{position:absolute;inset:10% 0 9% 1%;z-index:2;overflow:hidden;border:2px solid var(--ink);border-radius:38px;background:var(--white);box-shadow:0 16px 0 var(--pink);transform:rotate(1.5deg);}
+#fm-v18 .fm-hero__frame img{width:100%;height:100%;object-fit:cover;}
+#fm-v18 .fm-spark{position:absolute;right:-12px;top:4px;z-index:3;width:96px;filter:drop-shadow(0 8px 0 rgba(24,24,43,.12));}
+
+#fm-v18 .fm-signup-band{padding:38px 0 58px;background:var(--purple);color:var(--white);}
+#fm-v18 .fm-signup-band h2{color:var(--white)!important;font-size:clamp(34px,4vw,58px);}
+#fm-v18 .fm-signup-band__grid{display:grid;grid-template-columns:.85fr 1.15fr;align-items:center;gap:52px;}
+#fm-v18 .fm-signup-shell{padding:12px;border:2px solid var(--ink);border-radius:28px;background:var(--white);box-shadow:0 10px 0 var(--coral);}
+#fm-v18 .fm-signup-shell iframe{display:block;width:100%;height:92px;border:0;border-radius:18px;background:var(--white);}
+
+#fm-v18 .fm-how{position:relative;padding:118px 0 128px;overflow:hidden;background:var(--cream);}
+#fm-v18 .fm-section-head{display:flex;align-items:end;justify-content:space-between;gap:44px;margin-bottom:54px;}
+#fm-v18 .fm-section-head p{max-width:510px;margin:0;}
+#fm-v18 .fm-step-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;}
+#fm-v18 .fm-step{position:relative;min-height:350px;padding:34px;border:2px solid var(--ink);border-radius:38px;box-shadow:var(--shadow);overflow:hidden;}
+#fm-v18 .fm-step:nth-child(1){background:var(--pink);}
+#fm-v18 .fm-step:nth-child(2){background:var(--sun);}
+#fm-v18 .fm-step:nth-child(3){background:var(--teal);}
+#fm-v18 .fm-step__number{display:grid;place-items:center;width:62px;height:62px;margin-bottom:80px;border:2px solid var(--ink);border-radius:50%;background:var(--white);font:700 32px/1 "Fraunces",Georgia,serif;}
+#fm-v18 .fm-step h3{font-size:clamp(30px,3vw,46px);color:var(--ink)!important;}
+#fm-v18 .fm-step p{margin-bottom:0;font-size:16px;}
+#fm-v18 .fm-step__star{position:absolute;right:-25px;top:-26px;width:112px;opacity:.9;}
+
+#fm-v18 .fm-showcase{position:relative;padding:116px 0;overflow:hidden;}
+#fm-v18 .fm-showcase--coral{background:var(--coral);}
+#fm-v18 .fm-showcase--teal{background:var(--teal);}
+#fm-v18 .fm-showcase__grid{display:grid;grid-template-columns:1.15fr .85fr;align-items:center;gap:72px;}
+#fm-v18 .fm-showcase--teal .fm-showcase__grid{grid-template-columns:.85fr 1.15fr;}
+#fm-v18 .fm-showcase__copy{position:relative;z-index:2;}
+#fm-v18 .fm-showcase__copy h3{font-size:clamp(38px,4.4vw,68px);color:var(--ink)!important;}
+#fm-v18 .fm-showcase__copy p{max-width:540px;}
+#fm-v18 .fm-showcase__art{position:relative;z-index:1;min-height:500px;}
+#fm-v18 .fm-showcase__art:before{content:"";position:absolute;inset:-13%;z-index:0;background:url("https://jaceti.github.io/playmarge/v17-assets/organic-stage-sun.svg") center/contain no-repeat;filter:drop-shadow(0 15px 0 rgba(24,24,43,.14));transform:rotate(-6deg);}
+#fm-v18 .fm-showcase--teal .fm-showcase__art:before{background-image:url("https://jaceti.github.io/playmarge/v17-assets/organic-stage-purple.svg");transform:rotate(8deg);}
+#fm-v18 .fm-showcase__frame{position:absolute;inset:7% 0;z-index:2;overflow:hidden;border:2px solid var(--ink);border-radius:38px;background:var(--white);box-shadow:0 14px 0 rgba(24,24,43,.2);transform:rotate(1.5deg);}
+#fm-v18 .fm-showcase--teal .fm-showcase__frame{transform:rotate(-1.5deg);}
+#fm-v18 .fm-showcase__frame img{width:100%;height:100%;object-fit:cover;}
+
+#fm-v18 .fm-features{position:relative;padding:96px 0;background:var(--purple);color:var(--white);overflow:hidden;}
+#fm-v18 .fm-features h2{max-width:760px;color:var(--white)!important;}
+#fm-v18 .fm-pills{display:flex;flex-wrap:wrap;gap:16px;margin-top:42px;}
+#fm-v18 .fm-pill{display:inline-flex;align-items:center;min-height:54px;padding:13px 22px;border:2px solid var(--white);border-radius:999px;background:var(--white);color:var(--ink);font-weight:800;}
+#fm-v18 .fm-pill:nth-child(2n){background:var(--sun);}
+#fm-v18 .fm-pill:nth-child(3n){background:var(--pink);color:var(--white);}
+#fm-v18 .fm-pill:nth-child(4n){background:var(--teal);}
+
+#fm-v18 .fm-final{position:relative;padding:122px 0 138px;background:var(--sun);overflow:hidden;}
+#fm-v18 .fm-final__card{position:relative;z-index:2;display:grid;grid-template-columns:.9fr 1.1fr;align-items:center;gap:64px;padding:68px;border:2px solid var(--ink);border-radius:48px;background:var(--white);box-shadow:0 18px 0 var(--pink);}
+#fm-v18 .fm-final__card h2{color:var(--ink)!important;}
+#fm-v18 .fm-final__card .fm-signup-shell{box-shadow:0 10px 0 var(--teal);}
+#fm-v18 .fm-final__splat{position:absolute;z-index:0;right:-118px;top:-72px;width:280px;transform:rotate(16deg);}
+
+#fm-v18 .fm-footer{position:relative;padding:52px 0;overflow:hidden;border-top:2px solid var(--ink);background:var(--white);color:var(--ink);}
+#fm-v18 .fm-footer__confetti{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.14;}
+#fm-v18 .fm-footer__grid{position:relative;z-index:2;display:grid;grid-template-columns:190px 1fr 1fr;gap:56px;align-items:start;}
+#fm-v18 .fm-footer__grid>img{width:180px;}
+#fm-v18 .fm-footer nav{display:flex;flex-wrap:wrap;gap:14px 20px;}
+#fm-v18 .fm-footer a{font-weight:700;}
+#fm-v18 .fm-footer p{margin:0 0 10px;font-size:14px;}
+
+@media(max-width:980px){
+  #fm-v18 .fm-menu{display:inline-flex;}
+  #fm-v18 .fm-nav{position:absolute;left:24px;right:24px;top:78px;display:none;flex-direction:column;align-items:stretch;gap:0;padding:18px;border:2px solid var(--ink);border-radius:24px;background:var(--cream);box-shadow:0 12px 0 var(--purple);}
+  #fm-v18 .fm-nav.is-open{display:flex;}
+  #fm-v18 .fm-nav a{padding:12px;text-align:center;}
+  #fm-v18 .fm-hero__grid,#fm-v18 .fm-signup-band__grid,#fm-v18 .fm-showcase__grid,#fm-v18 .fm-showcase--teal .fm-showcase__grid,#fm-v18 .fm-final__card{grid-template-columns:1fr;}
+  #fm-v18 .fm-hero__art{min-height:610px;}
+  #fm-v18 .fm-step-grid{grid-template-columns:1fr;}
+  #fm-v18 .fm-step{min-height:260px;}
+  #fm-v18 .fm-step__number{margin-bottom:42px;}
+  #fm-v18 .fm-showcase--teal .fm-showcase__copy{order:2;}
+  #fm-v18 .fm-showcase--teal .fm-showcase__art{order:1;}
+  #fm-v18 .fm-footer__grid{grid-template-columns:180px 1fr;}
+  #fm-v18 .fm-footer__grid>div{grid-column:1/-1;}
+}
+@media(max-width:660px){
+  #fm-v18 .fm-wrap{width:min(100% - 30px,1240px);}
+  #fm-v18 .fm-brand img{width:150px;}
+  #fm-v18 .fm-header__inner{min-height:78px;}
+  #fm-v18 .fm-hero{min-height:auto;padding:62px 0 78px;}
+  #fm-v18 .fm-hero__grid{gap:18px;}
+  #fm-v18 .fm-hero__art{min-height:400px;margin-top:12px;}
+  #fm-v18 .fm-hero__frame{inset:10% 1% 8%;}
+  #fm-v18 .fm-edge--tl{left:-84px;top:36px;width:145px;}
+  #fm-v18 .fm-edge--tr{right:-90px;top:100px;width:155px;}
+  #fm-v18 .fm-edge--br{right:-102px;bottom:-45px;width:190px;}
+  #fm-v18 .fm-actions{align-items:flex-start;flex-direction:column;}
+  #fm-v18 .fm-signup-band{padding:54px 0 64px;}
+  #fm-v18 .fm-signup-shell iframe{height:120px;}
+  #fm-v18 .fm-how,#fm-v18 .fm-showcase,#fm-v18 .fm-features,#fm-v18 .fm-final{padding:84px 0;}
+  #fm-v18 .fm-section-head{align-items:flex-start;flex-direction:column;}
+  #fm-v18 .fm-step{padding:28px;border-radius:30px;}
+  #fm-v18 .fm-showcase__grid,#fm-v18 .fm-showcase--teal .fm-showcase__grid{gap:30px;}
+  #fm-v18 .fm-showcase__art{min-height:330px;}
+  #fm-v18 .fm-showcase__frame{inset:7% 0;}
+  #fm-v18 .fm-final__card{gap:34px;padding:50px 24px;border-radius:34px;}
+  #fm-v18 .fm-final__splat{right:-90px;top:-48px;width:190px;}
+  #fm-v18 .fm-footer__grid{grid-template-columns:1fr;gap:28px;}
+  #fm-v18 .fm-footer__grid>div{grid-column:auto;}
+  #fm-v18 .fm-grain{opacity:.12;}
+}
+@media(prefers-reduced-motion:reduce){
+  #fm-v18{scroll-behavior:auto;}
+  #fm-v18 *,#fm-v18 *::before,#fm-v18 *::after{scroll-behavior:auto!important;transition-duration:.01ms!important;animation-duration:.01ms!important;animation-iteration-count:1!important;}
+}
+</style>
+
+<div id="fm-v18">
+  <div class="fm-grain" aria-hidden="true"></div>
+  <header class="fm-header">
+    <div class="fm-wrap fm-header__inner">
+      <a class="fm-brand" href="/playmarge" aria-label="Marge Games home">
+        <img src="https://jaceti.github.io/playmarge/v17-assets/marge-logo-v17-bright.svg" alt="Marge">
+      </a>
+      <button class="fm-menu" type="button" aria-expanded="false" aria-controls="fm-nav-v18">Menu</button>
+      <nav class="fm-nav" id="fm-nav-v18" aria-label="Primary">
+        <a href="/playmarge">Home</a>
+        <a href="/playmarge#games">Our Games</a>
+        <a href="/playmarge#party-favors">Party Favors</a>
+        <a href="/playmarge#contact">Contact</a>
+        <a class="fm-button fm-button--small" href="/playmarge#games">Play With Us</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="fm-hero" id="flickmoji-home">
+      <img class="fm-edge fm-edge--tl" src="https://jaceti.github.io/playmarge/v17-assets/hero-accent-splat-lower-left.svg" alt="" aria-hidden="true">
+      <img class="fm-edge fm-edge--tr" src="https://jaceti.github.io/playmarge/v17-assets/hero-accent-splat-upper-right.svg" alt="" aria-hidden="true">
+      <img class="fm-edge fm-edge--br" src="https://jaceti.github.io/playmarge/v17-assets/hero-accent-splat-lower-right.svg" alt="" aria-hidden="true">
+      <div class="fm-wrap fm-hero__grid">
+        <div>
+          <a class="fm-back" href="/playmarge#games"><span aria-hidden="true">←</span> Back to Our Games</a>
+          <p class="fm-eyebrow">Coming Soon</p>
+          <h1>Guess the movie <span>one emoji at a time.</span></h1>
+          <p class="fm-lede">Decode the clues, use a hint when you need it and build your movie streak.</p>
+          <div class="fm-actions">
+            <a class="fm-button" href="#flickmoji-signup">Notify Me</a>
+            <a class="fm-text-link" href="#how">See how it works <span aria-hidden="true">↓</span></a>
+          </div>
+        </div>
+        <div class="fm-hero__art">
+          <div class="fm-hero__frame">
+            <img src="https://jaceti.github.io/playmarge/01-flickmoji-coming-soon-hero-with-signup-space-2400x1350.webp" alt="Flickmoji, coming soon — guess the movie one emoji at a time. Three phone screens showing emoji clue puzzles, the Flickmoji home screen and a solved daily challenge.">
+          </div>
+          <img class="fm-spark" src="https://jaceti.github.io/playmarge/v17-assets/sparkle-sun.svg" alt="" aria-hidden="true">
+        </div>
+      </div>
+    </section>
+
+    <section class="fm-signup-band" id="flickmoji-signup">
+      <div class="fm-wrap fm-signup-band__grid">
+        <div>
+          <p class="fm-eyebrow fm-eyebrow--sun">Be First in Line</p>
+          <h2>Get Flickmoji launch news.</h2>
+        </div>
+        <div>
+          <div class="fm-signup-shell">
+            <iframe src="/flickmoji-signup" title="Get notified when Flickmoji launches" scrolling="no"></iframe>
+          </div>
+          <p class="fm-small">By signing up, you agree to receive Flickmoji and Marge Games launch news. Unsubscribe anytime.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="fm-how" id="how">
+      <div class="fm-wrap">
+        <div class="fm-section-head">
+          <div>
+            <p class="fm-eyebrow fm-eyebrow--sun">How It Works</p>
+            <h2>One flick, told frame by frame.</h2>
+          </div>
+        </div>
+        <div class="fm-step-grid">
+          <article class="fm-step">
+            <span class="fm-step__number">1</span>
+            <h3>Read the clues.</h3>
+            <p>Each movie is revealed through a sequence of emoji moments — one flick, told frame by frame.</p>
+          </article>
+          <article class="fm-step">
+            <span class="fm-step__number">2</span>
+            <h3>Make your guess.</h3>
+            <p>Type the title, or use optional hints for the year, the initials or the full solution.</p>
+          </article>
+          <article class="fm-step">
+            <img class="fm-step__star" src="https://jaceti.github.io/playmarge/v17-assets/sparkle-sun.svg" alt="" aria-hidden="true">
+            <span class="fm-step__number">3</span>
+            <h3>Keep playing.</h3>
+            <p>Take on solo levels, return for the Daily Flick and track your progress through your profile.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="fm-showcase fm-showcase--coral">
+      <div class="fm-wrap fm-showcase__grid">
+        <div class="fm-showcase__art">
+          <div class="fm-showcase__frame">
+            <img loading="lazy" src="https://jaceti.github.io/playmarge/03-flickmoji-daily-challenge-showcase-2400x1280.webp" alt="From emoji clues to a win: four phone screens showing the Daily Challenge start screen, two different emoji movie puzzles from the current build, and a solved result with a six-emoji streak.">
+          </div>
+        </div>
+        <div class="fm-showcase__copy">
+          <p class="fm-eyebrow fm-eyebrow--cream">Daily Flick</p>
+          <h3>Every movie tells a different emoji story.</h3>
+          <p>A fresh mystery movie every day. Guess in as few emojis as you can, then share your result and challenge a friend.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="fm-showcase fm-showcase--teal">
+      <div class="fm-wrap fm-showcase__grid">
+        <div class="fm-showcase__copy">
+          <p class="fm-eyebrow fm-eyebrow--sun">Play Your Way</p>
+          <h3>Play, progress, make it yours.</h3>
+          <p>Take on solo levels, return for the Daily Flick and track your progress through your profile.</p>
+        </div>
+        <div class="fm-showcase__art">
+          <div class="fm-showcase__frame">
+            <img loading="lazy" src="https://jaceti.github.io/playmarge/04-flickmoji-solo-levels-profile-showcase-2400x1280.webp" alt="Play, progress, make it yours: phone screens showing the 30-level solo map, an emoji puzzle in progress and the player profile with mascots and badges.">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="fm-features" aria-label="Flickmoji features">
+      <div class="fm-wrap">
+        <p class="fm-eyebrow fm-eyebrow--sun">Flickmoji Features</p>
+        <h2>More ways to play, progress and share.</h2>
+        <div class="fm-pills">
+          <span class="fm-pill">Solo Levels</span>
+          <span class="fm-pill">Daily Flick</span>
+          <span class="fm-pill">Hint System</span>
+          <span class="fm-pill">Mascots</span>
+          <span class="fm-pill">Badges</span>
+          <span class="fm-pill">Streaks</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="fm-final">
+      <img class="fm-final__splat" src="https://jaceti.github.io/playmarge/v17-assets/hero-accent-splat-upper-right.svg" alt="" aria-hidden="true">
+      <div class="fm-wrap">
+        <div class="fm-final__card">
+          <div>
+            <p class="fm-eyebrow">Coming Soon</p>
+            <h2>Be first to know when Flickmoji launches.</h2>
+          </div>
+          <div>
+            <div class="fm-signup-shell">
+              <iframe loading="lazy" src="/flickmoji-signup" title="Get notified when Flickmoji launches" scrolling="no"></iframe>
+            </div>
+            <p class="fm-small">By signing up, you agree to receive Flickmoji and Marge Games launch news. Unsubscribe anytime.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="fm-footer">
+    <img class="fm-footer__confetti" src="https://jaceti.github.io/playmarge/v17-assets/footer-confetti.svg" alt="" aria-hidden="true">
+    <div class="fm-wrap fm-footer__grid">
+      <img src="https://jaceti.github.io/playmarge/v17-assets/marge-logo-v17-bright.svg" alt="Marge">
+      <nav aria-label="Footer">
+        <a href="/playmarge">Home</a>
+        <a href="/playmarge#games">Our Games</a>
+        <a href="/playmarge#party-favors">Party Favors</a>
+        <a href="/playmarge#contact">Contact</a>
+        <a href="/playmarge-privacy">Privacy Policy</a>
+        <a href="/playmarge-terms">Terms of Service</a>
+      </nav>
+      <div>
+        <p>Join the Party Online:</p>
+        <p><a href="https://www.instagram.com/play.marge">Instagram</a> · <a href="https://www.tiktok.com/@margegames">TikTok</a> · <a href="https://www.facebook.com/profile.php?id=61590822532925">Facebook</a></p>
+        <p>© 2026 Marge Games. <span>Play nice.</span></p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<script id="fm-script-v18">
+(() => {
+  const root = document.getElementById("fm-v18");
+  if (!root) return;
+  const menuButton = root.querySelector(".fm-menu");
+  const nav = root.querySelector(".fm-nav");
+  if (menuButton && nav) {
+    menuButton.addEventListener("click", () => {
+      const open = menuButton.getAttribute("aria-expanded") === "true";
+      menuButton.setAttribute("aria-expanded", String(!open));
+      nav.classList.toggle("is-open", !open);
+    });
+    nav.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        menuButton.setAttribute("aria-expanded", "false");
+        nav.classList.remove("is-open");
+      });
+    });
+  }
+})();
+</script>
