@@ -260,6 +260,12 @@ p { font-size: 18px; line-height: 1.65; }
 .marge-quiz__answers { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 30px; }
 .marge-quiz__answers button { min-height: 64px; padding: 16px 20px; border: 2px solid var(--marge-ink); border-radius: 20px; background: var(--marge-white); color: var(--marge-ink); cursor: pointer; font-weight: 800; }
 .marge-quiz__answers button[aria-pressed="true"] { background: var(--marge-teal); color: var(--marge-white); box-shadow: 0 7px 0 var(--marge-midnight); }
+.marge-quiz__answers button:disabled { cursor: default; }
+.marge-quiz__result { display: grid; grid-template-columns: minmax(220px, 360px) 1fr; gap: 34px; align-items: center; margin-top: 30px; }
+.marge-quiz__result[hidden] { display: none; }
+.marge-quiz__result img { display: block; width: 100%; border: 2px solid var(--marge-ink); border-radius: 24px; background: var(--marge-white); box-shadow: 0 10px 0 var(--marge-midnight); }
+.marge-quiz__result-copy p { margin: 0 0 22px; font-weight: 700; }
+.marge-quiz__actions { display: flex; flex-wrap: wrap; gap: 14px; }
 
 .marge-social { padding: 120px 0; background: var(--marge-midnight); color: var(--marge-white); }
 .marge-social__grid { display: grid; gap: 48px; }
@@ -336,6 +342,8 @@ p { font-size: 18px; line-height: 1.65; }
   .marge-party-card span { align-items: flex-start; flex-direction: column; margin: -2px 3px 0; padding: 10px 12px; border-radius: 20px; }
   .marge-quiz { padding: 26px; }
   .marge-quiz__answers { grid-template-columns: 1fr; }
+  .marge-quiz__result { grid-template-columns: 1fr; }
+  .marge-quiz__result img { max-width: 360px; }
   .marge-social__intro { align-items: flex-start; flex-direction: column; gap: 24px; }
   .marge-tiktok-grid { grid-auto-flow: column; grid-auto-columns: minmax(250px, 82%); grid-template-columns: none; gap: 18px; overflow-x: auto; padding: 0 0 18px; scroll-snap-type: x mandatory; }
   .marge-tiktok-card { border-radius: 24px; scroll-snap-align: start; }
@@ -510,13 +518,14 @@ p { font-size: 18px; line-height: 1.65; }
       </div>
 
       <div class="marge-wrap">
-        <div class="marge-quiz">
+        <div class="marge-quiz" aria-live="polite">
           <p class="marge-eyebrow marge-eyebrow--teal">Try the Mini Quiz!</p>
-          <h3>1. Which game night vibe are you?</h3>
+          <h3 class="marge-quiz__question">1. Which game night vibe are you?</h3>
           <div class="marge-quiz__answers" role="group" aria-label="Game night vibe">
-            <button type="button" aria-pressed="false">Read the rulebook cover to cover. Twice.</button>
-            <button type="button" aria-pressed="false">Skim the quick-start, learn as we go.</button>
+            <button type="button" aria-pressed="false" data-quiz-value="rulebook">Read the rulebook cover to cover. Twice.</button>
+            <button type="button" aria-pressed="false" data-quiz-value="flow">Skim the quick-start, learn as we go.</button>
           </div>
+          <div class="marge-quiz__result" hidden></div>
         </div>
       </div>
     </section>
@@ -624,15 +633,126 @@ p { font-size: 18px; line-height: 1.65; }
     });
   }
 
-  const quizButtons = Array.from(
-    document.querySelectorAll(".marge-quiz__answers button")
-  );
-  quizButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      quizButtons.forEach((item) => item.setAttribute("aria-pressed", "false"));
-      button.setAttribute("aria-pressed", "true");
-    });
-  });
+  const quiz = document.querySelector(".marge-quiz");
+  if (quiz) {
+    const question = quiz.querySelector(".marge-quiz__question");
+    const answers = quiz.querySelector(".marge-quiz__answers");
+    const result = quiz.querySelector(".marge-quiz__result");
+    const quizData = [
+      {
+        question: "Which game night vibe are you?",
+        answers: [
+          ["Read the rulebook cover to cover. Twice.", "rulebook"],
+          ["Skim the quick-start, learn as we go.", "flow"]
+        ]
+      },
+      {
+        question: "You just lost by one point. You…",
+        answers: [
+          ["Request a full audit of the final score.", "rulebook"],
+          ["Shrug — winning is just a bonus.", "flow"]
+        ]
+      },
+      {
+        question: "Your dream game night ends with…",
+        answers: [
+          ["A flawless strategy finally paying off.", "rulebook"],
+          ["Everyone laughing too hard to keep score.", "flow"]
+        ]
+      }
+    ];
+    const personas = {
+      rulebook: {
+        image: "https://jaceti.github.io/playmarge/RulebookRoyaltyCard.png",
+        alt: "Rulebook Royalty — Strategic, Focused, Legend",
+        title: "You're Rulebook Royalty.",
+        description: "Strategic, focused, and always ready with the official ruling.",
+        share: "I'm RULEBOOK ROYALTY (Strategic • Focused • Legend) — find your game night vibe with Marge Games! 🎲"
+      },
+      flow: {
+        image: "https://jaceti.github.io/playmarge/GoWithTheFlow.png",
+        alt: "Go-With-The-Flow — Social, Easygoing, Fun",
+        title: "You're Go-With-The-Flow.",
+        description: "Social, easygoing, and here for the laughs more than the leaderboard.",
+        share: "I'm GO-WITH-THE-FLOW (Social • Easygoing • Fun) — find your game night vibe with Marge Games! 🎲"
+      }
+    };
+    let quizStep = 0;
+    let quizScore = { rulebook: 0, flow: 0 };
+
+    const shareResult = async (key, button) => {
+      const text = personas[key].share;
+      if (navigator.share) {
+        try {
+          await navigator.share({ text });
+          return;
+        } catch (error) {
+          if (error && error.name === "AbortError") return;
+        }
+      }
+      if (navigator.clipboard) {
+        await navigator.clipboard.writeText(text);
+        const original = button.textContent;
+        button.textContent = "Copied!";
+        window.setTimeout(() => { button.textContent = original; }, 1800);
+      }
+    };
+
+    const renderQuiz = () => {
+      if (quizStep < quizData.length) {
+        const item = quizData[quizStep];
+        question.textContent = `${quizStep + 1}. ${item.question}`;
+        answers.hidden = false;
+        result.hidden = true;
+        answers.setAttribute("aria-label", `Question ${quizStep + 1} of ${quizData.length}`);
+        answers.innerHTML = item.answers.map(([label, value]) =>
+          `<button type="button" aria-pressed="false" data-quiz-value="${value}">${label}</button>`
+        ).join("");
+
+        answers.querySelectorAll("button").forEach((button) => {
+          button.addEventListener("click", () => {
+            const value = button.dataset.quizValue;
+            answers.querySelectorAll("button").forEach((itemButton) => {
+              itemButton.disabled = true;
+              itemButton.setAttribute("aria-pressed", String(itemButton === button));
+            });
+            quizScore[value] += 1;
+            window.setTimeout(() => {
+              quizStep += 1;
+              renderQuiz();
+            }, 180);
+          });
+        });
+        return;
+      }
+
+      const key = quizScore.flow > quizScore.rulebook ? "flow" : "rulebook";
+      const persona = personas[key];
+      question.textContent = persona.title;
+      answers.hidden = true;
+      result.innerHTML = `
+        <img src="${persona.image}" alt="${persona.alt}">
+        <div class="marge-quiz__result-copy">
+          <p>${persona.description}</p>
+          <div class="marge-quiz__actions">
+            <button class="marge-button" type="button" data-quiz-share>Share Result</button>
+            <button class="marge-button marge-button--light" type="button" data-quiz-retake>Retake Quiz</button>
+          </div>
+        </div>
+      `;
+      result.hidden = false;
+      result.querySelector("[data-quiz-share]").addEventListener("click", (event) => {
+        shareResult(key, event.currentTarget).catch(() => {});
+      });
+      result.querySelector("[data-quiz-retake]").addEventListener("click", () => {
+        quizStep = 0;
+        quizScore = { rulebook: 0, flow: 0 };
+        renderQuiz();
+      });
+    };
+
+    renderQuiz();
+  }
 })();
 
 </script>
