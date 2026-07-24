@@ -114,7 +114,9 @@ p { font-size: 18px; line-height: 1.65; }
   background: rgba(255, 248, 238, .95);
 }
 .marge-header__inner { display: flex; align-items: center; justify-content: space-between; gap: 28px; min-height: 88px; }
+.marge-brand, .marge-footer__brandmark { position: relative; display: inline-block; width: max-content; overflow: visible; text-decoration: none; }
 .marge-brand img { display: block; width: 190px; height: auto; }
+.marge-logo-tm { position: absolute; right: -13px; top: 6px; z-index: 3; color: var(--marge-ink); font: 800 12px/1 "Manrope", Arial, sans-serif; letter-spacing: 0; }
 .marge-nav { display: flex; align-items: center; gap: 28px; }
 .marge-nav > a:not(.marge-button) { font-weight: 800; text-decoration: none; }
 .marge-menu { display: none; border: 2px solid var(--marge-ink); border-radius: 999px; background: transparent; padding: 10px 16px; font-weight: 800; }
@@ -166,6 +168,8 @@ p { font-size: 18px; line-height: 1.65; }
 .marge-product--bookish { right: -22px; top: -68px; z-index: 3; width: 425px; height: 510px; transform: rotate(2deg); }
 .marge-product--bookish::before { background-image: url("https://jaceti.github.io/playmarge/v17-assets/organic-stage-coral.svg"); transform: rotate(7deg) scale(1.12); }
 .marge-product--bookish img { top: 7%; right: auto; bottom: auto; left: 8%; width: 76%; height: 80%; filter: brightness(1.1) saturate(1.07) contrast(1.08) drop-shadow(0 14px 12px rgba(21, 21, 36, .26)); }
+.bookish-logo-tm { position: absolute; z-index: 3; color: #FFF2C2; font: 800 14px/1 "Manrope", Arial, sans-serif; letter-spacing: 0; text-shadow: 0 1px 2px rgba(24, 24, 43, .9); }
+.marge-product--bookish .bookish-logo-tm { right: 25%; top: 28%; }
 .marge-product--flickmoji { left: 158px; bottom: -66px; z-index: 5; width: 320px; height: 392px; transform: rotate(-3deg); }
 .marge-product--flickmoji::before { background-image: url("https://jaceti.github.io/playmarge/v17-assets/organic-stage-purple.svg"); transform: rotate(-8deg) scale(1.32); }
 .marge-product--flickmoji img { inset: 13% 16%; width: 68%; height: 74%; border: 2px solid var(--marge-ink); border-radius: 18px; background: var(--marge-white); }
@@ -201,6 +205,7 @@ p { font-size: 18px; line-height: 1.65; }
 .marge-card--bookish { --marge-card-background: var(--marge-sun); }
 .marge-card--flickmoji { --marge-card-background: var(--marge-teal); }
 .marge-card--bookish img { filter: brightness(1.08) saturate(1.04) contrast(1.02) drop-shadow(0 14px 12px rgba(21, 21, 36, .2)); }
+.marge-card--bookish .bookish-logo-tm { right: 27%; top: 26%; }
 .marge-card__art { position: relative; height: 380px; margin: 22px 22px 0; overflow: visible; }
 .marge-card__art img {
   position: relative;
@@ -275,7 +280,7 @@ p { font-size: 18px; line-height: 1.65; }
 .marge-footer { position: relative; padding: 52px 0; overflow: hidden; border-top: 2px solid var(--marge-ink); background: var(--marge-white); color: var(--marge-ink); }
 .marge-footer__confetti { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .14; }
 .marge-footer__grid { position: relative; z-index: 2; display: grid; grid-template-columns: 190px 1fr 1fr; gap: 56px; align-items: start; }
-.marge-footer__grid > img { width: 180px; }
+.marge-footer__brandmark img { width: 180px; }
 .marge-footer nav { display: flex; flex-wrap: wrap; gap: 14px 20px; }
 .marge-footer p { margin: 0 0 10px; font-size: 14px; }
 
@@ -297,6 +302,7 @@ p { font-size: 18px; line-height: 1.65; }
 @media (max-width: 660px) {
   .marge-wrap { width: min(100% - 30px, 1240px); }
   .marge-brand img { width: 150px; }
+  .marge-brand .marge-logo-tm { right: -11px; top: 4px; font-size: 10px; }
   .marge-header__inner { min-height: 78px; }
   .marge-hero { min-height: auto; padding: 68px 0 76px; }
   .marge-hero__splat--lower-left { left: -90px; bottom: -14px; width: 140px; }
@@ -346,6 +352,7 @@ p { font-size: 18px; line-height: 1.65; }
     <div class="marge-wrap marge-header__inner">
       <a class="marge-brand" href="#home" aria-label="Marge Games home">
         <img src="https://jaceti.github.io/playmarge/v17-assets/marge-logo-v17-bright.svg" alt="Marge">
+        <sup class="marge-logo-tm" aria-label="Trademark">™</sup>
       </a>
       <button class="marge-menu" type="button" aria-expanded="false" aria-controls="marge-nav">Menu</button>
       <nav class="marge-nav" id="marge-nav" aria-label="Primary">
@@ -382,6 +389,7 @@ p { font-size: 18px; line-height: 1.65; }
           </figure>
           <figure class="marge-product marge-product--bookish">
             <img src="https://jaceti.github.io/playmarge/v17-assets/bookish-box.webp" alt="Bookish game box - Book club. But make it interesting.">
+            <sup class="bookish-logo-tm" aria-label="Trademark">™</sup>
           </figure>
           <figure class="marge-product marge-product--flickmoji">
             <img src="https://jaceti.github.io/playmarge/02-flickmoji-coming-soon-play-marge-card-1600x2000.webp" alt="Flickmoji, a coming-soon movie emoji game">
@@ -433,6 +441,7 @@ p { font-size: 18px; line-height: 1.65; }
           <article class="marge-card marge-card--bookish">
             <div class="marge-card__art">
               <img src="https://jaceti.github.io/playmarge/v17-assets/bookish-box.webp" alt="Bookish game box - Book club. But make it interesting.">
+              <sup class="bookish-logo-tm" aria-label="Trademark">™</sup>
             </div>
             <div class="marge-card__copy">
               <p class="marge-kicker">Coming Soon · Party</p>
@@ -542,7 +551,10 @@ p { font-size: 18px; line-height: 1.65; }
   <footer class="marge-footer">
     <img class="marge-footer__confetti" src="https://jaceti.github.io/playmarge/v17-assets/footer-confetti.svg" alt="" aria-hidden="true">
     <div class="marge-wrap marge-footer__grid">
+      <a class="marge-footer__brandmark" href="#home" aria-label="Marge Games home">
         <img src="https://jaceti.github.io/playmarge/v17-assets/marge-logo-v17-bright.svg" alt="Marge">
+        <sup class="marge-logo-tm" aria-label="Trademark">™</sup>
+      </a>
       <nav aria-label="Footer">
         <a href="#home">Home</a>
         <a href="#games">Our Games</a>
