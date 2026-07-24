@@ -91,7 +91,7 @@ header{position:relative;z-index:50}
   max-width:1280px;margin:0 auto;padding:22px 30px 6px;
   display:flex;align-items:center;justify-content:space-between;gap:20px;
 }
-.nav-logo img{width:230px;height:auto}
+.nav-logo{position:relative;display:inline-block;overflow:visible}.nav-logo img{width:230px;height:auto}.nav-logo-tm{position:absolute;right:-13px;top:5px;color:var(--navy);font:700 12px/1 'Poppins',sans-serif;letter-spacing:0}
 .nav-links{display:flex;align-items:center;gap:34px;list-style:none}
 .nav-links a{
   font-family:'Poppins',sans-serif;font-weight:600;font-size:1rem;color:var(--navy);
@@ -309,6 +309,7 @@ a:focus-visible,button:focus-visible,input:focus-visible{
 }
 @media(max-width:680px){
   .nav-logo img{width:175px}
+  .nav-logo-tm{right:-11px;top:3px;font-size:10px}
   .panel{padding:26px 22px}
   .divider img{height:34px}
 }
@@ -327,7 +328,7 @@ a:focus-visible,button:focus-visible,input:focus-visible{
 <header>
   <div class="nav-inner">
     <a href="/playmarge" class="nav-logo" aria-label="Marge Games home">
-      <img src="https://jaceti.github.io/playmarge/logo_repaired.png" alt="Marge Games">
+      <img src="https://jaceti.github.io/playmarge/v17-assets/marge-logo-v17-bright.svg" alt="Marge"><sup class="nav-logo-tm" aria-label="Trademark">™</sup>
     </a>
     <ul class="nav-links">
       <li><a href="/playmarge">Home</a></li>
