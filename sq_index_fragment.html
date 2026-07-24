@@ -171,7 +171,7 @@ p { font-size: 18px; line-height: 1.65; }
 .bookish-logo-tm { position: absolute; z-index: 3; color: #FFF2C2; font: 800 14px/1 "Manrope", Arial, sans-serif; letter-spacing: 0; text-shadow: 0 1px 2px rgba(24, 24, 43, .9); }
 .marge-product--bookish .bookish-logo-tm { right: 25%; top: 28%; }
 .marge-product--flickmoji { left: 158px; bottom: -66px; z-index: 5; width: 320px; height: 392px; transform: rotate(-3deg); }
-.marge-product--flickmoji::before { background-image: url("https://jaceti.github.io/playmarge/v17-assets/organic-stage-purple.svg"); transform: rotate(-8deg) scale(1.32); }
+.marge-product--flickmoji::before { background-image: url("https://jaceti.github.io/playmarge/v17-assets/organic-stage-purple.svg?v=20260724-smooth"); transform: rotate(-8deg) scale(1.32); }
 .marge-product--flickmoji img { inset: 13% 16%; width: 68%; height: 74%; border: 2px solid var(--marge-ink); border-radius: 18px; background: var(--marge-white); }
 
 .marge-pillars { background: var(--marge-midnight); color: var(--marge-white); padding: 34px 0; }
@@ -262,8 +262,15 @@ p { font-size: 18px; line-height: 1.65; }
 .marge-quiz__answers button[aria-pressed="true"] { background: var(--marge-teal); color: var(--marge-white); box-shadow: 0 7px 0 var(--marge-midnight); }
 
 .marge-social { padding: 120px 0; background: var(--marge-midnight); color: var(--marge-white); }
-.marge-social__grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 70px; align-items: center; }
-.marge-embed-placeholder { padding: 46px; border: 2px solid var(--marge-ink); border-radius: 38px; background: var(--marge-white); box-shadow: 0 16px 0 var(--marge-coral); color: var(--marge-ink); }
+.marge-social__grid { display: grid; gap: 48px; }
+.marge-social__intro { display: flex; align-items: end; justify-content: space-between; gap: 40px; }
+.marge-social__intro > div { max-width: 740px; }
+.marge-social__intro .marge-button { flex: 0 0 auto; margin-bottom: 6px; }
+.marge-tiktok-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
+.marge-tiktok-card { position: relative; overflow: hidden; border: 2px solid var(--marge-ink); border-radius: 30px; background: var(--marge-white); box-shadow: 0 14px 0 var(--marge-coral); }
+.marge-tiktok-card:nth-child(2) { box-shadow-color: var(--marge-teal); }
+.marge-tiktok-card:nth-child(3) { box-shadow-color: var(--marge-pink); }
+.marge-tiktok-card iframe { display: block; width: 100%; aspect-ratio: 9 / 16; border: 0; background: #000; }
 
 .marge-contact { padding: 120px 0 145px; overflow-x: clip; overflow-y: visible; }
 .marge-contact__card { position: relative; isolation: isolate; display: grid; grid-template-columns: .9fr 1.1fr; gap: 68px; padding: 70px; overflow: visible; border: 2px solid var(--marge-ink); border-radius: 48px; background: var(--marge-white); box-shadow: 0 18px 0 var(--marge-pink); }
@@ -289,7 +296,7 @@ p { font-size: 18px; line-height: 1.65; }
   .marge-nav { position: absolute; left: 24px; right: 24px; top: 78px; display: none; flex-direction: column; align-items: stretch; gap: 0; padding: 18px; border: 2px solid var(--marge-ink); border-radius: 24px; background: var(--marge-cream); box-shadow: 0 12px 0 var(--marge-midnight); }
   .marge-nav.is-open { display: flex; }
   .marge-nav a { padding: 12px; text-align: center; }
-  .marge-hero__grid, .marge-mission__grid, .marge-party__grid, .marge-social__grid, .marge-contact__card { grid-template-columns: 1fr; }
+  .marge-hero__grid, .marge-mission__grid, .marge-party__grid, .marge-contact__card { grid-template-columns: 1fr; }
   .marge-hero__art { max-width: 690px; width: 100%; margin: 30px auto 0; }
   .marge-game-grid { grid-template-columns: 1fr; }
   .marge-card { display: grid; grid-template-columns: .85fr 1.15fr; }
@@ -329,7 +336,9 @@ p { font-size: 18px; line-height: 1.65; }
   .marge-party-card span { align-items: flex-start; flex-direction: column; margin: -2px 3px 0; padding: 10px 12px; border-radius: 20px; }
   .marge-quiz { padding: 26px; }
   .marge-quiz__answers { grid-template-columns: 1fr; }
-  .marge-embed-placeholder { padding: 28px; }
+  .marge-social__intro { align-items: flex-start; flex-direction: column; gap: 24px; }
+  .marge-tiktok-grid { grid-auto-flow: column; grid-auto-columns: minmax(250px, 82%); grid-template-columns: none; gap: 18px; overflow-x: auto; padding: 0 0 18px; scroll-snap-type: x mandatory; }
+  .marge-tiktok-card { border-radius: 24px; scroll-snap-align: start; }
   .marge-contact__card { gap: 36px; padding: 54px 24px; border-radius: 34px; }
   .marge-contact__sparkle { width: 92px; left: -18px; top: -38px; }
   .marge-contact__dots { width: 98px; right: -15px; bottom: -42px; }
@@ -489,12 +498,12 @@ p { font-size: 18px; line-height: 1.65; }
           <p class="marge-small">Free to print at home - more party favors on the way!</p>
         </div>
         <div class="marge-party__items">
-          <a class="marge-party-card" href="https://jaceti.github.io/playmarge/MargeGames_ScoreCard.pdf">
-            <img src="https://jaceti.github.io/playmarge/scorecard.png" alt="The Official Score Card - free printable PDF">
+          <a class="marge-party-card" href="https://jaceti.github.io/playmarge/v17-downloadables/MargeGames_ScoreCard_v17.pdf">
+            <img src="https://jaceti.github.io/playmarge/v17-downloadables/scorecard-v17.png" alt="The Official Score Card - free printable PDF">
             <span>Score Card <b>Download</b></span>
           </a>
-          <a class="marge-party-card" href="https://jaceti.github.io/playmarge/MargeGames_DoorHanger.pdf">
-            <img src="https://jaceti.github.io/playmarge/doorhanger.png" alt="Do Not Disturb door hanger - free printable PDF">
+          <a class="marge-party-card" href="https://jaceti.github.io/playmarge/v17-downloadables/MargeGames_DoorHanger_v17.pdf">
+            <img src="https://jaceti.github.io/playmarge/v17-downloadables/doorhanger-v17.png" alt="Do Not Disturb door hanger - free printable PDF">
             <span>Door Hanger <b>Download</b></span>
           </a>
         </div>
@@ -514,15 +523,39 @@ p { font-size: 18px; line-height: 1.65; }
 
     <section class="marge-social" id="social">
       <div class="marge-wrap marge-social__grid">
-        <div>
+        <div class="marge-social__intro">
+          <div>
           <p class="marge-eyebrow marge-eyebrow--sun">Follow Along</p>
           <h2>Fresh From Our TikTok.</h2>
           <p>Sneak peeks, cozy snack breaks, and behind-the-scenes shenanigans - straight from our feed to your game night.</p>
-          <p class="marge-small">New videos land here automatically - give us a follow so you never miss one!</p>
+          </div>
+          <a class="marge-button marge-button--light" href="https://www.tiktok.com/@play.marge">Follow @play.marge</a>
         </div>
-        <div class="marge-embed-placeholder">
-          <p><strong>@play.marge</strong></p>
-          <a class="marge-button marge-button--light" href="https://www.tiktok.com/@play.marge">Open TikTok</a>
+        <div class="marge-tiktok-grid" aria-label="Recent videos from Play Marge on TikTok">
+          <div class="marge-tiktok-card">
+            <iframe
+              src="https://www.tiktok.com/player/v1/7666150815916117278?music_info=1&amp;description=1&amp;autoplay=0&amp;loop=0"
+              title="Snack Society in Amsterdam on Play Marge TikTok"
+              loading="lazy"
+              allow="encrypted-media; fullscreen; autoplay"
+              allowfullscreen></iframe>
+          </div>
+          <div class="marge-tiktok-card">
+            <iframe
+              src="https://www.tiktok.com/player/v1/7665775933550267662?music_info=1&amp;description=1&amp;autoplay=0&amp;loop=0"
+              title="Meet Stella on Play Marge TikTok"
+              loading="lazy"
+              allow="encrypted-media; fullscreen; autoplay"
+              allowfullscreen></iframe>
+          </div>
+          <div class="marge-tiktok-card">
+            <iframe
+              src="https://www.tiktok.com/player/v1/7664480644726033677?music_info=1&amp;description=1&amp;autoplay=0&amp;loop=0"
+              title="Bookish at the beach on Play Marge TikTok"
+              loading="lazy"
+              allow="encrypted-media; fullscreen; autoplay"
+              allowfullscreen></iframe>
+          </div>
         </div>
       </div>
     </section>
