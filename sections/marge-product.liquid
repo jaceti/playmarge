@@ -2,17 +2,22 @@
   <div class="marge-wrap marge-product-page__hero">
     <div class="marge-product-gallery">
       <div class="marge-product-gallery__main marge-product-gallery__main--photo">
-        <img src="{{ 'bookish-lifestyle-realistic-selected.png' | asset_url }}" alt="Bookish game in a warm, colorful reading room beside a fireplace" data-product-gallery-main>
+        {% if product.featured_image %}
+          <img src="{{ product.featured_image | image_url: width: 1800 }}" alt="{{ product.featured_image.alt | default: product.title | escape }}" loading="eager" data-product-gallery-main>
+        {% else %}
+          <img src="{{ 'bookish-lifestyle-realistic-selected.png' | asset_url }}" alt="Bookish game in a warm, colorful reading room beside a fireplace" loading="eager" data-product-gallery-main>
+        {% endif %}
       </div>
       <div class="marge-product-gallery__thumbs" aria-label="Bookish product gallery">
-        <button class="is-active" type="button" data-product-gallery-thumb data-src="{{ 'bookish-lifestyle-realistic-selected.png' | asset_url }}" data-alt="Bookish game in a warm, colorful reading room beside a fireplace"><img src="{{ 'bookish-lifestyle-realistic-selected.png' | asset_url }}" alt="Bookish lifestyle scene"></button>
-        <button type="button" data-product-gallery-thumb data-src="{{ 'bookish-front-white-exact.jpg' | asset_url }}" data-alt="Front of the Bookish game on white"><img src="{{ 'bookish-front-white-exact.jpg' | asset_url }}" alt="Front of the Bookish game on white"></button>
-        <button type="button" data-product-gallery-thumb data-src="{{ 'bookish-components-white-exact.jpg' | asset_url }}" data-alt="Bookish box, card holder, deck, and revealed prompts on white"><img src="{{ 'bookish-components-white-exact.jpg' | asset_url }}" alt="Bookish game components on white"></button>
-        <button type="button" data-product-gallery-thumb data-src="{{ 'bookish-unscratched-white-exact.jpg' | asset_url }}" data-alt="Bookish unscratched question card on white"><img src="{{ 'bookish-unscratched-white-exact.jpg' | asset_url }}" alt="Bookish unscratched question card on white"></button>
-        <button type="button" data-product-gallery-thumb data-src="{{ 'bookish-revealed-white-exact.jpg' | asset_url }}" data-alt="Bookish revealed question card on white"><img src="{{ 'bookish-revealed-white-exact.jpg' | asset_url }}" alt="Bookish revealed question card on white"></button>
-        <button type="button" data-product-gallery-thumb data-src="{{ 'bookish-holder-white-exact.jpg' | asset_url }}" data-alt="Open Bookish card holder on white"><img src="{{ 'bookish-holder-white-exact.jpg' | asset_url }}" alt="Open Bookish card holder on white"></button>
-        <button type="button" data-product-gallery-thumb data-src="{{ 'bookish-back-white-exact.jpg' | asset_url }}" data-alt="Back of the Bookish box on white"><img src="{{ 'bookish-back-white-exact.jpg' | asset_url }}" alt="Back of the Bookish box on white"></button>
-        <button type="button" data-product-gallery-thumb data-src="{{ 'bookish-cards-white-exact.jpg' | asset_url }}" data-alt="Bookish cards viewed from above on white"><img src="{{ 'bookish-cards-white-exact.jpg' | asset_url }}" alt="Bookish cards viewed from above on white"></button>
+        {% if product.images.size > 0 %}
+          {% for image in product.images %}
+            <button class="{% if forloop.first %}is-active{% endif %}" type="button" data-product-gallery-thumb data-src="{{ image | image_url: width: 1800 }}" data-alt="{{ image.alt | default: product.title | escape }}">
+              <img src="{{ image | image_url: width: 360 }}" alt="{{ image.alt | default: product.title | escape }}" loading="lazy">
+            </button>
+          {% endfor %}
+        {% else %}
+          <button class="is-active" type="button" data-product-gallery-thumb data-src="{{ 'bookish-lifestyle-realistic-selected.png' | asset_url }}" data-alt="Bookish game in a warm, colorful reading room beside a fireplace"><img src="{{ 'bookish-lifestyle-realistic-selected.png' | asset_url }}" alt="Bookish lifestyle scene"></button>
+        {% endif %}
       </div>
     </div>
     <div class="marge-product-info">
