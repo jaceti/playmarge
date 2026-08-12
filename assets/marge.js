@@ -1,5 +1,17 @@
 document.documentElement.classList.remove('no-js');
 
+document.querySelectorAll('[data-product-gallery-thumb]').forEach((button) => {
+  button.addEventListener('click', () => {
+    const main = document.querySelector('[data-product-gallery-main]');
+    if (!main) return;
+    main.src = button.dataset.src;
+    main.alt = button.dataset.alt || '';
+    document.querySelectorAll('[data-product-gallery-thumb]').forEach((thumb) => {
+      thumb.classList.toggle('is-active', thumb === button);
+    });
+  });
+});
+
 const menuButton = document.querySelector('[data-menu-button]');
 const menu = document.querySelector('[data-menu]');
 
