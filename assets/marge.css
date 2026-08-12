@@ -60,6 +60,8 @@ p { margin: 0 0 1em; }
 .marge-hero__splat--right { right: -105px; top: 20px; width: 220px; transform: rotate(12deg); }
 .marge-hero__grid { display: grid; grid-template-columns: .92fr 1.08fr; align-items: center; gap: 22px; }
 .marge-hero h1 span { color: var(--teal); }
+.marge-hero__keep { white-space: nowrap; }
+.marge-hero__copy .marge-lede { margin-top: clamp(28px, 3vw, 42px); }
 .marge-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 22px; margin-top: 34px; }
 .marge-cta-die { width: 66px; transform: rotate(-10deg); filter: drop-shadow(0 10px 8px rgba(24, 24, 43, .22)); }
 .marge-hero__art { position: relative; height: 650px; }
@@ -224,6 +226,7 @@ p { margin: 0 0 1em; }
 .marge-empty p { margin: 24px 0; }
 
 @media (max-width: 980px) {
+  .marge-hero h1 { font-size: clamp(54px, 10vw, 82px); }
   .marge-menu { display: inline-flex; }
   .marge-nav { position: absolute; left: 24px; right: 24px; top: 78px; display: none; flex-direction: column; align-items: stretch; gap: 0; padding: 18px; border: 2px solid var(--ink); border-radius: 24px; background: var(--cream); box-shadow: 0 12px 0 var(--midnight); }
   .marge-nav.is-open { display: flex; }
@@ -244,7 +247,8 @@ p { margin: 0 0 1em; }
 
 @media (max-width: 660px) {
   .marge-wrap { width: min(100% - 30px, 1240px); }
-  h1 { font-size: clamp(48px, 15vw, 68px); }
+  h1 { font-size: clamp(44px, 13.5vw, 62px); }
+  .marge-hero__copy .marge-lede { margin-top: 30px; }
   .marge-brand img { width: 150px; }
   .marge-header__inner { min-height: 78px; }
   .marge-hero { min-height: auto; padding: 64px 0 78px; }
