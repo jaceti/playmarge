@@ -1,0 +1,29 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Marge Games",
+    "theme_version": "1.0.0",
+    "theme_author": "Marge Games",
+    "theme_documentation_url": "https://playmarge.com",
+    "theme_support_url": "https://playmarge.com/#contact"
+  },
+  {
+    "name": "Brand",
+    "settings": [
+      { "type": "color", "id": "color_pink", "label": "Marge pink", "default": "#FF3D94" },
+      { "type": "color", "id": "color_yellow", "label": "Marge yellow", "default": "#FFC61A" },
+      { "type": "color", "id": "color_teal", "label": "Marge teal", "default": "#00C8BE" },
+      { "type": "color", "id": "color_coral", "label": "Marge coral", "default": "#FF6F61" },
+      { "type": "color", "id": "color_midnight", "label": "Marge midnight", "default": "#18182B" },
+      { "type": "color", "id": "color_cream", "label": "Marge cream", "default": "#FFF8EE" }
+    ]
+  },
+  {
+    "name": "Social links",
+    "settings": [
+      { "type": "url", "id": "instagram_url", "label": "Instagram" },
+      { "type": "url", "id": "tiktok_url", "label": "TikTok" },
+      { "type": "url", "id": "facebook_url", "label": "Facebook" }
+    ]
+  }
+]

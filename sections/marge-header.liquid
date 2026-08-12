@@ -1,0 +1,23 @@
+<header class="marge-header" data-header>
+  <div class="marge-wrap marge-header__inner">
+    <a class="marge-brand" href="{{ routes.root_url }}" aria-label="Marge Games home">
+      <img src="https://jaceti.github.io/playmarge/v17-assets/marge-logo-v17-bright.svg" alt="Marge Games" width="190" height="70">
+      <sup class="marge-tm" aria-label="Trademark">™</sup>
+    </a>
+    <button class="marge-menu" type="button" aria-expanded="false" aria-controls="MargeNav" data-menu-button>Menu</button>
+    <nav class="marge-nav" id="MargeNav" aria-label="Primary" data-menu>
+      <a href="{{ routes.root_url }}">Home</a>
+      <a href="{{ routes.root_url }}#games">Our Games</a>
+      <a href="{{ routes.root_url }}#party-favors">Party Favors</a>
+      <a href="{{ routes.root_url }}#contact">Contact</a>
+      <a class="marge-button marge-button--small" href="{{ routes.root_url }}#games">Play With Us</a>
+    </nav>
+  </div>
+</header>
+
+{% schema %}
+{
+  "name": "Marge header",
+  "settings": []
+}
+{% endschema %}

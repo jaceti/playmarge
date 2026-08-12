@@ -1,0 +1,9 @@
+{
+  "sections": {
+    "main": {
+      "type": "marge-404",
+      "settings": {}
+    }
+  },
+  "order": ["main"]
+}

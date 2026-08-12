@@ -1,0 +1,33 @@
+<footer class="marge-footer">
+  <img class="marge-footer__confetti" src="https://jaceti.github.io/playmarge/v17-assets/footer-confetti.svg" alt="" aria-hidden="true">
+  <div class="marge-wrap marge-footer__grid">
+    <a class="marge-footer__brand" href="{{ routes.root_url }}" aria-label="Marge Games home">
+      <img src="https://jaceti.github.io/playmarge/v17-assets/marge-logo-v17-bright.svg" alt="Marge Games" width="180" height="66">
+      <sup class="marge-tm" aria-label="Trademark">™</sup>
+    </a>
+    <nav aria-label="Footer">
+      <a href="{{ routes.root_url }}">Home</a>
+      <a href="{{ routes.root_url }}#games">Our Games</a>
+      <a href="{{ routes.root_url }}#party-favors">Party Favors</a>
+      <a href="{{ routes.root_url }}#contact">Contact</a>
+      <a href="/policies/privacy-policy">Privacy Policy</a>
+      <a href="/policies/terms-of-service">Terms of Service</a>
+    </nav>
+    <div class="marge-footer__social">
+      <p><strong>Join the Party Online:</strong></p>
+      <p>
+        <a href="{{ settings.instagram_url | default: 'https://www.instagram.com/play.marge' }}">Instagram</a> ·
+        <a href="{{ settings.tiktok_url | default: 'https://www.tiktok.com/@play.marge' }}">TikTok</a> ·
+        <a href="{{ settings.facebook_url | default: 'https://www.facebook.com/profile.php?id=61590822532925' }}">Facebook</a>
+      </p>
+      <p>© {{ 'now' | date: '%Y' }} Marge Games. <span>Play nice.</span></p>
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Marge footer",
+  "settings": []
+}
+{% endschema %}

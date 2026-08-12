@@ -1,0 +1,9 @@
+{
+  "sections": {
+    "main": {
+      "type": "marge-product",
+      "settings": {}
+    }
+  },
+  "order": ["main"]
+}

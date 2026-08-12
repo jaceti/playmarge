@@ -1,0 +1,9 @@
+{
+  "sections": {
+    "main": {
+      "type": "marge-flickmoji",
+      "settings": {}
+    }
+  },
+  "order": ["main"]
+}

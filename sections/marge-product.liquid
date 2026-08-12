@@ -1,0 +1,71 @@
+<section class="marge-product-page">
+  <div class="marge-wrap marge-product-page__hero">
+    <div class="marge-product-gallery">
+      <div class="marge-product-gallery__main">
+        <span class="marge-stage marge-stage--coral"></span>
+        {% if product.featured_image %}
+          {{ product.featured_image | image_url: width: 1600 | image_tag: loading: 'eager', alt: product.title }}
+        {% else %}
+          <img src="https://jaceti.github.io/playmarge/BookishModkUp.jpg" alt="Bookish conversation deck">
+        {% endif %}
+      </div>
+      <div class="marge-product-gallery__thumbs" aria-label="Bookish product gallery">
+        <img src="https://jaceti.github.io/playmarge/BookishModkUp.jpg" alt="Bookish game box on a tabletop">
+        <img src="https://jaceti.github.io/playmarge/v17-assets/bookish-box.webp" alt="Bookish game box cutout">
+        <img src="https://jaceti.github.io/playmarge/bookish_cover.jpg" alt="Bookish cover artwork">
+      </div>
+    </div>
+    <div class="marge-product-info">
+      <p class="marge-eyebrow marge-eyebrow--pink">Coming Soon · Conversation Deck</p>
+      <h1>{{ product.title | default: 'Bookish' }}<sup class="title-tm">™</sup></h1>
+      <p class="marge-product-info__tagline">Book club. But make it interesting.</p>
+      <div class="rte">{% if product.description != blank %}{{ product.description }}{% else %}<p>Bookish is the conversation deck for readers who want to go beyond “So, did you like it?” Draw a card, follow the prompt, and discover the stories hiding inside your favorite stories—and your favorite people.</p>{% endif %}</div>
+      <div class="marge-feature-pills" aria-label="Product highlights">
+        <span>Made for book clubs</span><span>Easy to learn</span><span>Conversation-first</span>
+      </div>
+      {% if product.available and product.price > 0 %}
+        {% form 'product', product, class: 'marge-product-form' %}
+          <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+          <p class="marge-price">{{ product.price | money }}</p>
+          <button class="marge-button" type="submit">Add to cart</button>
+        {% endform %}
+      {% else %}
+        <div class="marge-product-waitlist">
+          <h2>Be the first to know.</h2>
+          <p>Join the Bookish list for launch updates, first looks, and the moment it hits the shelves.</p>
+          {% form 'customer', class: 'marge-signup__form' %}
+            <input type="hidden" name="contact[tags]" value="bookish-waitlist">
+            <label class="visually-hidden" for="BookishProductEmail">Email address</label>
+            <input id="BookishProductEmail" type="email" name="contact[email]" autocomplete="email" placeholder="you@example.com" required>
+            <button class="marge-button" type="submit">Join the Waitlist</button>
+            {% if form.posted_successfully? %}<p class="form-status">You’re on the list!</p>{% endif %}
+          {% endform %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="marge-product-story">
+    <div class="marge-wrap marge-product-story__grid">
+      <div><p class="marge-eyebrow marge-eyebrow--cream">A better book-club prompt</p><h2>Read between the friends.</h2></div>
+      <div><p>Bookish turns the books you already love into the starting point for surprising conversations, lively debates, and the kind of tangents that make the night memorable.</p></div>
+    </div>
+  </div>
+
+  <div class="marge-wrap marge-product-details">
+    <article><strong>01</strong><h3>Pick a prompt.</h3><p>Questions and challenges get everyone talking without feeling like homework.</p></article>
+    <article><strong>02</strong><h3>Make it personal.</h3><p>Connect the page to real opinions, experiences, and delightfully questionable takes.</p></article>
+    <article><strong>03</strong><h3>Keep the story going.</h3><p>Play one card or a whole stack—Bookish fits the conversation you’re already having.</p></article>
+  </div>
+
+  <div class="marge-product-cta">
+    <div class="marge-wrap"><h2>For the literary and the literal.</h2><a class="marge-button marge-button--light" href="#BookishProductEmail">Join the Bookish list</a></div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Marge product",
+  "settings": []
+}
+{% endschema %}
