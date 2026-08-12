@@ -2,26 +2,21 @@
   <div class="marge-wrap marge-product-page__hero">
     <div class="marge-product-gallery">
       <div class="marge-product-gallery__main marge-product-gallery__main--photo">
-        {% if product.featured_image %}
-          <img src="{{ product.featured_image | image_url: width: 1800 }}" alt="{{ product.featured_image.alt | default: product.title | escape }}" loading="eager" data-product-gallery-main>
-        {% else %}
-          <img src="{{ 'bookish-lifestyle-realistic-selected.png' | asset_url }}" alt="Bookish game in a warm, colorful reading room beside a fireplace" loading="eager" data-product-gallery-main>
-        {% endif %}
+        <img src="{{ 'bookish-lifestyle-realistic-selected.png' | asset_url }}" alt="Bookish game in a warm, colorful reading room beside a fireplace" loading="eager" data-product-gallery-main>
       </div>
       <div class="marge-product-gallery__thumbs" aria-label="Bookish product gallery">
-        {% if product.images.size > 0 %}
-          {% for image in product.images %}
-            <button class="{% if forloop.first %}is-active{% endif %}" type="button" data-product-gallery-thumb data-src="{{ image | image_url: width: 1800 }}" data-alt="{{ image.alt | default: product.title | escape }}">
-              <img src="{{ image | image_url: width: 360 }}" alt="{{ image.alt | default: product.title | escape }}" loading="lazy">
-            </button>
-          {% endfor %}
-        {% else %}
-          <button class="is-active" type="button" data-product-gallery-thumb data-src="{{ 'bookish-lifestyle-realistic-selected.png' | asset_url }}" data-alt="Bookish game in a warm, colorful reading room beside a fireplace"><img src="{{ 'bookish-lifestyle-realistic-selected.png' | asset_url }}" alt="Bookish lifestyle scene"></button>
-        {% endif %}
+        <button class="is-active" type="button" data-product-gallery-thumb data-src="{{ 'bookish-lifestyle-realistic-selected.png' | asset_url }}" data-alt="Bookish game in a warm, colorful reading room beside a fireplace"><img src="{{ 'bookish-lifestyle-realistic-selected.png' | asset_url }}" alt="Bookish lifestyle scene"></button>
+        <button type="button" data-product-gallery-thumb data-src="{{ 'bookish-front-white-exact.jpg' | asset_url }}" data-alt="Front of the exact Bookish game on white"><img src="{{ 'bookish-front-white-exact.jpg' | asset_url }}" alt="Front of the exact Bookish game on white"></button>
+        <button type="button" data-product-gallery-thumb data-src="{{ 'bookish-components-white-exact.jpg' | asset_url }}" data-alt="Exact Bookish box, card holder, deck, and revealed prompts on white"><img src="{{ 'bookish-components-white-exact.jpg' | asset_url }}" alt="Exact Bookish game components on white"></button>
+        <button type="button" data-product-gallery-thumb data-src="{{ 'bookish-unscratched-white-exact.jpg' | asset_url }}" data-alt="Exact Bookish unscratched question card on white"><img src="{{ 'bookish-unscratched-white-exact.jpg' | asset_url }}" alt="Exact Bookish unscratched question card on white"></button>
+        <button type="button" data-product-gallery-thumb data-src="{{ 'bookish-revealed-white-exact.jpg' | asset_url }}" data-alt="Exact Bookish revealed question card on white"><img src="{{ 'bookish-revealed-white-exact.jpg' | asset_url }}" alt="Exact Bookish revealed question card on white"></button>
+        <button type="button" data-product-gallery-thumb data-src="{{ 'bookish-holder-white-exact.jpg' | asset_url }}" data-alt="Exact open Bookish card holder on white"><img src="{{ 'bookish-holder-white-exact.jpg' | asset_url }}" alt="Exact open Bookish card holder on white"></button>
+        <button type="button" data-product-gallery-thumb data-src="{{ 'bookish-back-white-exact.jpg' | asset_url }}" data-alt="Back of the exact Bookish box on white"><img src="{{ 'bookish-back-white-exact.jpg' | asset_url }}" alt="Back of the exact Bookish box on white"></button>
+        <button type="button" data-product-gallery-thumb data-src="{{ 'bookish-cards-white-exact.jpg' | asset_url }}" data-alt="Exact Bookish cards viewed from above on white"><img src="{{ 'bookish-cards-white-exact.jpg' | asset_url }}" alt="Exact Bookish cards viewed from above on white"></button>
       </div>
     </div>
     <div class="marge-product-info">
-      <p class="marge-eyebrow marge-eyebrow--pink">Coming Soon · Conversation Deck</p>
+      <p class="marge-eyebrow marge-eyebrow--pink">Pre-order · Conversation Deck</p>
       <h1>{{ product.title | default: 'Bookish' }}<sup class="title-tm">™</sup></h1>
       <p class="marge-product-info__tagline">Book club. But make it interesting.</p>
       <div class="rte">{% if product.description != blank %}{{ product.description }}{% else %}<p>Bookish is the conversation deck for readers who want to go beyond “So, did you like it?” Draw a card, follow the prompt, and discover the stories hiding inside your favorite stories—and your favorite people.</p>{% endif %}</div>
@@ -32,7 +27,8 @@
         {% form 'product', product, class: 'marge-product-form' %}
           <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
           <p class="marge-price">{{ product.price | money }}</p>
-          <button class="marge-button" type="submit">Add to cart</button>
+          <button class="marge-button marge-button--pink" type="submit">Pre-order now</button>
+          <p class="marge-preorder-note">This is a pre-order. We’ll email you as soon as shipping timing is confirmed.</p>
         {% endform %}
       {% else %}
         <div class="marge-product-waitlist">
@@ -40,6 +36,7 @@
           <p>Join the Bookish list for launch updates, first looks, and the moment it hits the shelves.</p>
           {% form 'customer', class: 'marge-signup__form' %}
             <input type="hidden" name="contact[tags]" value="bookish-waitlist">
+            <input type="hidden" name="contact[accepts_marketing]" value="true">
             <label class="visually-hidden" for="BookishProductEmail">Email address</label>
             <input id="BookishProductEmail" type="email" name="contact[email]" autocomplete="email" placeholder="you@example.com" required>
             <button class="marge-button" type="submit">Join the Waitlist</button>
