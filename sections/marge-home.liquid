@@ -72,12 +72,12 @@
 
       <article class="marge-game-card marge-game-card--bookish">
         <div class="marge-game-card__art">
-          <span class="marge-stage marge-stage--coral"></span>
+          <span class="marge-stage marge-stage--yellow"></span>
           <img src="{{ 'bookish-box.png' | asset_url }}" alt="Bookish conversation deck">
           <sup class="bookish-tm" aria-label="Trademark">™</sup>
         </div>
         <div class="marge-game-card__copy">
-          <p class="marge-kicker">Coming Soon · Party</p>
+          <p class="marge-kicker">Pre-order · $22.99</p>
           <h3>Bookish</h3>
           <p class="marge-tagline">For the literary and the literal.</p>
           <p>Dust off your vocabulary and get ready to read your friends like a book.</p>
@@ -109,6 +109,7 @@
       </div>
       {% form 'customer', class: 'marge-signup__form' %}
         <input type="hidden" name="contact[tags]" value="bookish-waitlist">
+        <input type="hidden" name="contact[accepts_marketing]" value="true">
         <label for="BookishEmail">Email address</label>
         <input id="BookishEmail" type="email" name="contact[email]" autocomplete="email" placeholder="you@example.com" required>
         <button class="marge-button" type="submit">Get Notified</button>
